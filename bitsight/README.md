@@ -61,7 +61,7 @@ The below diagram gives a high level architecture diagram
 
 > Example Vendor Profile Type ID: `47826aa2-ada3-4077-82ac-e90b4a8ce910`
 
-> Example BitSight token: `d24b46958ece37895493f3811422569a61196760`
+> Example BitSight token: `e45b46958ece37895493f3811422569a61196760`
 
 ## Configuration
 
@@ -81,10 +81,24 @@ In order to generate an API Key follow these steps:
 
 #### SecZetta Admin Dashboard
 
-![Image of API Key Page](img/seczetta-dashboard-admin-button.png)
+![Image of Admin Dashboard](img/seczetta-dashboard-admin-button.png)
 
 #### SecZetta API Page
 
 ![Image of API Key Page](img/seczetta-api-keys.png)
 
 ### BitSight Config
+
+For the BitSight integration the only real configuration option is obtaining the API key and replacing that key in the provided script
+
+1. Login to your BitSight tenant and navigate to your `account settings`
+
+2. Scroll down until you see the API Token section and generate a new API token
+
+#### Account Dropdown
+
+![Image of BitSight Account Dropdown](img/bitsight-navigate-to-account.png)
+
+#### Generate BitSight API Key
+
+![Image of BitSight API Key](img/bitsight-api-token.png)
