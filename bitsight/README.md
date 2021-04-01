@@ -3,13 +3,20 @@
 ## TOC 
 
 - [SecZetta / BitSight Integration](#seczetta---bitsight-integration)
-  - [Overview](#overview)
-  - [Supported Features](#supported-features)
-  - [Prerequisites](#prerequisites)
-    - [Examples](#examples)
-  - [Configuration](#configuration)
-    - [SecZetta Config](#seczetta-config)
-    - [BitSight Config](#bitsight-config)
+  * [TOC](#toc)
+  * [Overview](#overview)
+    + [Architecture Overview](#architecture-overview)
+  * [Supported Features](#supported-features)
+  * [Prerequisites](#prerequisites)
+    + [Examples](#examples)
+  * [Configuration](#configuration)
+    + [SecZetta Config](#seczetta-config)
+      - [Generating a SecZetta API Key](#generating-a-seczetta-api-key)
+      - [SecZetta Admin Dashboard](#seczetta-admin-dashboard)
+      - [SecZetta API Page](#seczetta-api-page)
+    + [BitSight Config](#bitsight-config)
+      - [Account Dropdown](#account-dropdown)
+      - [Generate BitSight API Key](#generate-bitsight-api-key)
 
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
