@@ -123,7 +123,7 @@ def bulk_APIrequests(uri_end, request_type, hash_arr)
 	if(hash_arr.length>0) then
 		hash_arr.each_slice(99) do |x|
 			json = JSON.generate({uri_end => x})
-			puts json
+			#puts json
 			res = make_API_request(uri_end,request_type,json)
 		end
 	else puts "No data for #{request_type.capitalize} in array" end
@@ -131,7 +131,10 @@ end
 ##
 
 vendors = build_vendors_hash(JSON.parse(make_API_request("profiles?profile_type_id=#{VENDOR_ID.to_s}",'get').body)['profiles'])
-puts vendors
 lists = get_bs_companies(vendors)
+
+lists[:creates].each do | test |
+	puts test["attributes"]["bitsight_rating"] + "|==>|" + scale_unit(test["attributes"]["bitsight_rating"].to_f,250,900,0,10,true).round(1).to_s
+end
 #bulk_APIrequests('profiles','update', lists[:updates])
-bulk_APIrequests('profiles','create', lists[:creates])
+#bulk_APIrequests('profiles','create', lists[:creates])
