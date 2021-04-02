@@ -2,19 +2,24 @@
 
 ## Supported Features
 
+Use Case | Supported (Y/N)| Details
+---------|----------------|------------------
+IAM initiated profile aggregation | Y | via OOTB Connector
+SecZetta initiated identity create  | N | via REST API
+SecZetta initiated identity update  | N | via REST API
+SecZetta initiated identity delete  | N | via REST API
+SecZetta initiated identity enable  | N | via REST API
+SecZetta initiated identity disable  | N | via REST API
+Sync SecZetta risk score to IAM | N |  
 
-- Syncing Profile Data
+### Profile Types Supported
 
-  - [ ] IAM initiated profile aggregation
-  - [x] SecZetta pushing profile data to IAM
+Profile Type | Managed in IAM (Y/N) | IAM Object Type
+-------------|----------------------|-------------
+People       | Y                    | Identity
+Organizations| N                    | N/A
+Assignments  | Y                    | Account Links / Roles?
+Populations  | Y                    | Job Function
 
-Category | Use Case | Supported (Y/N)
--|-|-
-Sync Profile Data | IAM initiated profile aggregation | Y
-Sync Profile Data | SecZetta pushing profile data to IAM | N
 
-**Syncing Profile Data**
-Use Case | Supported (Y/N)
--|- 
-IAM initiated profile aggregation | Y
-SecZetta pushing profile data to IAM | N
+
