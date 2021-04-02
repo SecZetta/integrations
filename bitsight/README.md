@@ -186,7 +186,7 @@ BitSight Rating (250 - 900) | ==> | Integrated Security Rating (0 - 10)
             "display_url": "<display-url-redacted>",
             "href": "<href-url-redacted>"
         },
-        ...
+        // more companies...
     ]
 ```
 
