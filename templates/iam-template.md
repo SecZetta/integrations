@@ -4,4 +4,4 @@
 
 - Syncing Profile Data
   - [ ] IAM initiated profile aggregation
-  - [ ] SecZetta pushing profile data to IAM
+  - [x] SecZetta pushing profile data to IAM
