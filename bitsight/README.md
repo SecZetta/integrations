@@ -47,7 +47,7 @@ The below diagram gives a high level architecture diagram
 
 ## Supported Features
 
-- Sync BitSight risk rating to SecZetta 
+- Sync BitSight risk rating to SecZetta
 
 ## Prerequisites
 
@@ -82,12 +82,11 @@ In order to generate an API Key follow these steps:
 3. Click the `+ Api Key` button and copy your API Key
 
 #### SecZetta Admin Dashboard
-
-![Image of Admin Dashboard](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-dashboard-admin-button.png)
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-dashboard-admin-button.png" height="20"/>
 
 #### SecZetta API Page
 
-![Image of API Key Page](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png)
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" height="100"/>
 
 ### Getting BitSight API Token
 
