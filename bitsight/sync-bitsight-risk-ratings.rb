@@ -5,9 +5,13 @@ require 'pp'
 require 'OpenSSL'
 require 'Date'
 
+# Your SecZetta API Key
 $NE_TOKEN = 'c6bda210f92142188032f5a7b59ed0f6'
+# Your BitSight Token
 $BS_TOKEN = 'd24b46958ece37895493f3811422569a61196760'
+# Your SecZetta Tenant URL
 $NEP_URL = 'https://idproofdemo.nonemployee.com/api/'
+# Profile Type ID for your Vendors
 VENDOR_ID = "37826aa2-ada3-4077-82ac-e90b4a8ce910"
 
 ## Populate Hash for NEtP Vendors
@@ -130,11 +134,17 @@ def bulk_APIrequests(uri_end, request_type, hash_arr)
 end
 ##
 
+# Gets a hashmap full of vendor objects from SecZetta
 vendors = build_vendors_hash(JSON.parse(make_API_request("profiles?profile_type_id=#{VENDOR_ID.to_s}",'get').body)['profiles'])
+
+# Builds the lists of creates/updates that are required to Sync the BitSight data
 lists = get_bs_companies(vendors)
 
-lists[:creates].each do | test |
-	puts test["attributes"]["bitsight_rating"] + "|==>|" + scale_unit(test["attributes"]["bitsight_rating"].to_f,250,900,0,10,true).round(1).to_s
-end
-#bulk_APIrequests('profiles','update', lists[:updates])
-#bulk_APIrequests('profiles','create', lists[:creates])
+# Uncomment the below to print out the rating --> scaled rating
+#lists[:creates].each do | test |
+#	puts test["attributes"]["bitsight_rating"] + "|==>|" + scale_unit(test["attributes"]["bitsight_rating"].to_f,250,900,0,10,true).round(1).to_s
+#end
+
+# Sends off the API requests to update/create the Vendor objects in SecZetta
+bulk_APIrequests('profiles','update', lists[:updates])
+bulk_APIrequests('profiles','create', lists[:creates])

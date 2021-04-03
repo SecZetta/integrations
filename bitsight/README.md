@@ -57,8 +57,6 @@ The below diagram gives a high level architecture diagram
 
 5. BitSight Token (to use the API)
 
-<small><i>See [Configuration](#configuration) for more details</i></small>
-
 ### Examples
 
 > The SecZetta Instance URL will be in this format: `https://<seczetta-tenant>.mynonemployee.com`.
@@ -69,13 +67,7 @@ The below diagram gives a high level architecture diagram
 
 > Example BitSight token: `e45b46958ece37895493f3811422569a61196760`
 
-## Configuration
-
-As described above in the high level [architecture](#architecture-overview), the BitSight integration runs on the Proxy Job Server. The script [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) is a RUBY script that will be scheduled to keep SecZetta up to date. The configuration itself is mostly about the set up of the prerequisites.
-
-### SecZetta Config
-
-#### Generating a SecZetta API Key
+### Generating a SecZetta API Key
 
 In order to generate an API Key follow these steps: 
 
@@ -93,9 +85,7 @@ In order to generate an API Key follow these steps:
 
 ![Image of API Key Page](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png)
 
-### BitSight Config
-
-For the BitSight integration the only real configuration option is obtaining the API key and replacing that key in the provided script
+### Getting BitSight API Token
 
 1. Login to your BitSight tenant and navigate to your `account settings`
 
@@ -108,6 +98,26 @@ For the BitSight integration the only real configuration option is obtaining the
 #### Generate BitSight API Key
 
 ![Image of BitSight API Key](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-api-token.png)
+
+## Configuration
+
+As described above in the high level [architecture](#architecture-overview), the BitSight integration runs on the Proxy Job Server. The script [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) is a Ruby script that will be scheduled to keep SecZetta up to date.
+
+### Integration Script
+
+On lines 8 - 15 of the [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) script, will be the only change you need to make to the script itself.
+
+```ruby 
+$NE_TOKEN = 'c7aef210f92142188032f5a7b59ed0f6'
+# Your BitSight Token
+$BS_TOKEN = 'e45b46958ece37895493f3811422569a61196760'
+# Your SecZetta Tenant URL
+$NEP_URL = 'https://<seczetta-tenant>.mynonemployee.com'
+# Profile Type ID for your Vendors
+VENDOR_ID = "47826aa2-ada3-4077-82ac-e90b4a8ce910"
+```
+
+Make sure to update these 4 variables in order to have the script operate properly
 
 ## API Usage
 
