@@ -127,11 +127,13 @@ Make sure to update these 4 variables in order to have the script operate proper
 
 ### BitSight API
 
+The script works as expected without the need to fully understand the API; however if extra details/data is required to be sync'd to SecZetta it is helpful to understand the BitSight API. The next few sections describe the API in detail.
+
 #### Authentication
 
-The BitSight API uses a token-based authentication. Use an Authentication Type of `Basic` if you are setting up something like Postman to begin testing the API out. 
+The BitSight API uses a token-based authentication. Use an Authentication Type of `Basic` if you are setting up something like Postman to begin testing the API out.
 
-Make sure to put the BitSight API Token in as the username and leave the password field blank
+Make sure to put the BitSight API Token in as the username and leave the **password field blank**
 
 ![BitSight Postman Image](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-postman-get-risk-data.png)
 
