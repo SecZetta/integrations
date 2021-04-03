@@ -86,7 +86,7 @@ In order to generate an API Key follow these steps:
 
 #### SecZetta API Page
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" width="50%"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-navigate-to-account.png" width="50%"/>
 
 ### Getting BitSight API Token
 
@@ -96,11 +96,11 @@ In order to generate an API Key follow these steps:
 
 #### Account Dropdown
 
-![Image of BitSight Account Dropdown](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-navigate-to-account.png)
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" width="50%"/>
 
 #### Generate BitSight API Key
 
-![Image of BitSight API Key](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-api-token.png)
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-api-token.png" width="50%"/>
 
 ## Configuration
 
@@ -134,7 +134,7 @@ The BitSight API uses a token-based authentication. Use an Authentication Type o
 
 Make sure to put the BitSight API Token in as the username and leave the **password field blank**
 
-![BitSight Postman Image](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-postman-get-risk-data.png)
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-postman-get-risk-data.png" width="50%"/>
 
 #### GET /ratings/v1/companies
 
@@ -143,7 +143,8 @@ The only API endpoint required on the BitSight side is the `/ratings/v1/companie
 The key data points that are synced to SecZetta are `rating`, `rating_date`, `guid`. The full rating gets synced to SecZetta; however the script also normalizes the rating on to a 0 - 10 scale.
 
 BitSight operates on a 250 - 900 scale. Here is an example of that scale in action:
-![BitSight Risk Rank Image](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-risk-example.png)
+
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-risk-example.png" width="50%"/>
 
 ##### Example Scale
 
