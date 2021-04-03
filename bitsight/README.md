@@ -82,11 +82,11 @@ In order to generate an API Key follow these steps:
 3. Click the `+ Api Key` button and copy your API Key
 
 #### SecZetta Admin Dashboard
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-dashboard-admin-button.png" height="20"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-dashboard-admin-button.png" width="50%"/>
 
 #### SecZetta API Page
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" height="100"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" width="50%"/>
 
 ### Getting BitSight API Token
 
