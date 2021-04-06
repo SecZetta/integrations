@@ -18,34 +18,47 @@ PingOne for Enterprise is architected to scale; some of our enterprise customers
 
 ![Image of Architecture Overview](https://raw.githubusercontent.com/SecZetta/integrations/main/pingone/img/pingone-architecture-overview.png)
 
-- Step 1: Call BitSight to grab all companies risk ratings
-- Step 2: BitSight responds back with the risk ratings
-- Step 3: Proxy Job server analyzes risk rating and normalizes risk score to pass to SecZetta
-- Step 4: Proxy Job server pushes risk data to Vendor profiles
-- Step 5: Success response sent back
-
-
+- Step 1: SecZetta will launch a lifecycle workflow for a profile.
+- Step 2: Based on the result of this workflow, SecZetta will send off the correct requests to PingOne. The following PingOne integration options are supported:
+  - Create new directory account
+  - Update existing account
+  - Add/Remove group memberships
+  - Enable/Disable account
+- Step 3: Will only execute if creating an account is required
+- Step 4: Will execute if a user requires updating or needs to be enabled/disabled
+- Step 5: Will execute for any group membership changes
+- Step 6: Success response sent back
 
 ## Supported Features
 
-- List supported features
-- here
+- Create new PingOne directory account
+- Update existing PingOne directory account
+- Add/Remove users from PingOne groups
+- Enable/Disable PingOne directory account
+
+### Coming Soon
+
+- Webhook integration
 
 ## Prerequisites
-
-Almost all integrations will have the first 2 prereq.
 
 1. An active SecZetta account and tenant where you have administrative privileges. To set up a new SecZetta account, please reach out to [SecZetta Support (info@seczetta.com)](mailto:info@seczetta.com)
 
 2. An active SecZetta API Token
 
-3. Any other prereqs
+3. An active PingOne for Enterprise account with Administrative access
+
+4. PingOne API Credentials ( SETUP -> Directory -> API Credentials)
 
 ### Examples
 
 > The SecZetta Instance URL will be in this format: `https://<seczetta-tenant>.mynonemployee.com`.
 
 > Example SecZetta API Token: `c7aef210f92142188032f5a7b59ed0f6`
+
+> Example PingOne API Credentials:\
+> PingOne Client-ID: `9fe3f802-4bf5-4f1c-8032-0ce48abdbe34`\
+> PingOne API Key: `iriC9lvZGxI3y5tlJgAnMjD2y725OZ`
 
 ### Generating a SecZetta API Key
 
@@ -67,11 +80,8 @@ In order to generate an API Key follow these steps:
 
 ## Configuration
 
-As described above in the high level [architecture](#architecture-overview), describe the techincal integration briefly
+As described above in the high level [architecture](#architecture-overview), the integration deals mostly with REST API calls from SecZetta to PingOne. This is done using the REST API Action in any SecZetta workflow. 
 
-> Make sure to list all the steps required to setup the config
-
-### Integration Script (if required)
 
 ## API Usage (if required)
 
@@ -79,11 +89,11 @@ As described above in the high level [architecture](#architecture-overview), des
 
 #### Authentication
 
-The BitSight API uses a token-based authentication. Use an Authentication Type of `Basic` if you are setting up something like Postman to begin testing the API out.
+The PingOne API uses basic authentication using an Client-Id and API Key. Use an Authentication Type of `Basic` if you are setting up something like Postman to begin testing the API out.
 
 Make sure to put the BitSight API Token in as the username and leave the **password field blank**
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-postman-get-risk-data.png" width="50%"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/pingone/img/pingone-postman-example.png" width="50%"/>
 
 #### GET /ratings/v1/companies
 

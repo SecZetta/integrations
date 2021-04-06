@@ -106,6 +106,26 @@ In order to generate an API Key follow these steps:
 
 As described above in the high level [architecture](#architecture-overview), the BitSight integration runs on the Proxy Job Server. The script [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) is a Ruby script that will be scheduled to keep SecZetta up to date.
 
+Before executing the script import the [`init-bitsight.json`](init-bitsight.json) file. This file imports the specific bitsight attributes that the script is looking for as well as creates helpful forms to be able to use on your vendor profile types
+
+### SecZetta Objects
+
+#### Attributes
+
+The [`init-bitsight.json`](init-bitsight.json) file will import the following attributes:
+
+Attribute UID | Attribute Label | Description | Example Value
+--------------|-----------------|-------------|----------------
+bitsight_integrated_security_rating | Integrated Security Rating | Scaled Risk Ranking (0 - 10) | 5.5
+bitsight_rating_date | BitSight Rating Date | Date last rated | 04/05/2020
+bitsight_rating | Bitsight Rating | Full Bitsight Rating (250 - 900) | 470
+bitsight_guid | BitSight UID | Unique identifier used to sync Vendors | 2bd2cbb2-e4b8-4259-95d1-f562c731d5c8
+bitsight_full_vendor_risk_assessment_complete | Risk Assessment Complete | Flag showing if a full assessment has been performed | Yes
+
+#### Form
+
+
+
 ### Integration Script
 
 On lines 8 - 15 of the [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) script, will be the only change you need to make to the script itself.
