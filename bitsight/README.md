@@ -110,20 +110,16 @@ Before executing the script import the [`init-bitsight.json`](init-bitsight.json
 
 ### SecZetta Objects
 
-#### Attributes
+The [`init-bitsight.json`](init-bitsight.json) file will import the following objects:
 
-The [`init-bitsight.json`](init-bitsight.json) file will import the following attributes:
-
-Attribute UID | Attribute Label | Description | Example Value
---------------|-----------------|-------------|----------------
-bitsight_integrated_security_rating | Integrated Security Rating | Scaled Risk Ranking (0 - 10) | 5.5
-bitsight_rating_date | BitSight Rating Date | Date last rated | 04/05/2020
-bitsight_rating | Bitsight Rating | Full Bitsight Rating (250 - 900) | 470
-bitsight_guid | BitSight UID | Unique identifier used to sync Vendors | 2bd2cbb2-e4b8-4259-95d1-f562c731d5c8
-bitsight_full_vendor_risk_assessment_complete | Risk Assessment Complete | Flag showing if a full assessment has been performed | Yes
-
-#### Form
-
+Object Type |  UID | Name | Description | Example Value
+------------|------|------|-------------|----------------
+Attribute | bitsight_integrated_security_rating | Integrated Security Rating | Scaled Risk Ranking (0 - 10) | 5.5
+Attribute | bitsight_rating_date | BitSight Rating Date | Date last rated | 04/05/2020
+Attribute | bitsight_rating | BitSight Rating | Full Bitsight Rating (250 - 900) | 470
+Attribute | bitsight_guid | BitSight UID | Unique identifier used to sync Vendors | 2bd2cbb2-e4b8-4259-95d1-f562c731d5c8
+Attribute | bitsight_full_vendor_risk_assessment_complete | Risk Assessment Complete | Flag showing if a full assessment has been performed | Yes
+Form | bitsight_details_form | BitSight Details | Simple form to show the above attributes
 
 
 ### Integration Script
@@ -131,6 +127,7 @@ bitsight_full_vendor_risk_assessment_complete | Risk Assessment Complete | Flag 
 On lines 8 - 15 of the [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) script, will be the only change you need to make to the script itself.
 
 ```ruby 
+# Your NEProfile API Token
 $NE_TOKEN = 'c7aef210f92142188032f5a7b59ed0f6'
 # Your BitSight Token
 $BS_TOKEN = 'e45b46958ece37895493f3811422569a61196760'

@@ -4,7 +4,7 @@
         "archived": false,
         "attr_order": [],
         "description": "",
-        "name": "Bitsight Details",
+        "name": "BitSight Details",
         "uid": "bitsight_details_form",
         "class_name": "Form"
     },
@@ -2186,7 +2186,7 @@
         "crypt": false,
         "description": "",
         "filtered_by_ne_attribute": false,
-        "label": "Bitsight Rating",
+        "label": "BitSight Rating",
         "ownership_driven": false,
         "risk_score_setting": "standard",
         "risk_type": "none",
