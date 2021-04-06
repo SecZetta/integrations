@@ -1,3 +1,61 @@
+# Instructions
+
+* Please copy this template (copy either the markdown by clicking **Raw** or the copy directly from this preview) and use it to create your guide in your preferred medium. 
+* This template includes information required in all PagerDuty integration guides.
+* Template instructions in ***bold italics*** are intended to provide guidance or examples, and should be deleted and/or replaced once you’ve added your content.
+* If your integration does not follow the same flow as what we’ve provided below (e.g. steps begin in your tool’s UI as opposed to the PagerDuty UI, etc.), feel free to make the changes you need to reflect the flow of the integration.
+* Please read through our Writing and Style Guidelines below before starting your draft.
+
+# Writing and Style Guidelines
+
+## Detailed, Explicit Instructions
+
+All steps to completing the integration should live in this guide. It's always good to err on the side of too much information, even if you think something is obvious. By writing your instructions as if the reader has had zero experience with any of the content, you can proactively anticipate any customer questions and greatly relieve Support efforts. 
+
+**Example**:
+
+* **Don't**: "Find your ClientID and paste it into this field."
+
+* **Do**: "Navigate to **Account Settings** in the system menu and copy your **Client ID**. Next, navigate back to the **Configuration** page and paste it in the **ID** field."
+
+## Calls to Action
+
+Most calls to action include clickable objects or fields, which you should highlight with **bold text**. This helps the reader follow along in the instructions and denotes when they should be taking action in the UI. 
+
+**Examples**:
+
+* "Navigate to the **Configuration** menu and select **Users**."
+
+* "Paste the **Integration Key** into the **Token** field"
+
+## Actionable Steps
+
+Summaries before your content may work well when giving a talk or presenting to a targeted crowd, but not in documentation that users are more likely to skim hoping for quick answers. TL;DR: Don't include sentences that just state what you plan on writing about. If you feel you need to add more information that contextualizes what the reader is configuring, include it within the steps, or in a quick summary after them. 
+
+**Example**
+
+* **Don't**: "In this procedure we will be creating a Topic and a Subscription that will then allow you to create messages that trigger PagerDuty incidents..." etc.
+
+* **Do**: "1. Navigate to the **Topics** tab and click **Create Topic**. 2. Enter a **Name**, configure your details and click **Save Topic**. 3. Next, navigate to the **Subscriptions** tab and click **Create Subscription**. Enter a **Name**, select the **Topic** created in step 1 and paste your PagerDuty **Integration Key** in the **Token** field. Click **Save Subscription**. You have now created a subscription that references your PagerDuty endpoint. When you publish a direct message to your Topic, it will trigger PagerDuty incidents."
+
+## Use Active Voice
+
+The active voice ensures that your writing is clear, concise and engaging. The [passive voice](https://webapps.towson.edu/ows/activepass.htm) uses more words, can sound vague and should be avoided like a [zombie plague](https://www.grammarly.com/blog/a-scary-easy-way-to-help-you-find-passive-voice/) (rhyme intended).
+
+**Example**
+
+* **Do**: "Users can follow incidents and escalations in real-time in Hungrycat’s event stream."
+* **Don't**: "Incidents and escalations can be followed in real-time by users in Hungrycat’s event stream."
+
+## Media
+
+* At PagerDuty, we use the Preview tool that comes standard on macOS. Type **⌘ + ⇧ + A** or click **View** > **Show Markup Toolbar** to annotate images with arrows, rectangles and text.
+* Only include screenshots that are **absolutely necessary**, so that you have less images to continually update when UI changes, etc. We usually only include screenshots when objects in the UI are small or harder to find. 
+* Ensure that you've obfuscated all sensitive information in your screenshots (e.g., personal account information, integration keys, etc.,) by covering with fake data or an image blur tool. 
+
+^^^ Note: Once you have completed your guide, please delete this section. ^^^
+----
+
 # SecZetta / <Product-Name> Integration
 
 ## Contents

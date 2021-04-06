@@ -7,7 +7,6 @@
     - [Architecture Overview](#architecture-overview)
   - [Supported Features](#supported-features)
   - [Prerequisites](#prerequisites)
-    - [Examples](#examples)
     - [Generating a SecZetta API Key](#generating-a-seczetta-api-key)
       - [SecZetta Admin Dashboard](#seczetta-admin-dashboard)
       - [SecZetta API Page](#seczetta-api-page)
@@ -43,8 +42,6 @@ The below diagram gives a high level architecture diagram
 - Step 4: Proxy Job server pushes risk data to Vendor profiles
 - Step 5: Success response sent back
 
-
-
 ## Supported Features
 
 - Sync BitSight risk rating to SecZetta
@@ -60,8 +57,6 @@ The below diagram gives a high level architecture diagram
 4. BitSight Environment with administrative access
 
 5. BitSight Token (to use the API)
-
-### Examples
 
 > The SecZetta Instance URL will be in this format: `https://<seczetta-tenant>.mynonemployee.com`.
 
@@ -119,8 +114,9 @@ Attribute | bitsight_rating_date | BitSight Rating Date | Date last rated | 04/0
 Attribute | bitsight_rating | BitSight Rating | Full Bitsight Rating (250 - 900) | 470
 Attribute | bitsight_guid | BitSight UID | Unique identifier used to sync Vendors | 2bd2cbb2-e4b8-4259-95d1-f562c731d5c8
 Attribute | bitsight_full_vendor_risk_assessment_complete | Risk Assessment Complete | Flag showing if a full assessment has been performed | Yes
-Form | bitsight_details_form | BitSight Details | Simple form to show the above attributes
+Form | bitsight_details_form | BitSight Details | Simple form to show the above attributes | N/A
 
+In order for the `BitSight Details` form to show up make sure you add it to the Vendors Profile Page. In the **Admin** dashboard, navigate to **Templates**, then select **Pages**. At the top of the page, switch over to the **Profiles** tab. Select your ***Vendor*** profile page and add the BitSight form wherever you need it.
 
 ### Integration Script
 
