@@ -116,11 +116,13 @@ Attribute | bitsight_guid | BitSight UID | Unique identifier used to sync Vendor
 Attribute | bitsight_full_vendor_risk_assessment_complete | Risk Assessment Complete | Flag showing if a full assessment has been performed | Yes
 Form | bitsight_details_form | BitSight Details | Simple form to show the above attributes | N/A
 
-In order for the `BitSight Details` form to show up make sure you add it to the Vendors Profile Page. In the **Admin** dashboard, navigate to **Templates**, then select **Pages**. At the top of the page, switch over to the **Profiles** tab. Select your ***Vendor*** profile page and add the BitSight form wherever you need it.
+In order for the `BitSight Details` form to show up make sure you add it to the Vendors Profile Page:
+
+* In the **Admin** dashboard, navigate to **Templates**, then select **Pages**. At the top of the page, switch over to the **Profiles** tab. Select your ***Vendor*** profile page and add the BitSight form wherever you need it.
 
 ### Integration Script
 
-On lines 8 - 15 of the [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) script, will be the only change you need to make to the script itself.
+Once you've imported the above `init-bitsight.json` file you can now start focusing on the integration script. On lines 8 - 15 of the [sync-bitsight-risk-ratings.rb](sync-bitsight-risk-ratings.rb) script, will be the only change you need to make to the script itself. Update the four variables below to match your environment
 
 ```ruby 
 # Your NEProfile API Token
@@ -133,15 +135,15 @@ $NEP_URL = 'https://<seczetta-tenant>.mynonemployee.com'
 VENDOR_ID = "47826aa2-ada3-4077-82ac-e90b4a8ce910"
 ```
 
-Make sure to update these 4 variables in order to have the script operate properly
+## Support
 
-## API Usage
+### API Usage
 
-### BitSight API
+#### BitSight API
 
 The script works as expected without the need to fully understand the API; however if extra details/data is required to be sync'd to SecZetta it is helpful to understand the BitSight API. The next few sections describe the API in detail.
 
-#### Authentication
+##### Authentication
 
 The BitSight API uses a token-based authentication. Use an Authentication Type of `Basic` if you are setting up something like Postman to begin testing the API out.
 
@@ -149,7 +151,7 @@ Make sure to put the BitSight API Token in as the username and leave the **passw
 
 <img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-postman-get-risk-data.png" width="50%"/>
 
-#### GET /ratings/v1/companies
+##### GET /ratings/v1/companies
 
 The only API endpoint required on the BitSight side is the `/ratings/v1/companies` endpoint. This endpoint pulls the risk ranking details that will be synced to SecZetta. See below for an example response.
 
@@ -159,7 +161,7 @@ BitSight operates on a 250 - 900 scale. Here is an example of that scale in acti
 
 <img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-risk-example.png" width="50%"/>
 
-##### Example Scale
+###### Example Scale
 
 Here are a few examples to see how that rating scales
 
@@ -182,8 +184,7 @@ BitSight Rating (250 - 900) | ==> | Integrated Security Rating (0 - 10)
 640|==>|6.0
 320|==>|1.1
 
-
-##### Example JSON Response
+###### Example JSON Response
 
 ```json
 
@@ -219,4 +220,4 @@ BitSight Rating (250 - 900) | ==> | Integrated Security Rating (0 - 10)
     ]
 ```
 
-> The API will respond back with a `200 OK` if the request was succesful
+> The API will respond back with a `200 OK` if the request was successful
