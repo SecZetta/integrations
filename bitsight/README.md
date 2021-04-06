@@ -186,7 +186,7 @@ BitSight Rating (250 - 900) | ==> | Integrated Security Rating (0 - 10)
 
 ###### Example JSON Response
 
-```json
+```javascript
 
 "created": "2018-11-12",
     "rating_date": "2021-03-29",
@@ -216,7 +216,7 @@ BitSight Rating (250 - 900) | ==> | Integrated Security Rating (0 - 10)
             "display_url": "<display-url-redacted>",
             "href": "<href-url-redacted>"
         },
-        /* more companies... */
+        // more companies...
     ]
 ```
 
