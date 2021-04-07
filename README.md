@@ -53,7 +53,7 @@ The easiest way to test that you can call the SecZetta API correctly is to do a 
 
 * `Accept: */*`
 
-Using a tool like [Postman](getpostman.com), add your SecZetta tenant API URL (using the `/users` endpoint), your Authorization Header and your Accept header.
+Using a tool like [Postman](getpostman.com), do your initial test using the `GET /users` endpoint. See the below example for details. Remember to replace the example values with values the represent your SecZetta instance
 
 #### Example Request:
 
@@ -67,6 +67,8 @@ HTTP Header 2 | `Accept: */*`
 #### Example Response:
 
 ```jsonc
+200 OK
+
 {
     "users": [
         {
