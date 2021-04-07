@@ -6,7 +6,7 @@
 
 ## Prerequisites
 
-[sub-section](./README.md#getting-started)  
+[sub-section](../README.md#using-seczettas-api)  
 
 ## Troubleshooting
 
