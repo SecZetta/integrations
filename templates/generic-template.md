@@ -1,9 +1,11 @@
+
+
 # Instructions
 
 * Please copy this template (copy either the markdown by clicking **Raw** or the copy directly from this preview) and use it to create your guide in your preferred medium. 
-* This template includes information required in all PagerDuty integration guides.
+* This template includes information required in all SecZetta integration guides.
 * Template instructions in ***bold italics*** are intended to provide guidance or examples, and should be deleted and/or replaced once you’ve added your content.
-* If your integration does not follow the same flow as what we’ve provided below (e.g. steps begin in your tool’s UI as opposed to the PagerDuty UI, etc.), feel free to make the changes you need to reflect the flow of the integration.
+* If your integration does not follow the same flow as what we’ve provided below (e.g. steps begin in your tool’s UI as opposed to the SecZetta UI, etc.), feel free to make the changes you need to reflect the flow of the integration.
 * Please read through our Writing and Style Guidelines below before starting your draft.
 
 # Writing and Style Guidelines
@@ -34,9 +36,9 @@ Summaries before your content may work well when giving a talk or presenting to 
 
 **Example**
 
-* **Don't**: "In this procedure we will be creating a Topic and a Subscription that will then allow you to create messages that trigger PagerDuty incidents..." etc.
+* **Don't**: "In this procedure we will be creating a Topic and a Subscription that will then allow you to create messages that trigger SecZetta incidents..." etc.
 
-* **Do**: "1. Navigate to the **Topics** tab and click **Create Topic**. 2. Enter a **Name**, configure your details and click **Save Topic**. 3. Next, navigate to the **Subscriptions** tab and click **Create Subscription**. Enter a **Name**, select the **Topic** created in step 1 and paste your PagerDuty **Integration Key** in the **Token** field. Click **Save Subscription**. You have now created a subscription that references your PagerDuty endpoint. When you publish a direct message to your Topic, it will trigger PagerDuty incidents."
+* **Do**: "1. Navigate to the **Admin** dashboard and click **Templates**. 2. Then **Pages**, configure your page and click **Save**. You have now edited a page that can be used in a SecZetta workflow"
 
 ## Use Active Voice
 
@@ -49,7 +51,7 @@ The active voice ensures that your writing is clear, concise and engaging. The [
 
 ## Media
 
-* At PagerDuty, we use the Preview tool that comes standard on macOS. Type **⌘ + ⇧ + A** or click **View** > **Show Markup Toolbar** to annotate images with arrows, rectangles and text.
+* At SecZetta, we use the Preview tool that comes standard on macOS. Type **⌘ + ⇧ + A** or click **View** > **Show Markup Toolbar** to annotate images with arrows, rectangles and text.
 * Only include screenshots that are **absolutely necessary**, so that you have less images to continually update when UI changes, etc. We usually only include screenshots when objects in the UI are small or harder to find. 
 * Ensure that you've obfuscated all sensitive information in your screenshots (e.g., personal account information, integration keys, etc.,) by covering with fake data or an image blur tool. 
 
