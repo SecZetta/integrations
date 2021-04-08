@@ -61,9 +61,7 @@ Avoid using a flash when capturing the image. Avoid harsh overhead lights – na
     <img src="img/iddw-license-5.png" height="50%"/>
 </p>
 
----
-
-<img style="float: right;" src="img/iddw-phone-2.png" width="50%">
+### Selfie Tips
 
 * Remove your mask, glasses and hat.
 * Hold your camera 7 to 10 inches straight out from your face.
