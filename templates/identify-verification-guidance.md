@@ -58,12 +58,11 @@ Do not move the camera while taking the picture. Consider cleaning your phone’
 Avoid using a flash when capturing the image. Avoid harsh overhead lights – natural light is best.
 
 <p align="center">
-    <img src="img/iddw-license-5.png" width="50%"/>
+    <img src="img/iddw-license-5.png" height="50%"/>
 </p>
 
-
-
 ---
+
 <img style="float: right;" src="img/iddw-phone-2.png" width="50%">
 
 * Remove your mask, glasses and hat.
