@@ -6,6 +6,8 @@
 
 ## Overview
 
+Cassie change
+
 PingOne® for Enterprise is a fast, simple and easy identity-as-a-service (IDaaS) single sign-on (SSO) offering that enables enterprises to give their users federated access to applications with a single click from a secure, cloud-based dock, accessible from any browser or mobile device. PingOne for Enterprise reduces user password sprawl and improves user experience, all while improving business agility and driving administrative efficiency.
 
 The PingOne for Enterprise platform makes it easy for administrators to connect to cloud applications via PingOne Application Catalog integrations to popular SaaS applications such as Microsoft Office 365, Salesforce.com, Google and more. Admins can also easily leverage secure identity standards such as SAML and OIDC to integrate a wide range of other cloud applications quickly and seamlessly. Several options are available for PingOne for Enterprise to connect to identity providers, such as Active Directory, to authenticate users. Administrators are provided with the option to keep their identity data with their preferred identity provider or store it in PingOne’s cloud directory.
