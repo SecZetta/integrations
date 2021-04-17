@@ -59,7 +59,7 @@ The active voice ensures that your writing is clear, concise and engaging. The [
 ^^^ Note: Once you have completed your guide, please delete this section. ^^^
 ----
 
-# SecZetta / SailPoint IDN Integration
+# SecZetta / <Product-Name> Integration
 
 ## Contents
 
@@ -67,62 +67,26 @@ The active voice ensures that your writing is clear, concise and engaging. The [
 
 ## Overview
 
-SailPoint IdentityNow is the industry’s first and only true SaaS identity governance solution that allows you to easily control user access to all systems and applications, enhance audit response and increase your operational efficiency.
-
-And since it’s delivered from the cloud as multi-tenant SaaS, IdentityNow can be up and running quickly with no additional hardware or software to purchase, install or maintain.
-
-* Easy to deploy with rapid time to business value
-* Automatically delivers new features and enhancements
-* Scales up or down to meet your evolving needs
-* Can be managed by a business analyst, no identity expertise required
-* Simple, cloud software subscription model
-* Proven to reduce help desk calls by up to 90%
+Give a brief overview of what the product does
 
 ### Architecture Overview
 
-#### SecZetta Initiated Integration
+#### EXAMPLE: 
 
-![SZ Initiated Image](https://raw.githubusercontent.com/SecZetta/integrations/main/sailpoint-idn/img/sailpoint-idn-sz-initiated-arch.png)
+![Image of Risk Rank](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-integration-overview.png)
 
-* Step 1: SecZetta creates (or updates) a profile
-* Step 2: SecZetta sends **POST** request to SailPoint to create identity in real-time
-* Step 3: SailPoint responds back with a `200 OK` when the identity was successfully created
+- Step 1: Call BitSight to grab all companies risk ratings
+- Step 2: BitSight responds back with the risk ratings
+- Step 3: Proxy Job server analyzes risk rating and normalizes risk score to pass to SecZetta
+- Step 4: Proxy Job server pushes risk data to Vendor profiles
+- Step 5: Success response sent back
 
-#### IAM Initiated Integration
 
-![IAM Initiated Image](https://raw.githubusercontent.com/SecZetta/integrations/main/sailpoint-idn/img/sailpoint-idn-iam-initiated-arch.png)
-
-* Step 1: SailPoint uses webservices connector to call SecZetta's  `/profiles` API endpoint
-* Step 2: SecZetta response back with a paged result of all of the profiles for a specific profile type
-
-> Note: 90% of the time SailPoint will only be pulling profiles from the People profile type
 
 ## Supported Features
 
-Use Case | Supported (Y/N)| Details
----------|----------------|------------------
-IAM initiated profile aggregation | Y | via WebSerivces Connector in IDN
-SecZetta initiated identity create  | Y | via /beta/non-employee API endpoint
-SecZetta initiated identity update  | Y | via /beta/non-employee API endpoint
-SecZetta initiated identity delete  | Y | via /beta/non-employee API endpoint
-SecZetta initiated identity enable  | N* | Currently not supported. See Note below for more detail
-SecZetta initiated identity disable  | N* | Currently not supported. See Note below for more detail
-Sync SecZetta risk score to IAM | Y |  via /beta/non-employee API endpoint
-
-> *Note: Currently SailPoint's `/beta/non-employee` API endpoint does not support enable/disable operations. This will be coming soon.
-
-### Profile Types Supported
-
-Profile Type | Managed in IAM (Y/N) | IAM Object Type
--------------|----------------------|-------------
-People       | Y                    | Identity
-Organizations| N*                   | N/A
-Assignments  | N*                   | N/A
-Populations  | N*                   | N/A
-
-> *Note: Currently the best practice integration point is to aggregate data from the People Profile.\
-\
-> Coming Soon: The ability to aggregate an `Assignments` profile type to pull in users with multiple roles (or **assignments**)
+- List supported features
+- here
 
 ## Prerequisites
 
@@ -144,9 +108,9 @@ Almost all integrations will have the first 2 prereq.
 
 In order to generate an API Key follow these steps: 
 
-1. Navigate to the [admin](#seczetta-admin-dashboard) side of SecZetta (NEProfile dashboard).
+1. Navigate to the [admin](#seczetta-admin-dashboard) side of SecZetta (NEProfile dashboard). 
 
-2. On the right panel Click into [`System -> api`](#seczetta-api-page)
+2. Click into [`System -> api`](#seczetta-api-page)
 
 3. Click the `+ Api Key` button and copy your API Key
 
@@ -156,10 +120,96 @@ In order to generate an API Key follow these steps:
 
 #### SecZetta API Page
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" width="50%"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-navigate-to-account.png" width="50%"/>
 
 ## Configuration
 
-As described above in the high level [architecture](#architecture-overview), there are two types of integrations that are possible with IdentityNow (IAM Initiated and SecZetta initiated).
+As described above in the high level [architecture](#architecture-overview), describe the techincal integration briefly
 
 > Make sure to list all the steps required to setup the config
+
+### Integration Script (if required)
+
+## API Usage (if required)
+
+### <Product Name>  API
+
+#### Authentication
+
+The BitSight API uses a token-based authentication. Use an Authentication Type of `Basic` if you are setting up something like Postman to begin testing the API out.
+
+Make sure to put the BitSight API Token in as the username and leave the **password field blank**
+
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-postman-get-risk-data.png" width="50%"/>
+
+#### GET /ratings/v1/companies
+
+The only API endpoint required on the BitSight side is the `/ratings/v1/companies` endpoint. This endpoint pulls the risk ranking details that will be synced to SecZetta. See below for an example response.
+
+The key data points that are synced to SecZetta are `rating`, `rating_date`, `guid`. The full rating gets synced to SecZetta; however the script also normalizes the rating on to a 0 - 10 scale.
+
+BitSight operates on a 250 - 900 scale. Here is an example of that scale in action:
+
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-risk-example.png" width="50%"/>
+
+##### Example Scale
+
+Here are a few examples to see how that rating scales
+
+BitSight Rating (250 - 900) | ==> | Integrated Security Rating (0 - 10)
+------------ | -- | -------------
+470|==>|3.4
+740|==>|7.5
+760|==>|7.8
+320|==>|1.1
+380|==>|2.0
+480|==>|3.5
+500|==>|3.8
+360|==>|1.7
+410|==>|2.5
+720|==>|7.2
+460|==>|3.2
+480|==>|3.5
+750|==>|7.7
+370|==>|1.8
+640|==>|6.0
+320|==>|1.1
+
+
+##### Example JSON Response
+
+```json
+
+"created": "2018-11-12",
+    "rating_date": "2021-03-29",
+    "companies": [
+        {
+            "guid": "a940bb61-33c4-42c9-9231-c8194c305db3",
+            "custom_id": null,
+            "name": "Saperix, Inc.",
+            "shortname": "Saperix",
+            "network_size_v4": 5273,
+            "rating": 470,
+            "rating_date": "2021-03-29",
+            "date_added": "2018-11-12",
+            "industry": "Technology",
+            "industry_slug": "technology",
+            "sub_industry": "Computer & Network Security",
+            "sub_industry_slug": "computer_network_security",
+            "type": "CURATED",
+            "logo": "<logo-url-redacted>",
+            "sparkline": "<sparkline-url-redacted>",
+            "external_id": 14885770,
+            "subscription_type": "Total Risk Monitoring",
+            "subscription_type_key": "continuous_monitoring",
+            "primary_domain": "saperix.com",
+            "security_grade": null,
+            "grade_date": null,
+            "display_url": "<display-url-redacted>",
+            "href": "<href-url-redacted>"
+        },
+        // more companies...
+    ]
+```
+
+> The API will respond back with a `200 OK` if the request was successful

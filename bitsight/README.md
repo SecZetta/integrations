@@ -81,7 +81,7 @@ In order to generate an API Key follow these steps:
 
 #### SecZetta API Page
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-navigate-to-account.png" width="50%"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" width="50%"/>
 
 ### Getting BitSight API Token
 
@@ -91,7 +91,7 @@ In order to generate an API Key follow these steps:
 
 #### Account Dropdown
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" width="50%"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-navigate-to-account.png" width="50%"/>
 
 #### Generate BitSight API Key
 
