@@ -46,6 +46,71 @@ More often than not, this type of integration is only really used when the IAM s
 
 ## Using SecZetta's API
 
+See the [integrations overview](../README.md#using-seczettas-api) for specifics on how to being using the API. This will explain how to generate an API Key, use that key for authentication, and walking thru a basic RESTful request.
 
+For IAM integrations focus will be placed on a specific API endpoint. (the `/profile` endpoint). There are other useful endpoints that may be expanded on further in the document but for now, the `/profile` endpoint will suffice.
 
+> Please Note:  
+> for the rest of the document `https://acme.mynonemployee.com` will be used as the SecZetta tenant URL.
+
+### Getting Profiles
+
+The `/profiles` endpoint is the simplest way to grab profile data out of the SecZetta solution. This endpoint allows you to pull all profiles belonging to a specific profile type. This request allows for the paging as well to handle large datasets.
+
+![Endpoint Breakdown](img/profile-endpoint-breakdown.png)
+
+As you can see from above the request url is broken up into 5 different parts.
+
+| ID | URL Section         | Variable        | Description |
+|----|---------------------|-----------------|-------------|
+| 1  | SecZetta Tenant URL | N/A             | The tenant URL (in our case acme.mynonemployee.com)
+| 2 | endpoint             | N/A             | Use the `/profile` endpoint
+| 3 | Profile Type ID      | profile_type_id |This is how the request knows which profiles to return
+| 4 | Limit                | query[limit]    |This tells the request how many profiles to return per call
+| 5 | Offset               | query[offset]   |This tels the request what page of the results you want to return back. Starting at `0`
+
+The first 2 parts of the endpoint are straightforward and won't need to change. The next 3 are what will determine the type and quantity of the profiles returned. 
+
+#### How to get your Profile Type ID?
+
+The easiest way to grab your Profile Type ID is to head to the Profile Types page in the admin console of SecZetta
+
+**https<i></i>://acme.mynonemployee.com/neprofile_admin/profile_types**
+
+> Change `acme` to the tenant name given to you by SecZetta support
+
+From there Click the profile type that is needed and when that page loads the profile type ID is in the url itself. The url should look something like this:
+
+https<i></i>://acme.mynonemployee.com/neprofile_admin/profile_types/`5666f53e-cdd8-4420-8431-ca6e62e81451`/basic_settings
+
+#### What's up with Limit and Offset?!
+
+The limit and Offset variables in the /profiles request control how many and what page of profile data you get back. Let's break down the two variables invividually 
+
+##### Limit
+
+Limit allows the request to retrieve only the specified number of profiles before returning. The limit is set by using the `query[limit]` variable. By default, the request will try to return all available profiles and can result in a timeout issue (SecZetta's default API timeout is `60 seconds`). To avoid this issue make sure the limit variable is set to something managable, `100` is a good starting point
+
+##### Offset
+
+Offset tells the request what page to retrieve based on the limit specified. Let's do a fictional example:
+
+* There are 1027 `People` profiles in SecZetta.
+* The `query[limit]` used is `100`
+
+In this example there will be **11** calls. The calls themselves are broken down below.
+
+| Call # | Profiles Returned | Indexes Returned |
+|--------|-------------------|------------------|
+| 1      | 100               | 1 - 100          |
+| 2      | 100               | 101 - 200        |
+| 3      | 100               | 201 - 200        |
+| 4      | 100               | 301 - 200        |
+| 5      | 100               | 401 - 200        |
+| 6      | 100               | 501 - 200        |
+| 7      | 100               | 601 - 200        |
+| 8      | 100               | 701 - 200        |
+| 9      | 100               | 801 - 200        |
+| 10     | 100               | 901 - 200        |
+| 11     | 27                | 1001 - 1027      |
 
