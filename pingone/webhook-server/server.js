@@ -30,16 +30,17 @@ app.post("/hook", (req, res) => {
 			console.log("No Body found")
 			return
 	}
+
 	hook = req.body[0];
 	action = hook.action["type"];
-	client = hook.actors.client
+	//client = hook.actors.client
 	user = hook.actors.user
 	resources = hook.resources;
 	resource = resources[0];
 	console.log("=========== ACTION ===========");
 	console.log(action)
 	console.log("=========== Client ===========");
-	console.log(client)
+	//console.log(client)
 	console.log("=========== USER ===========");
 	console.log(user)
 	console.log("=========== RESOURCES ===========");
@@ -48,7 +49,7 @@ app.post("/hook", (req, res) => {
 	userId = resource.id;
 	username = resource.name;
 	apiRef = user.href;
-	clientId = client.id;
+	//clientId = client.id;
 	environment = user.environment.id;
 
 	data = {
@@ -62,7 +63,7 @@ app.post("/hook", (req, res) => {
 				"ping_one_id_ne_attribute": userId,
 				"pingone_api_ref_ne_attribute": apiRef,
 				"pingone_env_id_ne_attribute": environment,
-				"pingone_client_id_ne_attribute": clientId,
+				"pingone_client_id_ne_attribute": "adminUI",
 				"bot_owner_ne_attribute": "02e82a1f-587d-4999-8d46-1ce20ce246b9"
 			}
 		}
