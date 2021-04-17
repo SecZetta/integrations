@@ -4,6 +4,8 @@
 
 At the highest of levels, SecZetta can be considered your authoritative source for all non-employee user types. This includes but is not limited to: Contractors, Consultants, 3rd party vendors, Students, Alumni, Doctors, Affiliates and the list can go on and on. SecZetta is **not** a provisioning solution and it relys on its top Identity partners to handle this for our joint customers. Because of this, SecZetta has built certified integrations with many of the top Identity and Access Management (IAM) tools in the market. This guide is not going to go into specifics about particular IAM vendors, but rather discuss the best practices approach on how we integrate with any and all IAM systems.
 
+SecZetta has a robust workflow and collaboration engine that allows our customers to automate complex business processes without the use of complex code. Regardless, at the end of the day SecZetta will be managing various types of `Profile Types`. These Profile Types can be any type of object that a customer may need to manage. The primary ones that an IAM tool will care about is the `People` profile type and potentially the `Assignments` profile type. These profile types will be discussed in detail below. Each profile type will have many different types of profiles and these profiles are going to be what your IAM system cares most about.
+
 There are *primarily* 2 ways our customers integrate with their IAM solutions depending on the capabilities of the IAM tool. The rest of this guide will discuss and expand upon these 2 integration approaches.
 
 ### 1. IAM initated data aggregation
@@ -21,6 +23,7 @@ Common type of file formats are CSV, JSON, and maybe something like XML. CSV bei
 The data in this CSV file will contain all the relavant Identity data to allow the IAM system to properly manage the lifecycle of that user. Things like *firstname*, *lastname*, status, *start date*, *end date* and much, much more will be included in this file.
 
 ##### Example CSV (in table form)
+
 | profile_uid | first_name | last_name | status     | start_date |  end_date  |termination_date|
 |-------------|------------|-----------|------------|------------|------------|----------------|
 | 00000456    | Martha     | Walker    | Active     | 01/01/2001 | 01/01/2030 |                |
