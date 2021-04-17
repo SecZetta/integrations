@@ -2,7 +2,9 @@
 
 ## Getting Started
 
-SecZetta has integrations with all of the top Identity and Access Management (IAM) tools in the market. There are *primarily* 2 ways our customers integrate with their IAM solutions depending on the capabilities of the IAM tool.
+At the highest of levels, SecZetta can be considered your authoritative source for all non-employee user types. This includes but is not limited to: Contractors, Consultants, 3rd party vendors, Students, Alumni, Doctors, Affiliates and the list can go on and on. SecZetta is **not** a provisioning solution and it relys on its top Identity partners to handle this for our joint customers. Because of this, SecZetta has built certified integrations with many of the top Identity and Access Management (IAM) tools in the market. This guide is not going to go into specifics about particular IAM vendors, but rather discuss the best practices approach on how we integrate with any and all IAM systems.
+
+There are *primarily* 2 ways our customers integrate with their IAM solutions depending on the capabilities of the IAM tool. The rest of this guide will discuss and expand upon these 2 integration approaches.
 
 ### 1. IAM initated data aggregation
 
@@ -31,3 +33,4 @@ The data in this CSV file will contain all the relavant Identity data to allow t
 
 #### API Integration
 
+This integration is a much more modern type of integration. In this case, the IAM system has to have a generic REST API connector (*sometimes referred to as a Web Services connector*). SecZetta has a robust API framework that allows IAM systems to pull profile data from 
