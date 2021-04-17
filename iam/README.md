@@ -57,7 +57,7 @@ For IAM integrations focus will be placed on a specific API endpoint. (the `/pro
 
 The `/profiles` endpoint is the simplest way to grab profile data out of the SecZetta solution. This endpoint allows you to pull all profiles belonging to a specific profile type. This request allows for the paging as well to handle large datasets.
 
-![Endpoint Breakdown](img/profile-endpoint-breakdown.png)
+![Endpoint Breakdown](https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png)
 
 As you can see from above the request url is broken up into 5 different parts.
 
@@ -73,7 +73,7 @@ The first 2 parts of the endpoint are straightforward and won't need to change. 
 
 #### How to get your Profile Type ID?
 
-The easiest way to grab your Profile Type ID is to head to the Profile Types page in the admin console of SecZetta
+The easiest way to grab your Profile Type ID is to navigate to the Profile Types page in the admin console of SecZetta
 
 **https<i></i>://acme.mynonemployee.com/neprofile_admin/profile_types**
 
@@ -83,7 +83,10 @@ From there Click the profile type that is needed and when that page loads the pr
 
 https<i></i>://acme.mynonemployee.com/neprofile_admin/profile_types/`5666f53e-cdd8-4420-8431-ca6e62e81451`/basic_settings
 
-#### What's up with Limit and Offset?!
+The highlighted portion above is the Profile Type ID.
+
+
+#### What is Limit and Offset
 
 The limit and Offset variables in the /profiles request control how many and what page of profile data you get back. Let's break down the two variables invividually 
 
@@ -97,8 +100,9 @@ Offset tells the request what page to retrieve based on the limit specified. Let
 
 * There are 1027 `People` profiles in SecZetta.
 * The `query[limit]` used is `100`
+* The `query[offset]` will start at 0
 
-In this example there will be 11 calls. The calls themselves are broken down below.
+In this example there will be 11 calls. The calls themselves are broken down below. What this means is the `query[offset]` will go from 0 to 10 for the 11 calls that are required. The last call (when offset = 10) will contain only 27 profiles while all other calls will contain the full limit of 100. See below for the breakdown:
 
 | Call # | Profiles Returned | Indexes Returned |
 |--------|-------------------|------------------|
