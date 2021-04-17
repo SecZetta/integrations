@@ -36,4 +36,10 @@ The data in this CSV file will contain all the relavant Identity data to allow t
 
 #### API Integration
 
-This integration is a much more modern type of integration. In this case, the IAM system has to have a generic REST API connector (*sometimes referred to as a Web Services connector*). SecZetta has a robust API framework that allows IAM systems to pull profile data from 
+This integration is a much more modern type of integration. In this case, the IAM system has to have a generic REST API connector (*sometimes referred to as a Web Services connector*). SecZetta has a robust API framework that allows IAM systems to easily pull any and all profile data from the SecZetta solution.
+
+### 2. SecZetta-initiated integration
+
+In this type of integration, SecZetta will trigger the updates to the IAM system via RESTful api call. The obvious pre-requisite is that the IAM system has an API framework that is excessible to SecZetta. Knowing that SecZetta is a SaaS solution running in the public cloud this type of integration could be a potential challange for any of those IAM systems that are running on-prem behind the customer's firewall.
+
+More often than not, this type of integration is only really used when the IAM system in question is also a SaaS solution running in the public cloud. This way firewalls are not an issue and everything can commuicate securely without having to poke holes in a customer's  firewall.
