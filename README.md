@@ -12,6 +12,7 @@ In order to build out any type of integration listed herein, how the various too
 
 * External Party uses SecZetta's API endpoint: `<seczetta-tenant-name>.mynonemployee.com/api/<endpoint>`
   * Click [here](https://seczetta.nonemployee.com/api/v1) for API Documentation
+  * Also, documentation related to your tenant can be found at `<seczetta-tenant-name>.mynonemployee.com/api/v1`
 * SecZetta uses REST API Action within its own workflows
 * An external script runs in the customer's network to pull and push data to and from SecZetta
 

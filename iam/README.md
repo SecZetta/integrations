@@ -98,19 +98,21 @@ Offset tells the request what page to retrieve based on the limit specified. Let
 * There are 1027 `People` profiles in SecZetta.
 * The `query[limit]` used is `100`
 
-In this example there will be **11** calls. The calls themselves are broken down below.
+In this example there will be 11 calls. The calls themselves are broken down below.
 
 | Call # | Profiles Returned | Indexes Returned |
 |--------|-------------------|------------------|
 | 1      | 100               | 1 - 100          |
 | 2      | 100               | 101 - 200        |
-| 3      | 100               | 201 - 200        |
-| 4      | 100               | 301 - 200        |
-| 5      | 100               | 401 - 200        |
-| 6      | 100               | 501 - 200        |
-| 7      | 100               | 601 - 200        |
-| 8      | 100               | 701 - 200        |
-| 9      | 100               | 801 - 200        |
-| 10     | 100               | 901 - 200        |
+| 3      | 100               | 201 - 300        |
+| 4      | 100               | 301 - 400        |
+| 5      | 100               | 401 - 500        |
+| 6      | 100               | 501 - 600        |
+| 7      | 100               | 601 - 700        |
+| 8      | 100               | 701 - 800        |
+| 9      | 100               | 801 - 900        |
+| 10     | 100               | 901 - 1000       |
 | 11     | 27                | 1001 - 1027      |
+
+The `Call #` above can also be thought of as the page #. That is essentially what the `query[offset]` variable does, it tells the request what page of the results you would like to recieve.
 
