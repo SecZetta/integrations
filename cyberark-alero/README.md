@@ -63,7 +63,7 @@ For CyberArk, the `OAuth2 w/private key jwt` authentication option will be used 
 |------------------|-------|
 | Auth Type        | OAuth2 w/private key jwt |
 | Access token url | https://auth.alero.io/auth/realms/serviceaccounts/protocol/openid-connect/token |
-| Private key      | <Private Key Redacted> |
+| Private key      | `Private Key Redacted` |
 | Encryption type  | RS256 |
 | Iss              | 11eaab2250acefe0b97f95ccc5c5e407.11eb25ce2fcb389daba55df479a966a3.ExternalServiceAccount |
 | Sub              | 11eaab2250acefe0b97f95ccc5c5e407.11eb25ce2fcb389daba55df479a966a3.ExternalServiceAccount |
