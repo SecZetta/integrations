@@ -85,7 +85,6 @@ https<i></i>://acme.mynonemployee.com/neprofile_admin/profile_types/`5666f53e-cd
 
 The highlighted portion above is the Profile Type ID.
 
-
 #### What is Limit and Offset
 
 The limit and Offset variables in the /profiles request control how many and what page of profile data you get back. Let's break down the two variables invividually 
