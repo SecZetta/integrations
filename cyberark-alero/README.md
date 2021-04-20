@@ -1,65 +1,4 @@
-
-# Coming Soon!
-
-# Instructions
-
-* Please copy this template (copy either the markdown by clicking **Raw** or the copy directly from this preview) and use it to create your guide in your preferred medium. 
-* This template includes information required in all SecZetta integration guides.
-* Template instructions in ***bold italics*** are intended to provide guidance or examples, and should be deleted and/or replaced once you’ve added your content.
-* If your integration does not follow the same flow as what we’ve provided below (e.g. steps begin in your tool’s UI as opposed to the SecZetta UI, etc.), feel free to make the changes you need to reflect the flow of the integration.
-* Please read through our Writing and Style Guidelines below before starting your draft.
-
-# Writing and Style Guidelines
-
-## Detailed, Explicit Instructions
-
-All steps to completing the integration should live in this guide. It's always good to err on the side of too much information, even if you think something is obvious. By writing your instructions as if the reader has had zero experience with any of the content, you can proactively anticipate any customer questions and greatly relieve Support efforts. 
-
-**Example**:
-
-* **Don't**: "Find your ClientID and paste it into this field."
-
-* **Do**: "Navigate to **Account Settings** in the system menu and copy your **Client ID**. Next, navigate back to the **Configuration** page and paste it in the **ID** field."
-
-## Calls to Action
-
-Most calls to action include clickable objects or fields, which you should highlight with **bold text**. This helps the reader follow along in the instructions and denotes when they should be taking action in the UI. 
-
-**Examples**:
-
-* "Navigate to the **Configuration** menu and select **Users**."
-
-* "Paste the **Integration Key** into the **Token** field"
-
-## Actionable Steps
-
-Summaries before your content may work well when giving a talk or presenting to a targeted crowd, but not in documentation that users are more likely to skim hoping for quick answers. TL;DR: Don't include sentences that just state what you plan on writing about. If you feel you need to add more information that contextualizes what the reader is configuring, include it within the steps, or in a quick summary after them. 
-
-**Example**
-
-* **Don't**: "In this procedure we will be creating a Topic and a Subscription that will then allow you to create messages that trigger SecZetta incidents..." etc.
-
-* **Do**: "1. Navigate to the **Admin** dashboard and click **Templates**. 2. Then **Pages**, configure your page and click **Save**. You have now edited a page that can be used in a SecZetta workflow"
-
-## Use Active Voice
-
-The active voice ensures that your writing is clear, concise and engaging. The [passive voice](https://webapps.towson.edu/ows/activepass.htm) uses more words, can sound vague and should be avoided like a [zombie plague](https://www.grammarly.com/blog/a-scary-easy-way-to-help-you-find-passive-voice/) (rhyme intended).
-
-**Example**
-
-* **Do**: "Users can follow incidents and escalations in real-time in Hungrycat’s event stream."
-* **Don't**: "Incidents and escalations can be followed in real-time by users in Hungrycat’s event stream."
-
-## Media
-
-* At SecZetta, we use the Preview tool that comes standard on macOS. Type **⌘ + ⇧ + A** or click **View** > **Show Markup Toolbar** to annotate images with arrows, rectangles and text.
-* Only include screenshots that are **absolutely necessary**, so that you have less images to continually update when UI changes, etc. We usually only include screenshots when objects in the UI are small or harder to find. 
-* Ensure that you've obfuscated all sensitive information in your screenshots (e.g., personal account information, integration keys, etc.,) by covering with fake data or an image blur tool. 
-
-^^^ Note: Once you have completed your guide, please delete this section. ^^^
-----
-
-# SecZetta / <Product-Name> Integration
+# SecZetta / Cyberark Alero Integration
 
 ## Contents
 
@@ -67,30 +6,27 @@ The active voice ensures that your writing is clear, concise and engaging. The [
 
 ## Overview
 
-Give a brief overview of what the product does
+CyberArk Remote Access (formerly Alero™) combines Zero Trust access, biometric multi-factor authentication and just-in-time provisioning into one SaaS-based offering. Remote Access is designed to provide fast, easy and secure privileged access to 3rd party vendors who need access to critical internal systems via CyberArk, without the need to use passwords. By not requiring VPNs or agents Remote Access removes operational overhead for administrators, makes it easier and quicker to deploy and improves organizational security.
 
-### Architecture Overview
+SecZetta's integration into Cyberark Remote Access is focused on the onboarding / offboarding of all non-employees that SecZetta is managing. The SecZetta onboarding process can be minimally changed to add extra steps to automatically send out CyberArk Remote Access invitiations. This will ensure your vendors have the ability to securely RDP into the proper environment securely.
 
-#### EXAMPLE: 
+### High Level Diagram
 
-![Image of Risk Rank](https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/bitsight-integration-overview.png)
+![CyberArk Alero](img/cyberark-alero-overview-diagram.png)
 
-- Step 1: Call BitSight to grab all companies risk ratings
-- Step 2: BitSight responds back with the risk ratings
-- Step 3: Proxy Job server analyzes risk rating and normalizes risk score to pass to SecZetta
-- Step 4: Proxy Job server pushes risk data to Vendor profiles
-- Step 5: Success response sent back
-
-
+- Step 1: Approved Non-employee is created inside SecZetta
+- Step 2: SecZetta communicates with CyberArk to send off invitation to this newly created non-employee
+- Step 3: CyberArk responds back with a 200 OK Success message
+- Step 4: CyberArk sends out email/phone notification to non-employee
+- Step 5: Non-employee registers his/her CyberArk Remote Access account and is able to start work
 
 ## Supported Features
 
-- List supported features
-- here
+- Automatically trigger CyberArk Remote Access email notifications
+- Disable outstanding invitations on offboarding
+- Disable CyberArk Remote Access account (if required) during offboarding
 
 ## Prerequisites
-
-Almost all integrations will have the first 2 prereq.
 
 1. An active SecZetta account and tenant where you have administrative privileges. To set up a new SecZetta account, please reach out to [SecZetta Support (info@seczetta.com)](mailto:info@seczetta.com)
 
