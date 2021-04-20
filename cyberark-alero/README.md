@@ -68,3 +68,5 @@ For CyberArk, the `OAuth2 w/private key jwt` authentication option will be used 
 | Iss              | 11eaab2250acefe0b97f95ccc5c5e407.11eb25ce2fcb389daba55df479a966a3.ExternalServiceAccount |
 | Sub              | 11eaab2250acefe0b97f95ccc5c5e407.11eb25ce2fcb389daba55df479a966a3.ExternalServiceAccount |
 | Aud              | https://auth.alero.io/auth/realms/serviceaccounts |
+
+> Note the private key should be given to you by CyberArk and will be in start with `-----BEGIN RSA PRIVATE KEY-----`
