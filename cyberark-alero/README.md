@@ -23,8 +23,10 @@ SecZetta's integration into Cyberark Remote Access is focused on the onboarding 
 ## Supported Features
 
 - Automatically trigger CyberArk Remote Access email notifications
-- Disable outstanding invitations on offboarding
-- Disable CyberArk Remote Access account (if required) during offboarding
+
+> Coming Soon (waiting on CyberArk API improvements): 
+> - Disable outstanding invitations on offboarding
+> - Disable CyberArk Remote Access account (if required) during offboarding
 
 ## Prerequisites
 
@@ -56,8 +58,7 @@ There is also a powerpoint script that CyberArk provides its partners/customers 
 
 For CyberArk, the `OAuth2 w/private key jwt` authentication option will be used to call the API endpoint. Assuming you have the required pre-requisites, the configuration is very simple.
 
-
-#### Authentication Example Values
+#### Authentication Attributes
 
 | Attribute        | Value |
 |------------------|-------|
@@ -70,3 +71,83 @@ For CyberArk, the `OAuth2 w/private key jwt` authentication option will be used 
 | Aud              | https://auth.alero.io/auth/realms/serviceaccounts |
 
 > Note the private key should be given to you by CyberArk and will be in start with `-----BEGIN RSA PRIVATE KEY-----`
+
+#### Request Attributes
+| Attribute | Value                                                       |
+|-----------|-------------------------------------------------------------|
+| HTTP verb | POST                                                        |
+| Endpoint  | https://api.alero.io/v1-edge/invitations/vendor-invitations |
+| Header 1  | Content-Type = application/json                             |
+| Header 2  | accept = */*                                                |
+| Json Body | See below                                                   |
+
+##### JSON Body 
+
+```json
+{
+  "accessEndDate": 0,
+  "accessStartDate": 0,
+  "applications": [
+    {
+      "applicationId": "11eab4cd6bf27b0f9327cf43487da52e",
+      "siteId": "11eaab2463a4d3399816d3b7450c5b10"
+    }
+  ],
+  "comments": "ex.comments",
+  "companyName": "{{attribute.vendor}}",
+  "emailAddress": "{{attribute.personal_email}}",
+  "firstName": "{{attribute.first_name_ne_attribute}}",
+  "initialStatus": "Activated",
+  "invitedVendorsInitialStatus": "Activated",
+  "lastName": "{{attribute.last_name_ne_attribute}}",
+  "maxNumOfInvitedVendors": 0,
+  "phoneAndEmailAuth": true,
+  "phoneNumber": "+1{{attribute.mobile_phone_number_ne_attribute}}",
+  "provisioningGroups": [
+    "11eacd00e5d4e488baa5514eb0311de7"
+  ],
+  "provisioningType": "ProvisionedByAlero",
+  "provisioningUsername": "{{attribute.first_name_ne_attribute}}.{{attribute.last_name_ne_attribute}}",
+  "role": "Vendor"
+}
+```
+
+> Note: The applicationId, siteId and provisioningGroups will be environment specific. Work with the CyberArk administrator to understand how to set these values. Also, the `phoneNumber` attribute has to include the country code.
+
+## Putting it all together
+
+Now that the REST API action is setup correctly, drop that action into any create workflow on the SecZetta side. This example workflow shown below is available via import file located [here](init-cyberark.json)
+
+![Workflow](img/cyberark-alero-example-workflow.png)
+
+As shown above, there is a very simple workflow:
+
+1.  Request Form: Shows the user a from to onboard this new non-employee. This form also includes a question attribute that asks the user if this non-employee needs Remote Access.
+
+2. Create: Creates the initial SecZetta profile
+
+3. If the user needs remote access, the workflow shows another form to grab their mobile phone number and asks CyberArk to send them an invitation via that REST API Action configured just like above
+
+## Potential Improvements
+
+### Invitation ID Response Text
+Whenever the `/vendor-invitations` endpoint is called a non-JSON response is handed back. The response is just a raw text field containing the `invitationId`. It looks something like this: 
+
+```
+ 11eba29cf4a601b08dbdad6a70500894
+```
+
+We have talked with CyberArk about updating this to valid JSON, at the very least wrap it in brackets. But ideally it is appended with `invitationId`. Something like this:
+
+```json
+{
+  "invitationId": "11eba29cf4a601b08dbdad6a70500894"
+}
+```
+
+As of Q2 2021, this has not been changed. This also causes problems inside SecZetta, because SecZetta requires JSON responses.
+
+### InvitationId and VendorId
+
+Also, as of right now, the `/vendor-invitations` endpoint returns the invitationId. This ID is valid as long as the invitation is valid. Whenever a user accepts and invitation this ID is no longer useful. It would be nice if the API returned some sort of userID as well as the InviteID so SecZetta would be able to still map a CyberArk Remote Access user appropriately.
+
