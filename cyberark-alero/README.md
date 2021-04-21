@@ -2,6 +2,23 @@
 
 ## Contents
 
+- [SecZetta / Cyberark Alero Integration](#seczetta---cyberark-alero-integration)
+  * [Contents](#contents)
+  * [Overview](#overview)
+    + [High Level Diagram](#high-level-diagram)
+  * [Supported Features](#supported-features)
+  * [Prerequisites](#prerequisites)
+    + [Examples](#examples)
+  * [Configuration](#configuration)
+    + [Creating the REST API Action](#creating-the-rest-api-action)
+      - [Authentication Attributes](#authentication-attributes)
+      - [Request Attributes](#request-attributes)
+        * [JSON Body](#json-body)
+  * [Putting it all together](#putting-it-all-together)
+  * [Potential Improvements](#potential-improvements)
+    + [Invitation ID Response Text](#invitation-id-response-text)
+    + [InvitationId and VendorId](#invitationid-and-vendorid)
+
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## Overview
