@@ -14,7 +14,7 @@
       - [Authentication Attributes](#authentication-attributes)
       - [Request Attributes](#request-attributes)
         * [JSON Body](#json-body)
-  * [Putting it all together](#putting-it-all-together)
+    * [Putting it all together](#putting-it-all-together)
   * [Potential Improvements](#potential-improvements)
     + [Invitation ID Response Text](#invitation-id-response-text)
     + [InvitationId and VendorId](#invitationid-and-vendorid)
@@ -131,7 +131,7 @@ For CyberArk, the `OAuth2 w/private key jwt` authentication option will be used 
 
 > Note: The applicationId, siteId and provisioningGroups will be environment specific. Work with the CyberArk administrator to understand how to set these values. Also, the `phoneNumber` attribute has to include the country code.
 
-## Putting it all together
+### Putting it all together
 
 Now that the REST API action is setup correctly, drop that action into any create workflow on the SecZetta side. This example workflow shown below is available via import file located [here](init-cyberark.json)
 
