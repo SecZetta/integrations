@@ -1,10 +1,26 @@
 # IAM Integration
 
+## Contents
+
+- [IAM Integration](#iam-integration)
+  * [Overview](#overview)
+    + [1. IAM initated data aggregation](#1-iam-initated-data-aggregation)
+      - [Flat File Integration](#flat-file-integration)
+        * [Example CSV (in table form)](#example-csv--in-table-form-)
+      - [API Integration](#api-integration)
+    + [2. SecZetta-initiated integration](#2-seczetta-initiated-integration)
+  * [Using SecZetta's API](#using-seczetta-s-api)
+    + [Getting Profiles](#getting-profiles)
+      - [How to get your Profile Type ID?](#how-to-get-your-profile-type-id-)
+      - [What is Limit and Offset](#what-is-limit-and-offset)
+        * [Limit](#limit)
+        * [Offset](#offset)
+
 ## Overview
 
 At the highest of levels, SecZetta can be considered your authoritative source for all non-employee user types. This includes but is not limited to: Contractors, Consultants, 3rd party vendors, Students, Alumni, Doctors, Affiliates and the list can go on and on. SecZetta is **not** a provisioning solution and it relys on its top Identity partners to handle this for our joint customers. Because of this, SecZetta has built certified integrations with many of the top Identity and Access Management (IAM) tools in the market. This guide is not going to go into specifics about particular IAM vendors, but rather discuss the best practices approach on how we integrate with any and all IAM systems.
 
-SecZetta has a robust workflow and collaboration engine that allows our customers to automate complex business processes without the use of complex code. Regardless, at the end of the day SecZetta will be managing various types of `Profile Types`. These Profile Types can be any type of object that a customer may need to manage. The primary ones that an IAM tool will care about is the `People` profile type and potentially the `Assignments` profile type. These profile types will be discussed in detail below. Each profile type will have many different types of profiles and these profiles are going to be what your IAM system cares most about.
+SecZetta has a robust workflow and collaboration engine that allows our customers to automate complex business processes without the use of complex code. Regardless, at the end of the day SecZetta will be managing various types of `Profile Types`. These Profile Types can be any type of object that a customer may need to manage. The primary ones that an IAM tool will care about is the `People` profile type and potentially the `Assignments` profile type (more info on Assignments coming soon). For now, the People profile type will be discussed in detail below. Each profile type will have many different types of profiles and these profiles are going to be what your IAM system cares most about.
 
 There are *primarily* 2 ways our customers integrate with their IAM solutions depending on the capabilities of the IAM tool. The rest of this guide will discuss and expand upon these 2 integration approaches.
 
@@ -38,6 +54,8 @@ The data in this CSV file will contain all the relavant Identity data to allow t
 
 This integration is a much more modern type of integration. In this case, the IAM system has to have a generic REST API connector (*sometimes referred to as a Web Services connector*). SecZetta has a robust API framework that allows IAM systems to easily pull any and all profile data from the SecZetta solution.
 
+See [Using SecZetta's API](#using-seczettas-api) below
+
 ### 2. SecZetta-initiated integration
 
 In this type of integration, SecZetta will trigger the updates to the IAM system via RESTful api call. The obvious pre-requisite is that the IAM system has an API framework that is excessible to SecZetta. Knowing that SecZetta is a SaaS solution running in the public cloud this type of integration could be a potential challange for any of those IAM systems that are running on-prem behind the customer's firewall.
@@ -55,7 +73,12 @@ For IAM integrations focus will be placed on a specific API endpoint. (the `/pro
 
 ### Getting Profiles
 
+As mentioned above the `People` profile type will be uinversally used as the profile type to store all of the external users in your SecZetta system. This profile type will house all of the profiles and identity data that your IAM system will require to provision their access appropriately. 
+
 The `/profiles` endpoint is the simplest way to grab profile data out of the SecZetta solution. This endpoint allows you to pull all profiles belonging to a specific profile type. This request allows for the paging as well to handle large datasets.
+
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png" width="50%"/>
+
 
 ![Endpoint Breakdown](https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png)
 
@@ -119,3 +142,8 @@ In this example there will be 11 calls. The calls themselves are broken down bel
 
 The `Call #` above can also be thought of as the page #. That is essentially what the `query[offset]` variable does, it tells the request what page of the results you would like to recieve.
 
+## Using SecZetta's API in your IAM tool
+
+In order for the IAM system to begin pulling SecZetta's profile data on a regular basis some type of connector/collector/aggregator will need to be created on the IAM side. Most modern IAM vendors will have a generic REST API connector that allows you to call the `/profiles` endpoint as mentioned [above](#using-seczettas-api). 
+
+When creating this connector be sure to utilze what most systems call paging 
