@@ -77,10 +77,8 @@ As mentioned above the `People` profile type will be uinversally used as the pro
 
 The `/profiles` endpoint is the simplest way to grab profile data out of the SecZetta solution. This endpoint allows you to pull all profiles belonging to a specific profile type. This request allows for the paging as well to handle large datasets.
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png" />
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png"/>
 
-
-![Endpoint Breakdown](https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png)
 
 As you can see from above the request url is broken up into 5 different parts.
 
@@ -146,4 +144,4 @@ The `Call #` above can also be thought of as the page #. That is essentially wha
 
 In order for the IAM system to begin pulling SecZetta's profile data on a regular basis some type of connector/collector/aggregator will need to be created on the IAM side. Most modern IAM vendors will have a generic REST API connector that allows you to call the `/profiles` endpoint as mentioned [above](#using-seczettas-api). 
 
-When creating this connector be sure to utilze what most systems call paging 
+When creating this connector be sure to utilze what most systems call paging. This means the connector supports making the mulitple calls as described above. Check with your IAM documentation on how that specific API Connectors works and how to implement paging within that connector.
