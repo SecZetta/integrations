@@ -77,7 +77,7 @@ As mentioned above the `People` profile type will be uinversally used as the pro
 
 The `/profiles` endpoint is the simplest way to grab profile data out of the SecZetta solution. This endpoint allows you to pull all profiles belonging to a specific profile type. This request allows for the paging as well to handle large datasets.
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png" width="50%"/>
+<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png" />
 
 
 ![Endpoint Breakdown](https://raw.githubusercontent.com/SecZetta/integrations/main/iam/img/profile-endpoint-breakdown.png)
