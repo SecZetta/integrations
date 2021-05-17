@@ -105,14 +105,19 @@ For information on testing and debugging Rules, please [see our documentation](h
 - `SECZETTA_AUTHENTICATE_ON_ERROR` Choose whether or not the rule continues to authenticate on error, by default this is `false`
 - `SECZETTA_RISK_KEY` The attribute name on the account where the users risk score is stored, if not set, it will now store the risk score on the Auth0 record
 
+
 ## Results
 
 [[TODO: Explain what the customer should expect when the Rule is active and configured properly]]
 This rule (when configured properly) will run right before Authentication time. The rule itself controls the authentication flow and will require MFA or deny access completely if the risk score is too high.
 
+
 If a user's risk score is too high, an error will occur with the following message:
 `A 8.25 Risk score is too high. Maximum acceptable risk is 7.5`
 This message can be adjusted in the rule itself
+
+
+
 
 ## Troubleshooting
 
