@@ -135,7 +135,7 @@ Here is an example of what we are looking to do:
 
 > Notice the 5 tags shown below the `Info` tab*
 
-This is easily accomplished using liquid and some basic HTML styling. In your Profile Type Profile page add an HTML component to the top of the page. 
+This is easily accomplished using liquid and some basic HTML styling. In your Profile Type Profile page add an HTML component to the top of the page. The style was taken from bootstrap badges. You can find that reference [here](https://getbootstrap.com/docs/4.0/components/badge/#contextual-variations)
 
 In that HTML component paste the following code:
 ```
@@ -166,8 +166,37 @@ The styling in the paragraph is based off of bootstrap and the colors can be cha
 
 There are 3 attributes that are being used in this liquid code:
 
-* `profile_flags` - this attribute is of type `checkbox` and allows administrators to set certain flags like `Do Not Hire` or `Privileged`. Notice you have to `split` the attribute because by default it will contain a comma deliminted list
+* `profile_flags` - this attribute is of type `checkbox` and allows administrators to set certain flags like `Do Not Hire` or `Privileged`. Notice you have to `split` the attribute on a commad because by default it will contain a comma deliminted list
+
+> Referring to this line: `{% assign flags = profile.profile_flags | split: ", " %}`
 
 * `my_iam_id` - this attribute contains an ID for your IAM system. The point of this is to show on the profile very quickly whether or not a profile has an IAM account or not
 
 * `my_other_id` - this is just another example of how you can add mulitple conditions to create multiple flags for your customers
+
+### Display Banner on Workflow Pages
+
+This is very similar to displaying badges on the profile pages. However, this will be a full width banner at the top of a workflow page (or a profile page if required).
+
+Here is what it looks like when configured correctly:
+
+![workflow page banner](img/workflow-page-banner.png)
+
+The use case here is we want to show a banner depending on whether or not the profile has been identity proofed. In our case, we actually have a new attribute called `idp_status` that we are setting manually in the workflow. The banner text will change based on the value of that attribute.
+
+If they have `Passed` Identity Proofing the banner would say:
+```
+This Profile has Passed< Identity Proofing on June 1st, 2021
+```
+Otherwise it will say: (as the example shown above does)
+```
+This Profile was not Identity Proofed. Onsite Proofing Required.
+```
+
+```
+{% if attribute.idp_status == "Passed" %}
+<p style="color:#155724;background-color:#d4edda;border-color:#c3e6cb;border-radius:5px;padding:.75rem 1.25rem;margin-bottom:0px;">This Profile has <b>Passed</b> Identity Proofing on {{attribute.idp_date_proofed}}</p>
+{% else %}
+<p style="color:#856404;background-color:#fff3cd;border-color:#ffeeba;border-radius:5px;padding:.75rem 1.25rem;margin-bottom:0px;">This Profile was not Identity Proofed. Onsite Proofing Required.</p>
+{% endif %}
+```
