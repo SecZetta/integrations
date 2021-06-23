@@ -53,31 +53,44 @@ Executes a block of code only if a certain condition is true.
 {% endif %}
 ```
 ###### Output
+
 ```
 These shoes are awesome!
 ```
 
-unless
+##### unless
+
 The opposite of if – executes a block of code only if a certain condition is not met.
 
-Input
+###### Input
 
+```
 {% unless product.title == "Awesome Shoes" %}
   These shoes are not awesome.
 {% endunless %}
-Output
+```
+###### Output
 
+```
 These shoes are not awesome.
+```
+
 This would be the equivalent of doing the following:
 
+```
 {% if product.title != "Awesome Shoes" %}
   These shoes are not awesome.
 {% endif %}
-elsif / else
+```
+
+
+##### elsif / else
+
 Adds more conditions within an if or unless block.
 
-Input
+###### Input
 
+```
 <!-- If customer.name = "anonymous" -->
 {% if customer.name == "kevin" %}
   Hey Kevin!
@@ -86,26 +99,75 @@ Input
 {% else %}
   Hi Stranger!
 {% endif %}
-Output
+```
 
+###### Output
+
+```
 Hey Anonymous!
-case/when
-Creates a switch statement to execute a particular block of code when a variable has a specified value. case initializes the switch statement, and when statements define the various conditions.
+```
 
-An optional else statement at the end of the case provides code to execute if none of the conditions are met.
 
-Input
 
-{% assign handle = "cake" %}
-{% case handle %}
-  {% when "cake" %}
-     This is a cake
-  {% when "cookie", "biscuit" %}
-     This is a cookie
-  {% else %}
-     This is not a cake nor a cookie
-{% endcase %}
-Output
 
-This is a cake
 
+## Advanced Concepts
+
+### Working with Profile Select/Search attributes
+
+Let's say you have a 2 profile types in your environment `Vendors` and `People`. The People profile type has a relationship to the Vendors profile type using the attribute `vendor`. Now lets say you wanted to get the `contact_email` from the Person's Vendor. 
+
+Here is how you would do that, assuming you want to display the contact_email in a workflow page for this example. The liquid code would be:
+
+```
+{{ attribute.vendor.first.contact_email }}
+```
+
+Notice the `.first` in the code above. This is important because SecZetta treats all of the profile select and profile search attributes as array, if you know for sure that there is only one profile in this profile select attribute, you are safe to use the `.first` method.
+
+### Display Tags on Profile Pages
+
+This is likely a non-standard use case, but could be a nice addition to any deployment. In this case we want to have a few tags (sometimes called badges) on the profiles themselves. 
+
+Here is an example of what we are looking to do:
+
+![profile flags](img/profile-page-tags.png)
+
+> Notice the 5 tags shown below the `Info` tab*
+
+This is easily accomplished using liquid and some basic HTML styling. In your Profile Type Profile page add an HTML component to the top of the page. 
+
+In that HTML component paste the following code:
+```
+{% assign flags = profile.profile_flags | split: ", " %}
+{% unless flags == blank %}
+
+{% for flag in flags%}
+
+{% if flag == "Do Not Rehire" %}
+  <p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#dc3545;">{{flag}}</p>
+{% else %}
+  <p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">{{flag}}</p>
+{%endif %}
+{% endfor %}
+{% endunless %}
+
+{% unless profile.my_iam_id == blank %}
+<p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">IAM</p>
+{% endunless%}
+
+{% unless profile.my_other_id == blank %}
+<p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">Vendor PAM</p>
+{% endunless%}
+
+```
+
+The styling in the paragraph is based off of bootstrap and the colors can be changed to whatever you want. 
+
+There are 3 attributes that are being used in this liquid code:
+
+* `profile_flags` - this attribute is of type `checkbox` and allows administrators to set certain flags like `Do Not Hire` or `Privileged`. Notice you have to `split` the attribute because by default it will contain a comma deliminted list
+
+* `my_iam_id` - this attribute contains an ID for your IAM system. The point of this is to show on the profile very quickly whether or not a profile has an IAM account or not
+
+* `my_other_id` - this is just another example of how you can add mulitple conditions to create multiple flags for your customers
