@@ -45,14 +45,14 @@ Control flow tags create conditions that decide whether blocks of Liquid code ge
 
 Executes a block of code only if a certain condition is true.
 
-**Input**
+###### Input
 
 ```
 {% if product.title == "Awesome Shoes" %}
   These shoes are awesome!
 {% endif %}
 ```
-**Output**
+###### Output
 ```
 These shoes are awesome!
 ```
