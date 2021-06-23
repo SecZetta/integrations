@@ -138,26 +138,34 @@ Here is an example of what we are looking to do:
 This is easily accomplished using liquid and some basic HTML styling. In your Profile Type Profile page add an HTML component to the top of the page. The style was taken from bootstrap badges. You can find that reference [here](https://getbootstrap.com/docs/4.0/components/badge/#contextual-variations)
 
 In that HTML component paste the following code:
-```
+```html
 {% assign flags = profile.profile_flags | split: ", " %}
 {% unless flags == blank %}
 
 {% for flag in flags%}
 
 {% if flag == "Do Not Rehire" %}
-  <p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#dc3545;">{{flag}}</p>
+  <p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#dc3545;">
+  {{flag}}
+  </p>
 {% else %}
-  <p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">{{flag}}</p>
+  <p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">
+  {{flag}}
+  </p>
 {%endif %}
 {% endfor %}
 {% endunless %}
 
 {% unless profile.my_iam_id == blank %}
-<p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">IAM</p>
+<p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">
+IAM
+</p>
 {% endunless%}
 
 {% unless profile.my_other_id == blank %}
-<p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">Vendor PAM</p>
+<p style="display:inline-block;padding:.75em .75em;font-size:10px;font-weight:700;line-height:1;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25rem;color:#fff;background-color:#007bff;">
+Vendor PAM
+</p>
 {% endunless%}
 
 ```
@@ -193,10 +201,14 @@ Otherwise it will say: (as the example shown above does)
 This Profile was not Identity Proofed. Onsite Proofing Required.
 ```
 
-```
+```html
 {% if attribute.idp_status == "Passed" %}
-<p style="color:#155724;background-color:#d4edda;border-color:#c3e6cb;border-radius:5px;padding:.75rem 1.25rem;margin-bottom:0px;">This Profile has <b>Passed</b> Identity Proofing on {{attribute.idp_date_proofed}}</p>
+<p style="color:#155724;background-color:#d4edda;border-color:#c3e6cb;border-radius:5px;padding:.75rem 1.25rem;margin-bottom:0px;">
+This Profile has <b>Passed</b> Identity Proofing on {{attribute.idp_date_proofed}}
+</p>
 {% else %}
-<p style="color:#856404;background-color:#fff3cd;border-color:#ffeeba;border-radius:5px;padding:.75rem 1.25rem;margin-bottom:0px;">This Profile was not Identity Proofed. Onsite Proofing Required.</p>
+<p style="color:#856404;background-color:#fff3cd;border-color:#ffeeba;border-radius:5px;padding:.75rem 1.25rem;margin-bottom:0px;">
+This Profile was not Identity Proofed. Onsite Proofing Required.
+</p>
 {% endif %}
 ```
