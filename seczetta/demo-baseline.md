@@ -61,3 +61,18 @@ There is a table below that lists the more important attributes of the demo base
 | policy_signed_date | Policy Signed Date | When did they sign the policy | People | 01/01/2021
 | Signed Policy | signed_policy_name | Flag that indicates if they signed the policy | People | Yes
 
+## Permissions (User Roles)
+
+User Roles are important because they are what give the proper permissions to your user(s). For our demo baseline, there are only a few that are in use as of today. There are a couple more user roles that will be used for more use cases as we continue to build onto this baseline.
+
+User roles are auto assigned based on group membership that would come thru in a SAML assersion. This causes some minor problems when it comes to demo environments, because we cant define local users (yet) to have the proper permissions for certain activities.  
+
+For now, the user roles listed below are the only ones that need to be understood.
+
+User Role | Description | Lifcycle / Portal?
+| - | - | - |
+Admin | Allows administrative access to the tool | Lifecycle
+Sponsor | Controls a contributor dropdown box, so people can choose people in this userrole as a Sponsor for a particular profile | Lifecycle
+Vendor Admin | Gives users the ability to manage a vendor | Lifecycle
+Acme Consulting Admins | Vendor Admins specifically for the Acme Consluting Vendor and people profiles | Portal
+
