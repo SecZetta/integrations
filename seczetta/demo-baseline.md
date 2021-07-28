@@ -20,21 +20,25 @@ The first thing you need to get started is a SecZetta instance with the demo bas
 
 The easiest way to being to onboard new people is by using the Contractors collaboration portal. For this portal, Linda Mason (think of her as a project manager for Acme Consulting) is able to onboard new Acme Consulting contractors as she sees fit. Use the credentials below to login as Linda.Mason
 
-| Key | Value 
+| Key | Value
 | - | - |
 | URL | https://(your-instance-id).mynonemployeeportal.com/contractors/
 | Username | Linda.Mason |
-| Password | S3cZ3tta!
+| Password | SecZetta1!
 
 Once logged in as Linda, you should be able to see a workflow called `Onboard Contractor`. Click that workflow button and follow the prompts to create a new contractor.
 
 > Keep in mind: the Onboard Contractor workflow invites the contractor to come in and onboard his or herself. This means you need to make sure the email you enter into the first form is an email that you can recieve emails from. This way you will get the email with the registration link for your new contractor
 
-## Demo Sript
+## Demo Script
 
 To go into a little more detail then the `Getting Started` section above, here is the typical demo 'script' that our presales team walks customers through.
 
 ### Onboarding a new Contractor
+
+Click here then here then here
+
+> Notice how 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus enim, faucibus vitae tincidunt sit amet, egestas id tortor. Aliquam eu quam est. Nam a lectus venenatis, tincidunt ante sit amet, viverra neque. Vivamus leo metus, hendrerit sed diam vitae, ultrices egestas mi. Sed et aliquet quam. Aliquam aliquam eget mi quis porta. Sed interdum commodo dignissim. Vestibulum nec iaculis massa. Suspendisse commodo tortor nisi, sit amet accumsan mi consequat at. Morbi blandit lorem et nisi tempus, maximus malesuada sem cursus.
 
@@ -128,7 +132,7 @@ For now, the user roles listed below are the only ones that need to be understoo
 
 User Role | Description | Lifcycle / Portal?
 | - | - | - |
-Admin | Allows administrative access to the tool | Lifecycle
+Admin | Allows administrative access to the tool. In the demo baseline, these administrators will recieve any approvals that are necessary | Lifecycle
 Sponsor | Controls a contributor dropdown box, so people can choose people in this userrole as a Sponsor for a particular profile | Lifecycle
 Vendor Admin | Gives users the ability to manage a vendor | Lifecycle
 Acme Consulting Admins | Vendor Admins specifically for the Acme Consluting Vendor and people profiles | Portal
