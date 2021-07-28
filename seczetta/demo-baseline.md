@@ -9,7 +9,29 @@ This demo baseline will give you a good insight into how to configure SecZetta i
 * **Z Corp:** This is the organization that is using SecZetta to manage their non employees.
 * **Acme Consulting:** This is the third party organization that is doing work for Z Corp.
 
-## Workflows 
+## Getting Started
+
+The first thing you need to get started is a SecZetta instance with the demo baseline installed. The two (2) urls you will need are below:
+
+* Lifecycle: `https://<your-instance-id>.mynonemployee.com/`
+* Collaboration: `https://<your-instance-id>.mynonemployeeportal.com/contractors/`
+
+> Notice the difference in the domains between Lifecycle and Collaboration. One is mynonemployee.com the other is mynonemployeeportal.com. This just signifys which module you are utilizing
+
+The easiest way to being to onboard new people is by using the Contractors collaboration portal. For this portal, Linda Mason (think of her as a project manager for Acme Consulting) is able to onboard new Acme Consulting contractors as she sees fit. Use the credentials below to login as Linda.Mason
+
+| Key | Value 
+| - | - |
+| URL | https://(your-instance-id).mynonemployeeportal.com/contractors/
+| Username | Linda.Mason |
+| Password | S3cZ3tta!
+
+Once logged in as Linda, you should be able to see a workflow called `Onboard Contractor`. Click that workflow button and follow the prompts to create a new contractor.
+
+> Keep in mind: the Onboard Contractor workflow invites the contractor to come in and onboard his or herself. This means you need to make sure the email you enter into the first form is an email that you can recieve emails from. This way you will get the email with the registration link for your new contractor
+
+
+## Workflows
 
 In SecZetta there are two (2) 'modules' that you will be working with throughout a typical deployment: Lifecycle (previously known as NEProfile) and Collaboration (previously known as NEAccess). Each module has its own workflows that can be created/updated.
 
