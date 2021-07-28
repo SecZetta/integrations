@@ -6,7 +6,7 @@ Liquid is used inside SecZetta to help display profile attributes in `Pages`,`No
 
 Liquid accomplishes this by using a combination of objects, tags, and filters to display, check and maniuplate data
 
-### Objects
+## Objects
 
 The basic Liquid syntax uses the `{{ }}` syntax. For SecZetta, the majority of the time you will use something like `{{ attribute.first_name }}`. This would return the value of the first_name attribute of the current request or profile.
 
@@ -26,7 +26,7 @@ There are a few different types of liquid type objects that you will see within 
 * `approver` - used in notifications to get the approver (if any) that has made a decision. Approver is very similar to requester so attributes like name, email, title, and login are available *(TODO: check to see what happens if multiple approval steps are in a workflow)*
 * `workflow` - used in notification to get the current workflow this email notification is being called from (`{{workflow.name}}` is primarily used)
 
-### Tags 
+## Tags 
 
 Tags create the logic and control flow for templates. The curly brace percentage delimiters `{%` and `%}` and the text that they surround do not produce any visible output when the template is rendered. This lets you assign variables and create conditions or loops without showing any of the Liquid logic on the page.
 
@@ -38,10 +38,10 @@ Tags can be categorized into four various types:
 * Template
 * Variable assignment
 
-#### Control Flow
+### Control Flow
 Control flow tags create conditions that decide whether blocks of Liquid code get executed.
 
-##### if
+#### if
 
 Executes a block of code only if a certain condition is true.
 
@@ -58,7 +58,7 @@ Executes a block of code only if a certain condition is true.
 These shoes are awesome!
 ```
 
-##### unless
+#### unless
 
 The opposite of if – executes a block of code only if a certain condition is not met.
 
@@ -84,7 +84,7 @@ This would be the equivalent of doing the following:
 ```
 
 
-##### elsif / else
+#### elsif / else
 
 Adds more conditions within an if or unless block.
 
@@ -107,9 +107,91 @@ Adds more conditions within an if or unless block.
 Hey Anonymous!
 ```
 
+### Iteration
 
+Iteration tags repeatedly run blocks of code.
 
+#### for
 
+Repeatedly executes a block of code. For a full list of attributes available within a for loop, see forloop (object).
+
+###### Input
+
+```
+{% for product in collection.products %}
+  {{ product.title }}
+{% endfor %}
+```
+
+###### Output
+
+```
+hat shirt pants
+```
+
+#### else
+
+Specifies a fallback case for a for loop which will run if the loop has zero length.
+
+###### Input
+
+```
+{% for product in collection.products %}
+  {{ product.title }}
+{% else %}
+  The collection is empty.
+{% endfor %}
+```
+
+###### Output
+
+```
+The collection is empty.
+```
+
+#### break
+
+Causes the loop to stop iterating when it encounters the break tag.
+
+###### Input
+
+```
+{% for i in (1..5) %}
+  {% if i == 4 %}
+    {% break %}
+  {% else %}
+    {{ i }}
+  {% endif %}
+{% endfor %}
+```
+
+###### Output
+
+```
+1 2 3
+```
+
+#### continue
+
+Causes the loop to skip the current iteration when it encounters the continue tag.
+
+###### Input
+
+```
+{% for i in (1..5) %}
+  {% if i == 4 %}
+    {% continue %}
+  {% else %}
+    {{ i }}
+  {% endif %}
+{% endfor %}
+```
+
+###### Output
+
+```
+1 2 3   5
+```
 
 ## Advanced Concepts
 
@@ -123,7 +205,7 @@ Here is how you would do that, assuming you want to display the contact_email in
 {{ attribute.vendor.first.contact_email }}
 ```
 
-Notice the `.first` in the code above. This is important because SecZetta treats all of the profile select and profile search attributes as array, if you know for sure that there is only one profile in this profile select attribute, you are safe to use the `.first` method.
+Notice the `.first` in the code above. This is important because SecZetta treats all of the profile select and profile search attributes as arrays, if you know for sure that there is only one profile in this profile select attribute, you are safe to use the `.first` method.
 
 ### Display Tags on Profile Pages
 
