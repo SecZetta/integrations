@@ -11,7 +11,11 @@ This demo baseline will give you a good insight into how to configure SecZetta i
 
 ## Workflows 
 
-In SecZetta there are two (2) 'modules' that you will be working with throughout a typical deployment: Lifecycle (previously known as NEProfile) and Collaboration (previously known as NEAccess). Each module has its own workflows that can be created/updated. The table below lists the functional workflows and the module where you will find it
+In SecZetta there are two (2) 'modules' that you will be working with throughout a typical deployment: Lifecycle (previously known as NEProfile) and Collaboration (previously known as NEAccess). Each module has its own workflows that can be created/updated.
+
+Workflows themselves is the mechanism where SecZetta can interact with the various profile types in the system. These workflows come in a few different variations, but the 3 most common workflow types are Create, Update, and Portal Registration. Create workflows will show up on the dashboard of any user who has access to run the workflow. Update workflows will show up when viewing a particular profile for any user who has access to run the workflow as well. Portal Registration workflows can be called on the Collaboration portals themselves (via Self-service) or can be triggered via a Registration Invitation workflow step in a Create/Update workflow.
+
+The table below lists the functional workflows and the module where you will find it.
 
 | Workflow Name                    | Description | Module | Type
 |----------------------------------|-------------|--------|-------|
@@ -28,3 +32,32 @@ In SecZetta there are two (2) 'modules' that you will be working with throughout
 | Terminate | Changes the status of a profile to terminated | Lifecycle | Update
 | Troubeshoot Data | Disabled workflow that was used to check out data attributes as they progress thru certain workflow actions | Lifecycle | Update
 | Login | Very basic workflow that allows Collaborators to login using their username and password | Collaboration | Login
+
+## Attributes
+
+Attributes in SecZetta are not tied to a particular profile type and can be used acrossed profile types. The attribute design is certainly something that needs to be discussed and agreed upon before building out the product. In the demo baseline there *relatively* basic profile types that we are working with so the attribute design isn't as complex. However, this can get much more complex as you start seeing other real world scenarios.
+
+There is a table below that lists the more important attributes of the demo baseline. This is not an exhaustive list, you can find that in your attributes page in the admin console (**Templates** -> **Attributes**).
+
+|UID | Label | Description | Profile Types | Example Values
+|-|-|-|-|-|
+| profile_uid_ne_attribute | Profile UID | Unique ID for profile | People | SZ000011
+| people_vendor | Vendor | Stores the vendor relationship | People | Acme Consulting
+| non_employee_type | Non Employee Type | Dropdown to determine what type of person this non-employee is | People | IT Service
+| sponsor | Sponsor | People, Projects, Vendor | Sheila Andersen
+| profile_flags | Profile Flag(s) | Allows you to flag a particular profile | People | Do Not Hire
+| first_name | First Name | | People | Sheila
+| last_name | Last Name | | People | Andersen
+| email | Email | | People | Shila.Andersen@acme.com
+| onboard_source | Onboard Source | Where did this profile get onboarded | People | Invite
+| invitation_status | Invitation Status | Did the person accept the invite yet? | People | Accepted
+| start_date | Start Date | When the non-employee starts work | People | 01/01/2001
+| end_date | End Date | When the non-employee is scheduled to end work | People | 01/01/2001
+| termination_date | Termination Date | When the non-employee officially was terminated | People | 01/01/2001
+| idp_status | IDProofing Status | Status of the IDProofing step (if applicable) | People | Passed
+| idp_requested_verification_date | Requested Verification Date | When was IDProofing requested (if applicable) | People | 01/01/2001
+| idp_date_proofed | Date Proofed | Date the person actually proofed (if applicable) | People | 01/01/2021
+| signed_acceptance_policy | Signed Policy | Which poilcy did they sign | People | Acceptance Policy v1
+| policy_signed_date | Policy Signed Date | When did they sign the policy | People | 01/01/2021
+| Signed Policy | signed_policy_name | Flag that indicates if they signed the policy | People | Yes
+
