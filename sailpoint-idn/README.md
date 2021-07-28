@@ -1,165 +1,210 @@
-
-# Coming Soon!
-
-# Instructions
-
-* Please copy this template (copy either the markdown by clicking **Raw** or the copy directly from this preview) and use it to create your guide in your preferred medium. 
-* This template includes information required in all SecZetta integration guides.
-* Template instructions in ***bold italics*** are intended to provide guidance or examples, and should be deleted and/or replaced once you’ve added your content.
-* If your integration does not follow the same flow as what we’ve provided below (e.g. steps begin in your tool’s UI as opposed to the SecZetta UI, etc.), feel free to make the changes you need to reflect the flow of the integration.
-* Please read through our Writing and Style Guidelines below before starting your draft.
-
-# Writing and Style Guidelines
-
-## Detailed, Explicit Instructions
-
-All steps to completing the integration should live in this guide. It's always good to err on the side of too much information, even if you think something is obvious. By writing your instructions as if the reader has had zero experience with any of the content, you can proactively anticipate any customer questions and greatly relieve Support efforts. 
-
-**Example**:
-
-* **Don't**: "Find your ClientID and paste it into this field."
-
-* **Do**: "Navigate to **Account Settings** in the system menu and copy your **Client ID**. Next, navigate back to the **Configuration** page and paste it in the **ID** field."
-
-## Calls to Action
-
-Most calls to action include clickable objects or fields, which you should highlight with **bold text**. This helps the reader follow along in the instructions and denotes when they should be taking action in the UI. 
-
-**Examples**:
-
-* "Navigate to the **Configuration** menu and select **Users**."
-
-* "Paste the **Integration Key** into the **Token** field"
-
-## Actionable Steps
-
-Summaries before your content may work well when giving a talk or presenting to a targeted crowd, but not in documentation that users are more likely to skim hoping for quick answers. TL;DR: Don't include sentences that just state what you plan on writing about. If you feel you need to add more information that contextualizes what the reader is configuring, include it within the steps, or in a quick summary after them. 
-
-**Example**
-
-* **Don't**: "In this procedure we will be creating a Topic and a Subscription that will then allow you to create messages that trigger SecZetta incidents..." etc.
-
-* **Do**: "1. Navigate to the **Admin** dashboard and click **Templates**. 2. Then **Pages**, configure your page and click **Save**. You have now edited a page that can be used in a SecZetta workflow"
-
-## Use Active Voice
-
-The active voice ensures that your writing is clear, concise and engaging. The [passive voice](https://webapps.towson.edu/ows/activepass.htm) uses more words, can sound vague and should be avoided like a [zombie plague](https://www.grammarly.com/blog/a-scary-easy-way-to-help-you-find-passive-voice/) (rhyme intended).
-
-**Example**
-
-* **Do**: "Users can follow incidents and escalations in real-time in Hungrycat’s event stream."
-* **Don't**: "Incidents and escalations can be followed in real-time by users in Hungrycat’s event stream."
-
-## Media
-
-* At SecZetta, we use the Preview tool that comes standard on macOS. Type **⌘ + ⇧ + A** or click **View** > **Show Markup Toolbar** to annotate images with arrows, rectangles and text.
-* Only include screenshots that are **absolutely necessary**, so that you have less images to continually update when UI changes, etc. We usually only include screenshots when objects in the UI are small or harder to find. 
-* Ensure that you've obfuscated all sensitive information in your screenshots (e.g., personal account information, integration keys, etc.,) by covering with fake data or an image blur tool. 
-
-^^^ Note: Once you have completed your guide, please delete this section. ^^^
-----
-
 # SecZetta / SailPoint IDN Integration
 
 ## Contents
 
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+- [SecZetta / SailPoint IDN Integration](#seczetta---bitsight-integration)
+  - [Overview](#overview)
+    - [Architecture Overview](#architecture-overview)
+  - [Supported Features](#supported-features)
+  - [Prerequisites](#prerequisites)
+    - [Generating a SecZetta API Key](#generating-a-seczetta-api-key)
+      - [SecZetta Admin Dashboard](#seczetta-admin-dashboard)
+      - [SecZetta API Page](#seczetta-api-page)
+    - [Getting BitSight API Token](#getting-bitsight-api-token)
+      - [Account Dropdown](#account-dropdown)
+      - [Generate BitSight API Key](#generate-bitsight-api-key)
+  - [Configuration](#configuration)
+    - [Integration Script](#integration-script)
+  - [API Usage](#api-usage)
+    - [BitSight API](#bitsight-api)
+      - [Authentication](#authentication)
+      - [GET /ratings/v1/companies](#get--ratings-v1-companies)
 
 ## Overview
 
-SailPoint IdentityNow is the industry’s first and only true SaaS identity governance solution that allows you to easily control user access to all systems and applications, enhance audit response and increase your operational efficiency.
-
-And since it’s delivered from the cloud as multi-tenant SaaS, IdentityNow can be up and running quickly with no additional hardware or software to purchase, install or maintain.
-
-* Easy to deploy with rapid time to business value
-* Automatically delivers new features and enhancements
-* Scales up or down to meet your evolving needs
-* Can be managed by a business analyst, no identity expertise required
-* Simple, cloud software subscription model
-* Proven to reduce help desk calls by up to 90%
-
-### Architecture Overview
-
-#### SecZetta Initiated Integration
-
-![SZ Initiated Image](https://raw.githubusercontent.com/SecZetta/integrations/main/sailpoint-idn/img/sailpoint-idn-sz-initiated-arch.png)
-
-* Step 1: SecZetta creates (or updates) a profile
-* Step 2: SecZetta sends **POST** request to SailPoint to create identity in real-time
-* Step 3: SailPoint responds back with a `200 OK` when the identity was successfully created
-
-#### IAM Initiated Integration
-
-![IAM Initiated Image](https://raw.githubusercontent.com/SecZetta/integrations/main/sailpoint-idn/img/sailpoint-idn-iam-initiated-arch.png)
-
-* Step 1: SailPoint uses webservices connector to call SecZetta's  `/profiles` API endpoint
-* Step 2: SecZetta response back with a paged result of all of the profiles for a specific profile type
-
-> Note: 90% of the time SailPoint will only be pulling profiles from the People profile type
+The main purpose of the SecZetta / SailPoint integration is to be able to pass profile data back and forth between systems. Please see a more generic IAM overview [here](https://github.com/SecZetta/integrations/tree/main/iam). 
 
 ## Supported Features
 
-Use Case | Supported (Y/N)| Details
----------|----------------|------------------
-IAM initiated profile aggregation | Y | via WebSerivces Connector in IDN
-SecZetta initiated identity create  | Y | via /beta/non-employee API endpoint
-SecZetta initiated identity update  | Y | via /beta/non-employee API endpoint
-SecZetta initiated identity delete  | Y | via /beta/non-employee API endpoint
-SecZetta initiated identity enable  | N* | Currently not supported. See Note below for more detail
-SecZetta initiated identity disable  | N* | Currently not supported. See Note below for more detail
-Sync SecZetta risk score to IAM | Y |  via /beta/non-employee API endpoint
+The SecZetta / IdentityNow (IDN) integration can be configured in a few different ways. Depending on the configuration some features may not be fully supported:
 
-> *Note: Currently SailPoint's `/beta/non-employee` API endpoint does not support enable/disable operations. This will be coming soon.
-
-### Profile Types Supported
-
-Profile Type | Managed in IAM (Y/N) | IAM Object Type
--------------|----------------------|-------------
-People       | Y                    | Identity
-Organizations| N*                   | N/A
-Assignments  | N*                   | N/A
-Populations  | N*                   | N/A
-
-> *Note: Currently the best practice integration point is to aggregate data from the People Profile.\
-\
-> Coming Soon: The ability to aggregate an `Assignments` profile type to pull in users with multiple roles (or **assignments**)
+- Profile Management
+  - Data aggregation (SailPoint IDN Initiated)
+    - Utilizing the SailPoint WebServices connector
+    - Read in SecZetta Profiles
+    - API Integration (SecZetta Initiated)
+      - Utliizing SecZetta’s REST API Workflow action
+      - Create, Update, Delete Identity cubes
 
 ## Prerequisites
+- Data Aggregation:
+  - Administrative access in SecZetta and IDN
+  - A SecZetta API token ( Admin  system  api)
+  - The Profile Type ID for the profiles that are be- g aggregated
+- API Integration
+  - Administrative Access in SecZetta and IDN
+  - IDN OAuth 2.0 Client with client_id and client_secret
 
-Almost all integrations will have the first 2 prereq.
+## High Level Architecture
 
-1. An active SecZetta account and tenant where you have administrative privileges. To set up a new SecZetta account, please reach out to [SecZetta Support (info@seczetta.com)](mailto:info@seczetta.com)
+### Data Aggregation
 
-2. An active SecZetta API Token
+![SZ Initiated](img/sailpoint-idn-sz-initiated-arch.png)
 
-3. Any other prereqs
+### API Integration
 
-### Examples
+![IDN Initiated](img/sailpoint-idn-iam-initiated-arch.png)
 
-> The SecZetta Instance URL will be in this format: `https://<seczetta-tenant>.mynonemployee.com`.
+## Configuration Parameters
 
-> Example SecZetta API Token: `c7aef210f92142188032f5a7b59ed0f6`
+This section provides the required configuration for the features described above:
 
-### Generating a SecZetta API Key
+### Data Aggregation (IDN Initiated)
+The Data aggregation integration requires an IDN Web Services connector. This connector will utilize the /profiles endpoint of the SecZetta API
 
-In order to generate an API Key follow these steps: 
+#### SailPoint Connector Configuration
+Create a new source connector and then refer to the following table for the parameters required to setup the connector:
 
-1. Navigate to the [admin](#seczetta-admin-dashboard) side of SecZetta (NEProfile dashboard).
+Parameter | Description
+--------- | --------------
+Source Name | SecZetta
+Source Description | SecZetta connector
+Authentication Settings | No / Custom Authentication
+Base URL | `https://<your-seczetta-tenant-url>/api` <br/>
+(i.e. https://company.mynonemployee.com)
+HTTP Operations (HO) | Add 1 operation (could also add a test connection operations if you choose)
+General Information -> Operation Name | Aggregate Users
+General Information -> Operation Type | Account Aggregation
+General Information -> Context Url | `/profiles?profile_type_id=<profile_type_id>&query[limit]=<limit>&query[offset]=0`  </br> </br> *Notice there are 2 ‘variables’ there profile_type_id and limit* </br></br> The profile_type_id variable is specific to your environment. More details below on how to grab your profile_type_id. Normally you would want the people profile type </br></br>The limit variable is used to return a set number of profiles per API call (this api endpoint uses paging, see below for more details)
+General Information -> HTTP Method | GET
+Header -> Key/Value |Add 3 key/value pairs under the header tab: </br> Authorization: Token token=<your-seczetta-token> </br> Accept: application/json </br> Content-Type: application/json
+Body |No Body required
+Response Information -> Root Path | Profiles
+Response Information -> Success Code | 200
+Response Mapping | Here is where you map the response of the SecZetta API to IdentityNow. Remember to use attributes.<attribute-name>
+Paging -> Initial Page Offset | 0
+Paging -> Paging Steps | $sz_limit$ = 100 </br>TERMINATE_IF $RECORDS_COUNT$ < $sz_limit$</br>$sz_offset$ = $sz_offset$ + $sz_limit$</br>$endpoint.fullUrl$ = $application.baseUrl$ + "/profiles?profile_type_id=<profile_type_id> &query[limit]=" + $sz_limit$ + "&query[offset]=" + $sz_offset$</br></br>*More details below*
 
-2. On the right panel Click into [`System -> api`](#seczetta-api-page)
+#### API Authorization Token
 
-3. Click the `+ Api Key` button and copy your API Key
+To utilize the /profiles endpoint within the SecZetta API, you will require an authorization token. To create a new token, navigate to the Admin side of SecZetta -> System -> API. From there, create a new API token and use that in the connector configuration above
 
-#### SecZetta Admin Dashboard
+#### Profile Type ID
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-dashboard-admin-button.png" width="50%"/>
+This `profile_type_id` is a value that will be specific to your profiles in your SecZetta environment. Find the id easily by following these steps:
 
-#### SecZetta API Page
+1. Navigate your profile types page in the admin side of SecZetta. (Admin -> Lifecycle -> profile types
+1. Select the profile type you want to import into SailPoint
+1. Now in the URL you should be able to see the profile_type_id
+    a. i.e. <your-seczetta-tenant>/neprofile_admin/profile_types/`687df53e-cdd8-4420-8431-ca6e62e81451`/basic_settings
+1. Use that ID in place of <profile_type_id> above
 
-<img src="https://raw.githubusercontent.com/SecZetta/integrations/main/bitsight/img/seczetta-api-keys.png" width="50%"/>
+#### Paging Details
 
-## Configuration
+The Paging steps listed above is a good working example to get started. If additional detail is needed refer to the Web Services Connector guide in the SailPoint documentation.
 
-As described above in the high level [architecture](#architecture-overview), there are two types of integrations that are possible with IdentityNow (IAM Initiated and SecZetta initiated).
+The main goal of the paging steps ‘code’ is to allow the web services connector to call SecZetta as many times as required to get the full list of active profiles
 
-> Make sure to list all the steps required to setup the config
+```
+$sz_limit$ = 100
+TERMINATE_IF $RECORDS_COUNT$ < $sz_limit$
+$sz_offset$ = $sz_offset$ + $sz_limit$
+$endpoint.fullUrl$ = $application.baseUrl$ + "/profiles?profile_type_id=<profile_type_id>&query[limit]=" + $sz_limit$ + "&query[offset]=" + $sz_offset$
+```
+
+Initially the limit of 100 would typically work. Sometimes however, the profiles in your SecZetta instances may be full of a large amount of attributes and additional data. In this case, you may want to lower that limit to ensure the API has enough time to download all the profile data without timing out. Play around with the limit variable above to meet your needs
+
+### API Integration (SecZetta Initiated)
+
+For this integration SecZetta will initiate the creation of identities using the /beta/non-employee-records API endpoint.
+
+#### OAuth Client Creation
+
+In the global settings, under security settings is ‘API Mangement’. On this page you are able to create a new OAuth Client by hitting the “+ New” button. Ensure that the client is for ‘Client Credentials’, ‘Refresh Token’, and ‘Authorization Code’. The screenshot below was taken in Q1 of 2021
+ 
+Whenever you create your Client. Make sure to take not of the client_id and more importantly the client_secret. Those will be used to configure the REST API Action in SecZetta
+
+Create a non-employee source (in IDN)
+
+To utilize the API integration, IdentityNow needs to be setup with a non-employee source. You can do this by adding a new source connector. The Source Type for this connector will be ‘Non-employee’.
+
+From here, the /beta/non-employee end point can be used to manage these identities
+
+
+ 
+Get SourceID for non-employee Source
+
+In order to create an Identity for the source that was created above. The /beta/non-employee endpoint requires a sourceId for the API call. The way to grab this sourceId is by using the same OAuth client above and calling the {{IDN_API_URL}}/beta/non-employee-sources endpoint.
+
+If done successfully, the response should look very similar to this:
+
+[
+    {
+        "id": "ac110006-76f4-1acc-8176-f85c7f9e000a",
+        "sourceId": "2c91808876f477e60176f85c750b59a6",
+        "name": "SecZetta NE",
+        "description": "Non Employees From SecZetta",
+        "approvers": [
+            {
+                "type": "IDENTITY",
+                "id": "2c91808576774548017686132de3041f"
+            }
+        ],
+        "accountManagers": [
+            {
+                "type": "IDENTITY",
+                "id": "2c91808576774548017686132de3041f"
+            }
+        ],
+        "created": "2021-01-12T20:49:40.26Z",
+        "modified": "2021-01-12T20:50:26.823Z",
+        "nonEmployeeCount": null
+    }
+]
+
+
+
+Configuring the REST API Action
+
+Within SecZetta, Create and Update workflows will make changes to the SecZetta profiles. These changes will likely result in an create/update required on the IdN side as well. This is where the REST API Action will come into play. Open whichever SecZetta workflow that needs to create an Identity cube and add a REST API Action. The following table shows the parameters required to make the API Action work correctly
+
+Parameter	Description
+Basic Settings  Description	Create or Update IDN Account
+AuthN  Auth type	OAuth2
+AuthN  Access token URL	https://<your-idn-tenant>.api.identitynow.com/oauth/token
+
+*Notice the api in the URL. That is required
+AuthN  Client Id	Client_id for the OAuth Client created above
+AuthN  Client secret	Client_secret for the Oauth Client created above
+Request  Http verb	POST
+Request  Endpoint	https://<your-idn-tenant>.api.identitynow.com/beta/non-employee-records
+Request  Headers	Add 2 Headers:
+1.	Content-Type = application/json
+2.	Accept = */*
+Request  Json body	This body will vary depending on the IDN configuration and schema. Here is an example
+
+{
+"accountName": "{{attribute.profile_uid_ne_attribute}}",
+  "firstName": "{{attribute.personal_first_name}}",
+  "lastName": "{{attribute.personal_last_name}}",
+  "email": "{{attribute.personal_email}}",
+  "phone": "{{attribute.phone_number}}",
+  "manager": "john.doe",
+  "sourceId": "2c91808876f477e60176f85c750b59a6",
+  "data": {
+      "riskscore": "6.92"
+  },
+  "startDate": 1610524800,
+  "endDate": 1620892800
+}
+
+Notice the sourceId field that is required.
+
+Response  Status Code Mapping	Map this status code to a SecZetta attribute. This will allow error handling within the workflow via conditionals
+
+ 
+
+Response  Data Mapping(s)	The API response will contain the IdentityNow ID if the user was created successfully. Make sure to map that ID to a SecZetta attribute. This way during an update/delete, SecZetta will be able to update the identity correctly
+
+ 
+
