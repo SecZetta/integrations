@@ -30,6 +30,23 @@ Once logged in as Linda, you should be able to see a workflow called `Onboard Co
 
 > Keep in mind: the Onboard Contractor workflow invites the contractor to come in and onboard his or herself. This means you need to make sure the email you enter into the first form is an email that you can recieve emails from. This way you will get the email with the registration link for your new contractor
 
+## Demo Sript
+
+To go into a little more detail then the `Getting Started` section above, here is the typical demo 'script' that our presales team walks customers through.
+
+### Onboarding a new Contractor
+
+#### Identity Proofing
+
+### Revalidate an existing profile
+
+### Terminate a profile
+
+### Make a Vendor Admin
+
+### Add a new Vendor
+
+### Add a new Project
 
 ## Workflows
 
