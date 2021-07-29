@@ -51,9 +51,7 @@ The following steps help you walk thru this use case:
 > Tip: https://randomuser.me/ is a nice resource to generate randomized user information
 
 * Next, talk about how the Start Date / End Date can be automatically set based on customer requirements. In this case, the start date defaults to the current day and the end date is 90 days from today.
-
 * Then, talk about how the `Vendor` attribute is read-only (meaning this user cannot adjust the vendor). This is because the user is logged into the Acme Consulting portal, so the only non-employees that can be created have to belong to the *Acme Consulting* org.
-
 * Finally, select the `Non Employee Type`. This field does adjust the risk score. If you select, `Consultant` as the non employee type, another dropdown will be displayed asking you to select a project. Choose a project and continue.
 
 > Later on in the flow, a High Risk notification will be shown if a user's risk score is 6 or above.
@@ -61,13 +59,59 @@ The following steps help you walk thru this use case:
 > * Consultant will have a risk score of `7`
 > * Staf Aug will have a risk score of `2`
 
+* After the entire form is filled out appropriately, click **Submit** to continue the onboardig process
+* At this point an email will be sent to the email address of this new contractor. Pull up that email and click `Get Started` registration link towards the bottom of the email
+* The registration link will redirect you to a new page and you will be acting on behalf of that new contractor. Talk about how this new contractor can see the information that Linda Mason entered into the previous form. This new contractor can choose to change his/her first name or last name if something was incorrectly entered.
+* The contractor can also see his/her start date and end date, but can no longer change these details.
+* The only question this contractor needs to answer is `Are you able to come onsite for verification?`. Click `No` for this question and begin scrolling down the page.
 
+> By selecting `No` on the question mentioned above, the workflow will trigger a digitial Identity Proof for this new contractor. If you don't need to walk through the Identity Proofing step, select `Yes` to skip it as necessary
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus enim, faucibus vitae tincidunt sit amet, egestas id tortor. Aliquam eu quam est. Nam a lectus venenatis, tincidunt ante sit amet, viverra neque. Vivamus leo metus, hendrerit sed diam vitae, ultrices egestas mi. Sed et aliquet quam. Aliquam aliquam eget mi quis porta. Sed interdum commodo dignissim. Vestibulum nec iaculis massa. Suspendisse commodo tortor nisi, sit amet accumsan mi consequat at. Morbi blandit lorem et nisi tempus, maximus malesuada sem cursus.
+* Talk through the digital Acceptable Use Policy that the contractor has to accept. Scroll to the bottom of the page and click **Submit**
 
-#### Identity Proofing
+> By hitting the submit button SecZetta logs when the contractor accepted this policy and what policy was accepted. These details will be shown to approvers as the onboarding process progresses
 
-Nam tempor condimentum auctor. Donec elementum bibendum ligula ac molestie. Quisque sodales justo lorem, ut ornare erat interdum in. Proin elementum eleifend nisi eu luctus. Etiam malesuada tellus non orci consequat varius. Curabitur consectetur dictum urna, a congue tortor cursus sed. Nulla ut augue sed nulla sagittis consequat at at justo.
+#### Identify Proofing (if applicable)
+
+* If `No` was selected for the question `Are you able to come onsite for verification?`, then the next page in the workflow should say `Identity Proofing`. Click **Verify My Identity** to begin the process
+
+> When a client uses this module in production, a cell phone number will likely be used and a SMS message will be sent to the contractors phone to perform this digital identity proofing. For demo purposes, this is all done via the browser.
+
+* This should launch our Identity Proofing module and the first question that will be asked is `Which type of ID would you like to use?`. Select **Driver's License** and then Click **Confirm Information**
+
+> Driver's Licnese, Passport, and Other ID are different ID Types we support. There are 6000+ IDs that are supported in over 190 countries
+
+* On the `Document Capture` screen, hit **Start**
+* Click **Capture Using Your Phone Camera** and upload the imaged named `male-1-license-front.jpg` or `female-1-license-front.jpg` depending on the gender of your contractor
+
+> These images should have been sent in your demo baseline package. Reach out to Taylor Hook (thook@seczetta.com) if you didnt recieve them.
+
+* Click **Save and Next**
+* Click **Capture Using Your Phone Camera** and upload the imaged named `male-2-license-back.jpg` or `female-2-license-back.jpg` depending on the gender of your contractor
+* Click **Save and Next**
+* Click **Capture Using Your Phone Camera** and upload the imaged named `male-2-license-face.jpg` or `female-2-license-face.jpg` depending on the gender of your contractor
+* Click **Save and Next**
+* Fill out the **Date of Birth** field
+* Scoll down and click **Submit**
+* If everything was successfully uploaded a `Success. Your identity has been verified message` should be displayed. Click **Submit** to continue.
+
+#### Continue with Onboarding
+
+* At this point, you have either skipped Identity Proofing or just finished walking through the Identity Proofing module. Either way, a screen listing all of the steps you have walked through so far should be displayed. 
+* Now it is time to login to the Lifecycle portion of the product. Using your administrative account navigate to the Lifecycle Dashboard: https://[your-instance-id].mynonemployee.com
+* Once logged in, there should be a banner across the top of the dashboard saying `You have requests that need your action`. Click that banner.
+* There will be a pending request named `Contractor Registration by Invite`. Click that request to open it up.
+* This is the approval for a Contractor thats about to be created. Someone on the customer side will almost certainly have to approve the creation of this contractor before any accounts or access is granted. Scroll down the page describing all of the detail in the approval form.
+* At the bottom of the form, there will be three (3) questions that the approver will be required to answer. Answer them however you want, just know that the answers to these questions adjust the risk score of the contractor
+
+> The best way to get the highest risk on this contractor would be to answer the questions `Yes`, `Yes`, `No` from left to right. Below is the breakdown of the risk scores that will be applied
+> * If `Will this person be provided equipment?` is answered as `Yes`. An avg risk score of 6.2 will be applied
+> * If `Will remote access be required?` is answered as `Yes`. An avg risk score of 7.8 will be applied
+> * If `Is company provided training required?` is answered `No` a 5.0 risk score will be applied
+
+* After answering the questions, click **Approve** to continue with the onboarding process
+* If the new contractor has a high risk level, a form will show indicating as such. If this form shows click **Submit** to finish off the onboarding process.
+* This is the final step in the onboarding process. The new contractor has officially been onboarding and his/her profile should be visible within SecZetta.
 
 ### Revalidate an existing profile
 
