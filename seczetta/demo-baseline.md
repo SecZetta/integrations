@@ -22,7 +22,7 @@ The easiest way to being to onboard new people is by using the Contractors colla
 
 | Key | Value
 | - | - |
-| URL | https://(your-instance-id).mynonemployeeportal.com/contractors/
+| URL | https://[your-instance-id].mynonemployeeportal.com/contractors/
 | Username | Linda.Mason |
 | Password | SecZetta1!
 
@@ -36,7 +36,29 @@ To go into a little more detail then the `Getting Started` section above, here i
 
 ### Onboarding a new Contractor
 
-Click here then here then here
+This use case is listed above in brief detail. The main goal of this use case is to enable our customers to easily onboard their non-employees into their environment as efficiently as possible while still having the proper  controls in place from an audit standpoint.
+
+The following steps help you walk thru this use case:
+
+* Navigate to the contractors collaboration portal: https://[your-instance-id].mynonemployeeportal.com/contractors
+* Login as `Linda.Mason` with password `SecZetta1!`
+* When the portal dashboard loads, you should be able to see a workflow `Onboard Contractor`. Click this workflow button
+* A request form will show up and ask you to fill out this new contractor details. 
+* Enter a `First Name`, `Last Name`, and `Email`
+
+> This email value should be a real email address that you have access to. A regsitration link will get sent to this address
+
+> Tip: https://randomuser.me/ is a nice resource to generate randomized user information
+
+* Next, talk about how the Start Date / End Date can be automatically set based on customer requirements. In this case, the start date defaults to the current day and the end date is 90 days from today.
+
+* Then, talk about how the `Vendor` attribute is read-only (meaning this user cannot adjust the vendor). This is because the user is logged into the Acme Consulting portal, so the only non-employees that can be created have to belong to the *Acme Consulting* org.
+
+* Finally, 
+
+
+
+* asdf
 
 > Notice how 
 
