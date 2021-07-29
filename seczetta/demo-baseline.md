@@ -54,13 +54,14 @@ The following steps help you walk thru this use case:
 
 * Then, talk about how the `Vendor` attribute is read-only (meaning this user cannot adjust the vendor). This is because the user is logged into the Acme Consulting portal, so the only non-employees that can be created have to belong to the *Acme Consulting* org.
 
-* Finally, 
+* Finally, select the `Non Employee Type`. This field does adjust the risk score. If you select, `Consultant` as the non employee type, another dropdown will be displayed asking you to select a project. Choose a project and continue.
+
+> Later on in the flow, a High Risk notification will be shown if a user's risk score is 6 or above.
+> * IT Service will have a risk score of `9`
+> * Consultant will have a risk score of `7`
+> * Staf Aug will have a risk score of `2`
 
 
-
-* asdf
-
-> Notice how 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus enim, faucibus vitae tincidunt sit amet, egestas id tortor. Aliquam eu quam est. Nam a lectus venenatis, tincidunt ante sit amet, viverra neque. Vivamus leo metus, hendrerit sed diam vitae, ultrices egestas mi. Sed et aliquet quam. Aliquam aliquam eget mi quis porta. Sed interdum commodo dignissim. Vestibulum nec iaculis massa. Suspendisse commodo tortor nisi, sit amet accumsan mi consequat at. Morbi blandit lorem et nisi tempus, maximus malesuada sem cursus.
 
