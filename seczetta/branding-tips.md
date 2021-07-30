@@ -24,3 +24,15 @@ a[data-id="d2ef758b-026e-446c-9790-f326919f2eaa"] > li{
     background: red !important;
 }
 ```
+
+### Result
+![Colored Workflow Button](img/change-workflow-button-color.png)
+
+
+
+## Form Header in HTML Text Element
+
+```html
+<p class="margin-bottom-small pb_form_heading">Form Title</p>
+<hr>
+```

@@ -294,3 +294,18 @@ This Profile was not Identity Proofed. Onsite Proofing Required.
 </p>
 {% endif %}
 ```
+
+#### Different Colors
+
+*Taken from the bootsrap: [website](https://getbootstrap.com/docs/4.0/components/alerts/)*
+
+| Type      | HTML                                                         |
+|-----------|--------------------------------------------------------------|
+| Primary | color:#004085;background-color:#cce5ff;border-color:#b8daff;   |
+| Secondary | color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca; |
+| Success | color:#155724;background-color:#d4edda;border-color:#c3e6cb;   | 
+| Danger | color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;    |
+| Warning | color:#856404;background-color:#fff3cd;border-color:#ffeeba;   |
+| Info | color:#0c5460;background-color:#d1ecf1;border-color:#bee5eb;      |
+| Light | color:#818182;background-color:#fefefe;border-color:#fdfdfe;     |
+| Dark | color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca;      |
