@@ -18,7 +18,7 @@ The first thing you need to get started is a SecZetta instance with the demo bas
 
 > Notice the difference in the domains between Lifecycle and Collaboration. One is mynonemployee.com the other is mynonemployeeportal.com. This just signifys which module you are utilizing
 
-The easiest way to being to onboard new people is by using the Contractors collaboration portal. For this portal, Linda Mason (think of her as a project manager for Acme Consulting) is able to onboard new Acme Consulting contractors as she sees fit. Use the credentials below to login as Linda.Mason
+The easiest way to onboard new people is by using the Contractors collaboration portal. For this portal, Linda Mason (think of her as a project manager for Acme Consulting) is able to onboard new Acme Consulting contractors as she sees fit. Use the credentials below to login as Linda.Mason
 
 | Key | Value
 | - | - |
@@ -115,7 +115,28 @@ The following steps help you walk thru this use case:
 
 ### Revalidate an existing profile
 
-Duis tortor mauris, sollicitudin eu arcu ut, tristique venenatis arcu. Curabitur dapibus sed ex non venenatis. Praesent nec commodo elit. Etiam a tincidunt tellus, vitae tristique turpis. Praesent quam erat, fringilla viverra quam vel, semper sollicitudin arcu. Aenean ullamcorper convallis purus. Nunc faucibus enim aliquam cursus tempus. Quisque tincidunt, leo ac aliquam porta, odio est efficitur dui, a ultricies nulla tortor eu lacus. Nulla metus lacus, maximus id pretium in, imperdiet eu est. Curabitur rutrum felis et posuere varius. Quisque lacinia purus mattis suscipit pellentesque. Vivamus tincidunt nunc in dignissim interdum.
+On a semi-regular basis SecZetta will send off `Revalidation` requests for non-employees that have been performing work for the client. Typically this is done X number of days after 'hire'. For this use case, we will manually kick of a Revalidation request, just know that this will normally be an automated workflow that would trigger this to occur on specified dates.
+
+To manually kick off a Revalidation follow the steps below:
+
+* Using your administrative account navigate to the Lifecycle Dashboard: https://[your-instance-id].mynonemployee.com
+* From the dashboard, open up an **Active** `Person` profile to view their profile information.
+* When the profile page loads, you should see a few workflows you can execute on this profile. Begin the revalidation by clicking the **Revalidate** workflow button
+* A simple page notification will appear, telling you what you are about to do. Click **Submit** to continue
+* Now it is time to login as a Collaborator. Navigate to the contractors collaboration portal: https://[your-instance-id].mynonemployeeportal.com/contractors
+* Login as `Linda.Mason` with password `SecZetta1!`
+* Once logged in, there should be a banner across the top of the dashboard saying `You have requests that need your action`. Click that banner.
+* There will be a pending request named `Revalidate`. Click that request to open it up.
+* This Revalidation request is asking Linda to review the current contractor information and asks for input from Linda about the contractor. For the question: `Is this person still actively engaged?` select `No` to start the termination process
+
+> Feel free to answer in other ways, by selecting `No` this will automatically kick off a termination process. If you select `Yes` additional questions will show asking to validate more information.
+
+* After selecting `No`, Linda's job is complete. However, because a termination now needs to happen. An internal user was sent an approval for this termination
+* Using your administrative account navigate to the Lifecycle Dashboard: https://[your-instance-id].mynonemployee.com
+* Once logged in, there should be a banner across the top of the dashboard saying `You have requests that need your action`. Click that banner.
+* There will be a pending request named `Terminate`. Click that request to open it up.
+* Review the information, and click **Submit** below to complete the termination
+* Search for this profile that was just revalidated/terminated and you will see that their status has changed to Terminated. From here, an IAM system would take action and disable/delete accounts as necessary
 
 ### Terminate a profile
 
