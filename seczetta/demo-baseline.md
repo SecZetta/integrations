@@ -131,16 +131,23 @@ To manually kick off a Revalidation follow the steps below:
 
 > Feel free to answer in other ways, by selecting `No` this will automatically kick off a termination process. If you select `Yes` additional questions will show asking to validate more information.
 
-* After selecting `No`, Linda's job is complete. However, because a termination now needs to happen. An internal user was sent an approval for this termination
+* After selecting `No`, Linda's job is complete. However, because a termination now needs to happen, an internal user was sent an approval for this termination
 * Using your administrative account navigate to the Lifecycle Dashboard: https://[your-instance-id].mynonemployee.com
 * Once logged in, there should be a banner across the top of the dashboard saying `You have requests that need your action`. Click that banner.
 * There will be a pending request named `Terminate`. Click that request to open it up.
-* Review the information, and click **Submit** below to complete the termination
+* Review the information, and click **Approve** below to complete the termination
 * Search for this profile that was just revalidated/terminated and you will see that their status has changed to Terminated. From here, an IAM system would take action and disable/delete accounts as necessary
 
 ### Terminate a profile
 
-Nullam ut nisl at erat dapibus pretium ac fringilla tortor. Phasellus ullamcorper, eros a rhoncus placerat, ex tellus facilisis mauris, sit amet egestas nisi lectus ullamcorper ante. Fusce aliquam porta nisl in sagittis. Proin dapibus faucibus semper. Nunc non lorem non odio vehicula lacinia. Donec venenatis ipsum ac vulputate auctor. Curabitur quis leo faucibus massa gravida hendrerit eget id libero. Vivamus sit amet maximus nulla, eu eleifend odio. Cras mattis ex eget sem venenatis gravida. Phasellus pharetra, ligula in laoreet efficitur, enim purus placerat purus, nec aliquet odio lectus at sem. Vivamus eget aliquam ligula. Nullam augue sem, aliquam nec pharetra vitae, elementum in quam. Cras vitae augue nunc. Nulla et semper augue, luctus laoreet ipsum.
+Just as discussed above with revalidations, terminations will likely automatically happen on a scheduled basis based on the end date of the non-employee. For our case, we will manually trigger a termination event to occur.
+
+To manually kick off a Termination follow the steps below:
+
+* Using your administrative account navigate to the Lifecycle Dashboard: https://[your-instance-id].mynonemployee.com
+* From the dashboard, open up an **Active** `Person` profile to view their profile information.
+* When the profile page loads, you should see a few workflows you can execute on this profile. Begin the revalidation by clicking the **Terminate** workflow button
+* A simple page notification will appear, telling you what you are about to do. Click **Submit** to continue
 
 ### Make a Vendor Admin
 
