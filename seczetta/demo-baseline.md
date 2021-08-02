@@ -279,6 +279,6 @@ User Role | Description | Lifcycle / Portal?
 | - | - | - |
 Admin | Allows administrative access to the tool. In the demo baseline, these administrators will recieve any approvals that are necessary | Lifecycle
 Sponsor | Controls a contributor dropdown box, so people can choose people in this userrole as a Sponsor for a particular profile | Lifecycle
-Vendor Admin | Gives users the ability to manage a vendor | Lifecycle
-Acme Consulting Admins | Vendor Admins specifically for the Acme Consluting Vendor and people profiles | Portal
+Collaborators | Gives users the ability to manage a vendor | Lifecycle
+Acme Consulting Admins | Collaborators specifically for the Acme Consluting Vendor and people profiles | Portal
 
