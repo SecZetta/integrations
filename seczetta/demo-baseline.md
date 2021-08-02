@@ -1,5 +1,23 @@
 # SecZetta - Demo Baseline
 
+## TOC
+
+- [SecZetta - Demo Baseline](#seczetta---demo-baseline)
+  * [Introduction](#introduction)
+  * [Getting Started](#getting-started)
+  * [Demo Script](#demo-script)
+    + [Onboarding a new Contractor](#onboarding-a-new-contractor)
+      - [Identify Proofing (if applicable)](#identify-proofing--if-applicable-)
+      - [Continue with Onboarding](#continue-with-onboarding)
+    + [Revalidate an existing profile](#revalidate-an-existing-profile)
+    + [Terminate a profile](#terminate-a-profile)
+    + [Make Collaborator](#make-collaborator)
+    + [Add a new Vendor](#add-a-new-vendor)
+    + [Add a new Project](#add-a-new-project)
+  * [Workflows](#workflows)
+  * [Attributes](#attributes)
+  * [Permissions (User Roles)](#permissions--user-roles-)
+
 ## Introduction
 
 This baseline is what our presales team uses as a *standard* demo we would give to our clients. This baseline includes three (3) different profiles types: People, Vendors, Projects. The use case is the typcial contractor onboarding flow that our customers utlize the tool to solve.
