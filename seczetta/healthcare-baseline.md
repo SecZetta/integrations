@@ -20,4 +20,15 @@
 
 ![type](img/healthcare-extend-assignment.png)
 
+### End Assignment Warning
+
+![type](img/healthcare-end-assignment-warning.png)
+
+### Termimate Warning
+
+![type](img/healthcare-terminate-warning.png)
+
+
+
+
 
