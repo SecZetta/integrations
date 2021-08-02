@@ -1,6 +1,6 @@
 # SecZetta - Demo Baseline
 
-## TOC
+## Contents
 
 - [SecZetta - Demo Baseline](#seczetta---demo-baseline)
   * [Introduction](#introduction)
