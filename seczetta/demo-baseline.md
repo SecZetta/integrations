@@ -147,7 +147,15 @@ To manually kick off a Termination follow the steps below:
 * Using your administrative account navigate to the Lifecycle Dashboard: https://[your-instance-id].mynonemployee.com
 * From the dashboard, open up an **Active** `Person` profile to view their profile information.
 * When the profile page loads, you should see a few workflows you can execute on this profile. Begin the revalidation by clicking the **Terminate** workflow button
-* A simple page notification will appear, telling you what you are about to do. Click **Submit** to continue
+* A request form page will appear asking you to enter a `Termination Reason`. Add a reason for termination and click **Submit** to continue
+
+> Profile Tags are also able to be set here, if there was a termination for cause and you wanted to set the `Do Not Hire` flag, feel free to do so
+
+* Now an approval is required, because an Administrator initiated this termination request he also gets the approval. Review the information of this soon to be terminated profile and click **Approve** to continue
+
+> This approval step could techcnially have been skipped because the requester is the same user as the approver. This approval can be skpiped by setting `Skippable Approval?` in the workflow step. For demo purposes, this has purposely remained unchecked
+
+* At this point, the termination process is complete and the profile should now have a status of `Terminated`
 
 ### Make a Vendor Admin
 
