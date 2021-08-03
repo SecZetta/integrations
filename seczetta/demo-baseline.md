@@ -18,6 +18,13 @@
   * [Attributes](#attributes)
   * [Permissions (User Roles)](#permissions--user-roles-)
 
+## Prerequisites
+
+This documentation assumes you have completed the following prerequisites
+* [SecZetta 101 - Foundational Overview](https://seczetta.sharepoint.com/sites/PartnerEnablement/SitePages/Sales-101.aspx)
+* [SecZetta 201 - Technical Overview](https://seczetta.sharepoint.com/sites/PartnerEnablement/SitePages/Technical-201.aspx)
+* [SecZetta 301 - Basic Training](https://seczetta.sharepoint.com/sites/PartnerEnablement/SitePages/Training.aspx)
+
 ## Introduction
 
 This baseline is what our presales team uses as a *standard* demo we would give to our clients. This baseline includes three (3) different profiles types: People, Vendors, Projects. The use case is the typcial contractor onboarding flow that our customers utlize the tool to solve.
@@ -42,7 +49,7 @@ The easiest way to onboard new people is by using the Contractors collaboration 
 | - | - |
 | URL | https://[your-instance-id].mynonemployeeportal.com/contractors/
 | Username | Linda.Mason |
-| Password | SecZetta1!
+| Password | As provided |
 
 Once logged in as Linda, you should be able to see a workflow called `Onboard Contractor`. Click that workflow button and follow the prompts to create a new contractor.
 
@@ -59,7 +66,7 @@ This use case is listed above in brief detail. The main goal of this use case is
 The following steps help you walk thru this use case:
 
 * Navigate to the contractors collaboration portal: https://[your-instance-id].mynonemployeeportal.com/contractors
-* Login as `Linda.Mason` with password `SecZetta1!`
+* Login as `Linda.Mason`
 * When the portal dashboard loads, you should be able to see a workflow `Onboard Contractor`. Click this workflow button
 * A request form will show up and ask you to fill out this new contractor details. 
 * Enter a `First Name`, `Last Name`, and `Email`
@@ -142,7 +149,7 @@ To manually kick off a Revalidation follow the steps below:
 * When the profile page loads, you should see a few workflows you can execute on this profile. Begin the revalidation by clicking the **Revalidate** workflow button
 * A simple page notification will appear, telling you what you are about to do. Click **Submit** to continue
 * Now it is time to login as a Collaborator. Navigate to the contractors collaboration portal: https://[your-instance-id].mynonemployeeportal.com/contractors
-* Login as `Linda.Mason` with password `SecZetta1!`
+* Login as `Linda.Mason`
 * Once logged in, there should be a banner across the top of the dashboard saying `You have requests that need your action`. Click that banner.
 * There will be a pending request named `Revalidate`. Click that request to open it up.
 * This Revalidation request is asking Linda to review the current contractor information and asks for input from Linda about the contractor. For the question: `Is this person still actively engaged?` select `No` to start the termination process
@@ -282,3 +289,11 @@ Sponsor | Controls a contributor dropdown box, so people can choose people in th
 Collaborators | Gives users the ability to manage a vendor | Lifecycle
 Acme Consulting Admins | Collaborators specifically for the Acme Consluting Vendor and people profiles | Portal
 
+
+## Helpful Links
+
+See the links below for additional resources
+
+* [Partner Portal](https://seczetta.sharepoint.com/sites/PartnerEnablement)
+* [User Guide](https://seczetta.sharepoint.com/documentation/SitePages/Home.aspx?RootFolder=%2Fdocumentation%2FShared%20Documents%2F1%5FProduct%20Documentation%2Fv4%2E5&FolderCTID=0x01200012980FD71E0362419D9F4668088AE99A&View=%7B0821AEE9%2D50B6%2D4D2B%2DA0BC%2D044EAC0915BA%7D)
+* [Admin Guide](https://seczetta.sharepoint.com/documentation/SitePages/Home.aspx?RootFolder=%2Fdocumentation%2FShared%20Documents%2F1%5FProduct%20Documentation%2Fv4%2E5&FolderCTID=0x01200012980FD71E0362419D9F4668088AE99A&View=%7B0821AEE9%2D50B6%2D4D2B%2DA0BC%2D044EAC0915BA%7D)
