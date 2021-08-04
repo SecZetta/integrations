@@ -27,23 +27,23 @@ This documentation assumes you have completed the following prerequisites
 
 ## Introduction
 
-This baseline is what our presales team uses as a *standard* demo we would give to our clients. This baseline includes three (3) different profiles types: People, Vendors, Projects. The use case is the typcial contractor onboarding flow that our customers utlize the tool to solve.
+This baseline is what our presales team uses as a *standard* demo we would give to our clients. This baseline includes three (3) different profile types: People, Vendors, Projects. The use case is a typcial contractor onboarding flow that our customers utilize SecZetta to solve.
 
-This demo baseline will give you a good insight into how to configure SecZetta in order to solve some of your customer's non-employee problems. The primary purpose of this documentation is to outline what is built and how to make adjustments if required. There are two Organizations that will be mentioned throughout the documentation and in the tool itself.
+This demo baseline provides insight into how to configure SecZetta to solve some of your customer's non-employee challenges. The primary purpose of this documentation is to outline what is built and how to make adjustments if required. There are two Organizations that will be mentioned throughout the documentation and in the tool itself.
 
-* **Z Corp:** This is the organization that is using SecZetta to manage their non employees.
+* **Z Corp:** This is the organization that is using SecZetta to manage their non-employees.
 * **Acme Consulting:** This is the third party organization that is doing work for Z Corp.
 
 ## Getting Started
 
-The first thing you need to get started is a SecZetta instance with the demo baseline installed. The two (2) urls you will need are below:
+The first thing you need to get started is a SecZetta instance with the demo baseline installed. The two (2) urls you will need are:
 
 * Lifecycle: `https://<your-instance-id>.mynonemployee.com/`
 * Collaboration: `https://<your-instance-id>.mynonemployeeportal.com/contractors/`
 
-> Notice the difference in the domains between Lifecycle and Collaboration. One is mynonemployee.com the other is mynonemployeeportal.com. This just signifys which module you are utilizing
+> Notice the difference in the domains between Lifecycle and Collaboration. One is mynonemployee.com the other is mynonemployeeportal.com. This signifies which module you are utilizing.
 
-The easiest way to onboard new people is by using the Contractors collaboration portal. For this portal, Linda Mason (think of her as a project manager for Acme Consulting) is able to onboard new Acme Consulting contractors as she sees fit. Use the credentials below to login as Linda.Mason
+The easiest way to onboard new people is by using the Contractors collaboration portal. For this portal, Linda Mason (think of her as a vendor manager for Acme Consulting) is able to onboard new Acme Consulting contractors as she sees fit. Use the credentials below to log in as Linda Mason.
 
 | Key | Value
 | - | - |
@@ -51,50 +51,50 @@ The easiest way to onboard new people is by using the Contractors collaboration 
 | Username | Linda.Mason |
 | Password | As provided |
 
-Once logged in as Linda, you should be able to see a workflow called `Onboard Contractor`. Click that workflow button and follow the prompts to create a new contractor.
+Once logged in as Linda, you will see a workflow called `Onboard Contractor`. Click that workflow button and follow the prompts to create a new contractor.
 
-> Keep in mind: the Onboard Contractor workflow invites the contractor to come in and onboard his or herself. This means you need to make sure the email you enter into the first form is an email that you can recieve emails from. This way you will get the email with the registration link for your new contractor
+> Keep in mind: the Onboard Contractor workflow invites the contractor to come in and onboard his or herself. This means you need to make sure the email you enter into the first form is an email that you can recieve emails from. This way you will get the email with the registration link for your new contractor.
 
 ## Demo Script
 
-To go into a little more detail then the `Getting Started` section above, here is the typical demo 'script' that our presales team walks customers through.
+To go into a little more detail than the `Getting Started` section above, here is the typical demo 'script' that our presales team walks customers through.
 
 ### Onboarding a new Contractor
 
-This use case is listed above in brief detail. The main goal of this use case is to enable our customers to easily onboard their non-employees into their environment as efficiently as possible while still having the proper  controls in place from an audit standpoint.
+This use case is listed above in brief detail. The main goal of this use case is to enable our customers to easily onboard their non-employees into their environment as efficiently as possible while also having the proper controls in place from an audit standpoint.
 
-The following steps help you walk thru this use case:
+The following steps help you walk through this use case:
 
 * Navigate to the contractors collaboration portal: https://[your-instance-id].mynonemployeeportal.com/contractors
-* Login as `Linda.Mason`
-* When the portal dashboard loads, you should be able to see a workflow `Onboard Contractor`. Click this workflow button
-* A request form will show up and ask you to fill out this new contractor details. 
-* Enter a `First Name`, `Last Name`, and `Email`
+* Login as `Linda.Mason`.
+* When the portal dashboard loads, you will see a workflow `Onboard Contractor`. Click this workflow button.
+* A request form will show up and ask you to fill out details for the new contractor. 
+* Enter a `First Name`, `Last Name`, and `Email`.
 
-> This email value should be a real email address that you have access to. A regsitration link will get sent to this address
+> This email value should be a real email address that you can access. A registration link will be sent to this address.
 
 > Tip: https://randomuser.me/ is a nice resource to generate randomized user information
 
 * Next, talk about how the Start Date / End Date can be automatically set based on customer requirements. In this case, the start date defaults to the current day and the end date is 90 days from today.
-* Then, talk about how the `Vendor` attribute is read-only (meaning this user cannot adjust the vendor). This is because the user is logged into the Acme Consulting portal, so the only non-employees that can be created have to belong to the *Acme Consulting* org.
-* Finally, select the `Non Employee Type`. This field does adjust the risk score. If you select, `Consultant` as the non employee type, another dropdown will be displayed asking you to select a project. Choose a project and continue.
+* Then, talk about how the `Vendor` attribute is read-only (meaning this user cannot adjust the vendor). This is because the user is logged in to the Acme Consulting portal, so the only non-employees that can be created have to belong to the *Acme Consulting* org.
+* Finally, select the `Non-Employee Type`. Note, this field will adjust the risk score. If you select, `Consultant` as the non-employee type, another dropdown will be displayed asking you to select a project. Choose a project and continue.
 
-> Later on in the flow, a High Risk notification will be shown if a user's risk score is 6 or above.
+> Later in the flow, a High Risk notification will be shown if a user's risk score is 6 or above.
 > * IT Service will have a risk score of `9`
 > * Consultant will have a risk score of `7`
-> * Staf Aug will have a risk score of `2`
+> * Staff Aug will have a risk score of `2`
 
-* After the entire form is filled out appropriately, click **Submit** to continue the onboardig process
-* At this point an email will be sent to the email address of this new contractor. Pull up that email and click `Get Started` registration link towards the bottom of the email
+* After the entire form is filled out appropriately, click **Submit** to continue the onboardig process.
+* At this point an email will be sent to the email address of this new contractor. Open that email and click the `Get Started` registration link towards the bottom of the email.
 * The registration link will redirect you to a new page and you will be acting on behalf of that new contractor. Talk about how this new contractor can see the information that Linda Mason entered into the previous form. This new contractor can choose to change his/her first name or last name if something was incorrectly entered.
 * The contractor can also see his/her start date and end date, but can no longer change these details.
 * The only question this contractor needs to answer is `Are you able to come onsite for verification?`. Click `No` for this question and begin scrolling down the page.
 
-> By selecting `No` on the question mentioned above, the workflow will trigger a digitial Identity Proof for this new contractor. If you don't need to walk through the Identity Proofing step, select `Yes` to skip it as necessary
+> By selecting `No` on the question mentioned above, the workflow will trigger a digitial Identity Proof for this new contractor. If you don't need to walk through the Identity Proofing step, select `Yes` to skip it as necessary.
 
-* Talk through the digital Acceptable Use Policy that the contractor has to accept. Scroll to the bottom of the page and click **Submit**
+* Talk through the digital Acceptable Use Policy that the contractor has to accept. Scroll to the bottom of the page and click **Submit**.
 
-> By hitting the submit button SecZetta logs when the contractor accepted this policy and what policy was accepted. These details will be shown to approvers as the onboarding process progresses
+> By hitting the submit button SecZetta logs when the contractor accepted this policy and what policy was accepted. These details will be shown to approvers as the onboarding process progresses.
 
 #### Identify Proofing (if applicable)
 
