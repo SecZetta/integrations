@@ -54,7 +54,21 @@ The steps to configure the synchronzation service are explained in detail in the
 
 ### Connections
 
-The Sync Service `Connection` to SecZetta uses an integration handler to grab all of the profiles in SecZetta's repository. The diagram below shows a how this communication occurs
+The Sync Service `Connection` to SecZetta is just through a csv file with all the profile data in it. This csv is actually created during the first Sync Workflow step via and `integration` handler
+
+> Note: You will need to run the integration handler script manually the first time so that the file gets created before you are able to build this connection
+
+The other Connection you will need to build is the one to Active Roles itself. This is a standard connector that the Sync Service provides.
+
+### Mappings
+
+Mappings provide the Sync Service a way to link SecZetta profiles to Active Role accounts. Typically this is done using some sort of UID. the profile `id` could likely be used as this will never change for the lifetime of non-employee.
+
+### Sync Workflow 
+
+This is where all the action happens. This Sync Workflow can be scheduled to run however often it needs to in order to keep the accounts up to date.
+
+The important part of the Sync Workflow is to ensure that the first step in the workflow is to run the `Integration Handler` that grabs all of the profiles in SecZetta's repository. The diagram below shows a how this communication occurs
 
 ![Connection Overview](img/active-roles-seczetta-connection.png)
 
@@ -65,4 +79,3 @@ The Sync Service `Connection` to SecZetta uses an integration handler to grab al
 5. Active Roles sync service reads this CSV to begin the syncronization
 
 > An example integration handler script is in the repo above called `example-integration-handler.ps1`. 
-
