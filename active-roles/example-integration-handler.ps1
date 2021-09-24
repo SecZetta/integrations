@@ -1,4 +1,4 @@
-$file = "C:\SecZettaProfiles.csv"
+$file = "SecZettaProfiles.csv"
 $api_key = "c6bda210f92142188032f5a7b59ed0f6"
 $url = "https://idproofdemo.nonemployee.com/api"
 $limit = 100
@@ -19,6 +19,7 @@ while( $finished -ne $true ) {
 
     Write-host "Limit: " $limit " Offset: " $offset
     $request_url = "$url/profiles?profile_type_id=efa0e8e1-a193-4596-9081-ccf4ea9d0c07&query[limit]=$limit&query[offset]=$offset" #Alumni 40
+    Write-host "$($request_url)"
     $params = @{
         Uri         = $request_url
         Headers      = $header
