@@ -21,7 +21,7 @@ All of these functions are brought together through a network of pre-integrated 
 
 #### EXAMPLE: 
 
-INSERT ARCHITECTURE IMAGE
+![Architecture](img/okta-sz-architecture.png "This is a sample image.")
 
 - Step 1: Push to Okta to create account
 - Step 2: Okta responds back with a 200 RESPONSE
@@ -73,7 +73,7 @@ In order to generate an Okta API Key follow these steps:
 
 #### Okta Admin Dashboard
 
-INSERT OKTA TOKEN IMAGE
+![Architecture](img/okta-api-token.png "This is a sample image.")
 
 With the token created, you can begin using it, supplying it in the `Authorization Header` of calls to Okta API endpoints. See Create a user by API for an easy way to explore making calls to Okta using the Okta APIs.
 
@@ -103,7 +103,7 @@ In order to generate the SecZetta API Workflow follow these steps:
     
 9. Add the JSON body - Example Below:
    
-   ISERT SZ JSON PICTURE
+   ![JSON](img/okta-seczetta-workflow.png "This is a sample image.")
    
 10. Add the Following Response Data Mappings
 
@@ -115,11 +115,12 @@ In order to generate the SecZetta API Workflow follow these steps:
 
 The key data points that are synced to SecZetta are `Okta User ID` and `Okta Provisioning Status`.
 
-INSERT OKTA DETAILS - SZ 
+![Architecture](img/okta-integration-details.png "This is a sample image.") 
 
 
 ##### Example JSON Response
 
+```json
 {
     "id": "00u12w2w3ycGIJ1MK0h8",
     "status": "PROVISIONED",
@@ -146,6 +147,8 @@ INSERT OKTA DETAILS - SZ
             "type": "OKTA",
             "name": "OKTA"
         }
-    },
+    }
+}
+```
 
 > The API will respond back with a `200 OK` if the request was successful
