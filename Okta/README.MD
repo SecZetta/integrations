@@ -111,9 +111,11 @@ In order to generate the SecZetta API Workflow follow these steps:
 
 8. Add the below **Headers**
     
-    - Content-Type = application/json
-    - Authorization = SSWS (YOUR OKTA API TOKEN)
-    - Accept = application/json
+   | HEADER | VALUE |
+   |--------|-------|
+   | Content-Type | application/json |
+   | Authorization | SSWS (YOUR OKTA API TOKEN) |
+   | Accept | application/json |
     
 9. Add the JSON body - Example Below:
    
@@ -121,9 +123,11 @@ In order to generate the SecZetta API Workflow follow these steps:
    
 10. Add the Following Response Data Mappings
 
-    1. Path = Status   Attribute = api_status_code (api_status_code
-    2. Path = id       Attribute = api_response_1 (api_response_1)
-    3. Path = Status   Attribute = api_response_1 (api_response_2)
+  | PATH | ATTRIBUTE |
+  |------|-----------|
+  | Status | api_status_code (api_status_code) |
+  | id | api_response_1 (api_response_1) |
+  | Status | api_response_1 (api_response_2) |
     
 11. Click **Save**
 
