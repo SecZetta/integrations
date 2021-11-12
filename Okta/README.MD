@@ -3,6 +3,21 @@
 
 ## Contents
 
+- [SecZetta / Okta Integration](#seczetta---okta-integration)
+  * [Contents](#contents)
+  * [Overview](#overview)
+    + [Architecture Overview](#architecture-overview)
+      - [EXAMPLE:](#example-)
+  * [Supported Features](#supported-features)
+  * [Prerequisites](#prerequisites)
+    + [Okta  API](#okta--api)
+      - [Authentication](#authentication)
+    + [Examples](#examples)
+    + [Generating a Okta API Key](#generating-a-okta-api-key)
+      - [Okta Admin Dashboard](#okta-admin-dashboard)
+    + [Generating the SecZetta Rest API Workflow](#generating-the-seczetta-rest-api-workflow)
+        * [Example JSON Response](#example-json-response)
+
 <small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 ## Overview
