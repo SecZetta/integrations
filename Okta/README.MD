@@ -7,7 +7,6 @@
   * [Contents](#contents)
   * [Overview](#overview)
     + [Architecture Overview](#architecture-overview)
-      - [EXAMPLE:](#example-)
   * [Supported Features](#supported-features)
   * [Prerequisites](#prerequisites)
     + [Okta  API](#okta--api)
