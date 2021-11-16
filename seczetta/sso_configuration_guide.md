@@ -113,8 +113,6 @@ A SAML trace captures the SAML assertion (response) returned to the SecZetta app
 </samlp:Response>
 ```
 
-![alt-img](img/sso/sso-saml-assertion.png)
-
 #### Install a tracer
 
 A trace can only be performed locally, therefore the Administrator asked to test connectivity will need a plugin installed. For Chrome, add an extension like [SAML-tracer](https://chrome.google.com/webstore/detail/saml-tracer/mpdajninpobndbfcldcmbpnnbhibjmch?hl=en).  
