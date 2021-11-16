@@ -1,4 +1,4 @@
-# Liquid Reference Guide
+# Liquid Reference Guide v2
 
 ## Introduction
 
