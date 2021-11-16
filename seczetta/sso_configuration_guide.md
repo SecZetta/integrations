@@ -49,6 +49,70 @@ If a user role has not already been created for Administrators, make one and ass
 
 A SAML trace captures the SAML assertion (response) returned to the SecZetta application by the Identity Provider. Ensure a `<NameID>` tag is present. Also check the attributes sent in the `<AttributeStatement>` tag. See below for examples
 
+```xml
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="_8e8dc5f69a98cc4c1ff3427e5ce34606fd672f91e6" Version="2.0" IssueInstant="2014-07-17T01:01:48Z">
+  <saml:Issuer>http://idp.example.com/metadata.php</saml:Issuer>
+  <samlp:Status>
+    <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+  </samlp:Status>
+  <saml:Assertion xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" ID="_d71a3a8e9fcc45c9e9d248ef7049393fc8f04e5f75" Version="2.0" IssueInstant="2014-07-17T01:01:48Z">
+    <saml:Issuer>http://idp.example.com/metadata.php</saml:Issuer>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <Reference URI="#_c7cb47c9-d4dc-4535-b7d9-7e0cb50c1d64">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                    <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+                        <InclusiveNamespaces xmlns="http://www.w3.org/2001/10/xml-exc-c14n#" PrefixList="#default samlp saml ds xs xsi"/>
+                    </Transform>
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                <DigestValue>i17i0FeuWOQE1RQd2DgJhN2Q8A4=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>KqzSp8jCK7LEAg6wqLAGYGDqwB1B4O6LRpqYcY1kH8yIDOyKFt9pu2pA3glxXN516dtg5VrmrJLxxE9G7zDxZbgyUOuHU1sg+WcNDqV0l3zIdCYZViPRmwpJSwQ5ljrI+GE22zPi8go0GCpvvSetc2p0b6BaApJp9Fw9wbY1tUU=<SignatureValue>
+        <KeyInfo>
+            <X509Data>
+            <X509Certificate>MIIBnjCCAQcCBEbTmdAwDQYJKoZIhvcNAQEEBQAwFjEUMBIGA1UEAxMLd3d3LmlkcC5jb20wHhcNMDcwODI4MDM0MzEyWhcNMTcwODI1MDM0MzEyWjAWMRQwEgYDVQQDEwt3d3cuaWRwLmNvbTCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAo31q3mJZayXfZkLDuLcnanc/KG+RDFW+OlYDP+RubvWnt8X5jtiUTcp8IQ46TNEUFskmsonUb5AnG+zOCcawb2dJr8kBtCNhfi/TufZGBQNjuAxNMi34yIgRdGinaznHgclrAIIZTyKerQqYjPL1xRDsFGpzqGGi/2opzN8nV5kCAwEAATANBgkqhkiG9w0BAQQFAAOBgQBmNwFN+98aybuQKFJFr69s9BvBVYtk+Hsx3gx0g4e5sLTlkcSU03XZ8AOet0my4RvUspaDRzDrv+gEgg7gDP/rsVCSs3dkuYuUvuWbiiTq/Hj4EKuKZa8nIerZ3Oz4Xa1/bK88eT7RVsv5bMOxgJbSEvTidTvOpV0G13duIqyrCw==</X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+    <saml:Subject>
+      <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailaddress">John.Doe@email.com</saml:NameID>
+      <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <saml:SubjectConfirmationData NotOnOrAfter="2024-01-18T06:21:48Z" Recipient="http://sp.example.com/demo1/index.php?acs" InResponseTo="ONELOGIN_4fee3b046395c4e751011e97f8900b5273d56685"/>
+      </saml:SubjectConfirmation>
+    </saml:Subject>
+    <saml:AttributeStatement>
+      <saml:Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">
+        <saml:AttributeValue>9a6ffd49-5300-42b2-89d1-cd7df95e003f</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">
+        <saml:AttributeValue>9a6ffd49-5300-42b2-89d1-cd7df95e003f</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="http://schemas.microsoft.com/identity/claims/role">
+        <saml:AttributeValue>SSO Users</saml:AttributeValue>
+        <saml:AttributeValue>SecZetta Admins</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="http://schemas.microsoft.com/identity/claims/identityprovider">
+        <saml:AttributeValue>https://sts.windows.net/my-demo-id</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="http://schemas.microsoft.com/identity/claims/authnmethodreferences">
+        <saml:AttributeValue>http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/windows</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="http://schemas.microsoft.com/identity/claims/emailaddress">
+        <saml:AttributeValue>John.Doe@example.com</saml:AttributeValue>
+      </saml:Attribute>
+      <saml:Attribute Name="http://schemas.microsoft.com/identity/claims/Display Name">
+        <saml:AttributeValue>John Doe</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
+  </saml:Assertion>
+</samlp:Response>
+```
+
 ![alt-img](img/sso/sso-saml-assertion.png)
 
 #### Install a tracer
