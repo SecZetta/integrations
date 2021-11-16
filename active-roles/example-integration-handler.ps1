@@ -1,6 +1,7 @@
 $file = "SecZettaProfiles.csv"
-$api_key = "c6bda210f92142188032f5a7b59ed0f6"
-$url = "https://idproofdemo.nonemployee.com/api"
+$api_key = "7b2c3db30dbf4d0e89b8df454b0657cc"
+$url = "https://franchisedemo.mynonemployee.com/api"
+$profile_type_id = "11116b36-a0a2-4576-989e-7fddc3c9f63e"
 $limit = 100
 $offset = 0
 $show_performance_metrics = $false
@@ -18,7 +19,7 @@ $header = @{
 while( $finished -ne $true ) {
 
     Write-host "Limit: " $limit " Offset: " $offset
-    $request_url = "$url/profiles?profile_type_id=efa0e8e1-a193-4596-9081-ccf4ea9d0c07&query[limit]=$limit&query[offset]=$offset" #Alumni 40
+    $request_url = "$url/profiles?profile_type_id=$profile_type_id&query[limit]=$limit&query[offset]=$offset" #Alumni 40
     Write-host "$($request_url)"
     $params = @{
         Uri         = $request_url
@@ -37,11 +38,19 @@ while( $finished -ne $true ) {
         $people = $request.profiles
         
         $loop_start = (Get-Date)
+        $person = @{
+            job_title="test"
+
+        }
+        $all_profiles += $person 
+        write-host "TEST"
+        Write-host $all_profiles
         foreach($person in $people) {
             $person.Attributes | Add-Member -MemberType NoteProperty -Name Status -Value $person.Status
             $person.Attributes | Add-Member -MemberType NoteProperty -Name Name -Value $person.Name
             $person.Attributes | Add-Member -MemberType NoteProperty -Name UID -Value $person.uid
             $all_profiles += $person
+            Write-host $person.attributes
         }
         $loop_end = (Get-Date)
         If($show_performance_metrics) { Write-Host "Loop Execution Time: $($loop_end - $loop_start)" }
@@ -53,6 +62,8 @@ while( $finished -ne $true ) {
 
         $status_code = $_.Exception.Response.StatusCode.value__
         $error_msg = $_.ErrorDetails.Message
+
+        write-host $status_code
 
         if( $status_code -eq 400 ) {
             Write-Host "Got All Profiles. Finishing up."
@@ -83,7 +94,8 @@ while( $finished -ne $true ) {
 
 Write-Host "Got " $all_profiles.length "Profiles"
 
-$all_profiles.Attributes | Export-CSV $file -NoTypeInformation
+write-host @all_profiles
+$all_profiles.Attributes | Export-CSV $file
 
 $end_ms = (Get-Date)
 If($show_performance_metrics) { Write-Host "Execution Time: $($end_ms - $start_ms)" }

@@ -1,0 +1,8 @@
+"role","person_franchise","last_name","profile_id","email","first_name","Status","Name","UID"
+"Franchise Owner","02000 SERVPRO of Beverly Hills / Westwood","Neal","SZ010002","Kevin.Neal@acme.com","Kevin","Active","Kevin Neal","41a248a480b5491697f8f44c9e8a3cbc"
+"Global Admin",,"Mason","SZ010001","Linda.Mason@acme.com","Linda","Active","Linda Mason","a04298d63d25478ab0408be757028777"
+"Franchise Manager","01000 SERVPRO of Cheatham, Robertson and Dickson Counties","Ruiz","SZ010004","Matthew.Ruiz@acme.com","Matthew","Active","Matthew Ruiz","11880959ec16459ba7448bf974eb1b10"
+"Franchise Employee","01000 SERVPRO of Cheatham, Robertson and Dickson Counties","Walker","SZ010006","Ethan.Walker@acme.com","Ethan","Active","Ethan Walker","4751e25fe6214ea991f612b186ee9abd"
+"Franchise Owner","01000 SERVPRO of Cheatham, Robertson and Dickson Counties","Perkins","SZ010003","Taylor.Perkins@acme.com","Taylor","Active","Taylor Perkins","07cea6ba37cd4525a78786c22d3a6953"
+"Franchise Employee","01000 SERVPRO of Cheatham, Robertson and Dickson Counties","Lawrence",,"Bernice.Lawrence@acme.com","Bernice","Active","Bernice Lawrence","8562842d218a49ec97e16b6ace0a074f"
+"Franchise Manager","02000 SERVPRO of Beverly Hills / Westwood","Parker","SZ010005","Jason.Parker@acme.com","Jason","Active","Jason Parker","9bb524e792b74942bcf4d6bc2b5e0a9f"
