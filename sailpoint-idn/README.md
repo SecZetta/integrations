@@ -168,10 +168,11 @@ Configuring the REST API Action
 
 Within SecZetta, Create and Update workflows will make changes to the SecZetta profiles. These changes will likely result in an create/update required on the IdN side as well. This is where the REST API Action will come into play. Open whichever SecZetta workflow that needs to create an Identity cube and add a REST API Action. The following table shows the parameters required to make the API Action work correctly
 
-Parameter	Description
-Basic Settings  Description	Create or Update IDN Account
-AuthN  Auth type	OAuth2
-AuthN  Access token URL	https://<your-idn-tenant>.api.identitynow.com/oauth/token
+Parameter | Description
+--------- | --------------
+Basic Settings &#8594; Description| 	Create or Update IDN Account
+AuthN &#8594; Auth type	| OAuth2
+AuthN &#8594; Access token URL | https://`<your-idn-tenant>`.api.identitynow.com/oauth/token
 
 *Notice the api in the URL. That is required
 AuthN  Client Id	Client_id for the OAuth Client created above
