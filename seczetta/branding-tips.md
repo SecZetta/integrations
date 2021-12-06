@@ -86,18 +86,5 @@ a[href="/neprofile_dashboard/filter?filter=profiles&p_type=743f55e6-3bfc-4127-88
 }
 ```
 
-<p style="margin-bottom:10px;">Here is the current list of Property Access Admins:</p>
-
-<ul style="list-style-type:circle;padding:0px 0px 20px 30px;">
-{% for person in attribute.property_access_admins %}
-{% if person.non_associate_property %}
-<li style="margin:5px 0px 5px 0px;">{{person.name}} - {{person.non_associate_property}}</li> 
-{% else %}
-<li style="margin:5px 0px 5px 0px;">{{person.name}} - Above Property</li> 
-{% endif%}
-{% endfor%}
-</ul>
-
-
 ![Remove Profile Tab - before](img/branding-tips-removeprofiletab-before.png)
 ![Remove Profile Tab - after](img/branding-tips-removeprofiletab-after.png)
