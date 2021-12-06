@@ -1,0 +1,6 @@
+
+/* Hide non_associate_above_property tab on Non Associates profile*/
+a[href*="f099a530-5a59-458a-aa18-6ea9a091241c"] {
+    display: none !important;
+}
+

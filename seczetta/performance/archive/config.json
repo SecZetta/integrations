@@ -1,0 +1,52 @@
+{
+    "config": {
+        "environments": [
+            { 
+                "name":"taylordemo",
+                "url":"https://taylordemo.mynonemployee.com/api",
+                "apiKey":"898a63da4aff4e95bb6591ac10bad7f6"
+            },
+            { 
+                "name":"cassiedemo",
+                "url":"https://cassiedemo.mynonemployee.com/api",
+                "apiKey":"3e327766458a46f899a035dee3554c2d"
+            },
+            { 
+                "name":"jendemo",
+                "url":"https://jendemo.mynonemployee.com/api",
+                "apiKey":"1a9d44fa1f59497ca0e51714d65212ca"
+            },
+            { 
+                "name":"idproofdemo",
+                "url":"https://idproofdemo.nonemployee.com/api",
+                "apiKey":"c6bda210f92142188032f5a7b59ed0f6"
+            },
+            {
+                "name":"seczetta",
+                "url":"https://seczetta.nonemployee.com/api",
+                "apiKey":"54248d66a9c742a7958045fcbd816266"
+            },
+            {
+                "name":"idprooftest",
+                "url":"https://idprooftest.nonemployee.com/api",
+                "apiKey":"fc8f766ab96645b48cb02a03e0966028"
+            },
+            {
+                "name":"strata",
+                "url":"https://strata.mynonemployee.com/api",
+                "apiKey":"abf91a7a4e3d444b8d47b43b4efb7eb3"
+            },
+            {
+                "name":"ey",
+                "url":"https://ey.mynonemployee.com/api",
+                "apiKey":"8363bdf1451a4bf3b5f504dabe956e6b"
+            }
+        ],
+        "objects": [
+            "profiles",
+            "users",
+            "attributes",
+            "profileTypes"
+        ]
+    }
+}

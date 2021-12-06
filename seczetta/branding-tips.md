@@ -74,7 +74,7 @@ Here is another example that you can just paste directly into your HTML form fie
 ### Result
 Here is the result. Nothing fancy, but better than if you just did the standard HTML for `<ul>` and `<li>`
 
-![CBulleted List](img/cbranding-tips-bulletedlist.png)
+![CBulleted List](img/branding-tips-bulletedlist.png)
 
 ## Hide Profile Tab on dashboard
 
