@@ -36,3 +36,34 @@ a[data-id="d2ef758b-026e-446c-9790-f326919f2eaa"] > li{
 <p class="margin-bottom-small pb_form_heading">Form Title</p>
 <hr>
 ```
+
+
+## Format Bullets so they look decent
+
+For whatever reason, our HTML form element isnt really full HTML. It limits what you can do, and also strips out specific HTML elements. Here is a good starting point to get something that looks decent
+
+```html
+<p style="margin-bottom:10px;">Here is the current list of People:</p>
+
+<ul style="list-style-type:circle;padding:0px 0px 20px 30px;">
+{% for person in attribute.company_people %}
+{% if person.hair_color == "blue" %}
+<li style="margin:5px 0px 5px 0px;">{{person.name}} - has blue hair</li> 
+{% else %}
+<li style="margin:5px 0px 5px 0px;">{{person.name}} - doesn't have blue hair</li> 
+{% endif%}
+{% endfor%}
+</ul>
+```
+
+Notice the margin  on the `ul` element as well as the `li` elements.
+
+## Hide Profile Tab on dashboard
+
+The following CSS will remove the profile tab with the given href. Notice this example will hide a profile type with id = `743f55e6-3bfc-4127-88bb-ddcdee287397`. So you can likely just copy the below CSS and replace the ID with the ID of the profile type you want to hide.
+
+```css
+a[href="/neprofile_dashboard/filter?filter=profiles&p_type=743f55e6-3bfc-4127-88bb-ddcdee287397"] {
+  display: none !important
+}
+```
