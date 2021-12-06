@@ -58,6 +58,24 @@ For whatever reason, our HTML form element isnt really full HTML. It limits what
 
 Notice the margin  on the `ul` element as well as the `li` elements.
 
+Here is another example that you can just paste directly into your HTML form field. Got rid of the liquid fors and ifs
+```html
+<p style="margin-bottom:10px;">Here is the current list of People:</p>
+
+<ul style="list-style-type:circle;padding:0px 0px 20px 30px;">
+    <li style="margin:5px 0px 5px 0px;">Taylor has blue hair</li> 
+    <li style="margin:5px 0px 5px 0px;">Cassie doesnt have blue hair</li> 
+    <li style="margin:5px 0px 5px 0px;">Jen doesnt have blue hair</li> 
+    <li style="margin:5px 0px 5px 0px;">Brock doesnt have blue hair</li> 
+    <li style="margin:5px 0px 5px 0px;">Paul doesnt have blue hair</li> 
+</ul>
+```
+
+### Result
+Here is the result. Nothing fancy, but better than if you just did the standard HTML for `<ul>` and `<li>`
+
+![CBulleted List](img/cbranding-tips-bulletedlist.png)
+
 ## Hide Profile Tab on dashboard
 
 The following CSS will remove the profile tab with the given href. Notice this example will hide a profile type with id = `743f55e6-3bfc-4127-88bb-ddcdee287397`. So you can likely just copy the below CSS and replace the ID with the ID of the profile type you want to hide.
@@ -67,3 +85,15 @@ a[href="/neprofile_dashboard/filter?filter=profiles&p_type=743f55e6-3bfc-4127-88
   display: none !important
 }
 ```
+
+<p style="margin-bottom:10px;">Here is the current list of Property Access Admins:</p>
+
+<ul style="list-style-type:circle;padding:0px 0px 20px 30px;">
+{% for person in attribute.property_access_admins %}
+{% if person.non_associate_property %}
+<li style="margin:5px 0px 5px 0px;">{{person.name}} - {{person.non_associate_property}}</li> 
+{% else %}
+<li style="margin:5px 0px 5px 0px;">{{person.name}} - Above Property</li> 
+{% endif%}
+{% endfor%}
+</ul>
