@@ -97,3 +97,7 @@ a[href="/neprofile_dashboard/filter?filter=profiles&p_type=743f55e6-3bfc-4127-88
 {% endif%}
 {% endfor%}
 </ul>
+
+
+![Remove Profile Tab - before](img/branding-tips-removeprofiletab-before.png)
+![Remove Profile Tab - after](img/branding-tips-removeprofiletab-after.png)
