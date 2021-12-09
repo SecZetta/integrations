@@ -1,10 +1,6 @@
 # SSO Configuration Guide
 
-## Contents
-
-### Setup
-
-#### Configure SecZetta SSO
+## Configure SecZetta SSO
 
 1. On the `Admin` side of SecZetta: Navigate to System &#8594; Authentication
 2. Click the `SSO` tab at the top of the screen
@@ -25,11 +21,11 @@ GROUPS ATTRIBUTE  | groups         |      groups    | groups
 ![alt text](img/sso/sso-sp-metadata.png)
 
 
-#### Configure the Identity Provider
+### Configure the Identity Provider
 
 At this point, the Identity Provider (IDP) needs to be configured. Typically our customers are the ones configuring their IDP, so the metadata file downloaded above should be given to the appropriate team on the customer side to allow this configuration to occur. When finished, the customer will return a different metadata file that needs to be imported into SecZetta. See below once you have a new metadata file frome the IDP
 
-#### Import the Identity Provider's Metadata File
+### Import the Identity Provider's Metadata File
 
 1. Save this new metadata file locally before you begin. Then proceed using the following steps
 1. On the `Admin` side of SecZetta: Navigate to System &#8594; Authentication
@@ -37,15 +33,21 @@ At this point, the Identity Provider (IDP) needs to be configured. Typically our
 1. In the `Identity Provider` section heading. At the very bottom of the page you should see a field labeled `Import File` with a `+` next to the text field. Click that button and browse for your metadata file you saved in step 1.
 1. Once imported, the blank fields will show the values contained in the file
 
-#### Confirmation
+### Confirmation
 
 If a user role has not already been created for Administrators, make one and assign it a Directory group to which an Administrator belongs. Ask the client’s administrator to log in using SSO. If successful, you should see a new user with valid name, email, login, and role(s) as shown in the image below. 
 
 ![alt text](img/sso/sso-user-created.png)
 
-### Troubleshooting
+## Troubleshooting
 
-#### SAML Assertion
+### Portal Assertion Consumer Service (ACS) URL
+
+When configuring a portal for SSO, you will need the ACS URL. For portals that should be in the format of `https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=<portal-name>` (Thanks Jon)
+
+> Tags: Portal ACS Collboration
+
+### SAML Assertion
 
 A SAML trace captures the SAML assertion (response) returned to the SecZetta application by the Identity Provider. Ensure a `<NameID>` tag is present. Also check the attributes sent in the `<AttributeStatement>` tag. See below for examples
 
@@ -123,11 +125,41 @@ Once installed, open the trace window by clicking the extension’s icon  Ask th
 
 ![alt-img](img/sso/sso-saml-tracer.png)
 
-#### Common Problems
+### Invalid SSO Response
 
-Below is a list of some common problems you may see when configuring SSO in SecZetta
+Whenever SSO isn't working you will likely run into an generic error that is shown via the SecZetta UI: `Invalid SSO Response`. This could be happening for a variety of reasons. A few of these reasons are detailed below. Datadog access is required when running into this error because the applicaiton itself is logging specific errors to Datadog. These errors are just not exposed via the UI.
 
-1. Atribute Names
+#### Invalid Signature
+
+When you get access to Datadog you could see something like this:
+
+```json
+{"env":"production","version":null,"customer_name":"partnermultitenant","service":"portal","ddsource":["ruby"],"tenant":"your-tennant-here","dd":{"env":"production","version":null,"trace_id":"4117631862614940134","span_id":"2292962658149505757","service":"portal"},"message":"Invalid SAML response: [\"Invalid Signature on SAML Response\"]"}
+```
+
+Notice the message `Invalid SAML response: [\"Invalid Signature on SAML Response\"]"`. This means you need to switch your `Fingerprint Algorithm` in your SSO settings in `system->authentication` or `collaboration->portals->your-portal->sso`. Most of the time this will be set to `RSA-SHA1`
+
+#### Invalid Audience
+
+In Datadog you may see an error like this:
+
+```json
+"env":"production","version":null,"trace_id":"4496444404043876020","span_id":"721836662736903337","service":"portal"},"message":"Invalid SAML response: [\"Invalid Audience. The audience https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=contractors, did not match the expected audience SecZetta\"]"}
+```
+
+This means that your `SP Entity ID` is likely wrong. Change that to match and you should be good to go. Also keep in mind this error was occuring whenever SSO Configuraiton was being setup on the Portal (Collaboration) side.
+
+#### Invalid SAML Response
+
+Datadog could give you this error as well:
+
+```json 
+{"env":"production","version":null,"customer_name":"partnermultitenant","service":"portal","ddsource":["ruby"],"tenant":"mytenant","dd":{"env":"production","version":null,"trace_id":"2656124413474208142","span_id":"2656607485041634154","service":"portal"},"message":"Invalid SAML response: [\"The response was received at https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=contractors instead of https://mytenant.mynonemployee.com/saml/consume?portal_url=contractors\"]"}
+```
+
+This likely means that your domain is configured incorrectly in the SSO side. In the case above the Domain was pointing to the Lifecycle URL instead of the Collaboration URL
+
+### Attribute Names don't match
 
 Some identity providers pass full schema names instead of short strings, like Email was in the previous example. 
 
@@ -137,8 +169,8 @@ Some identity providers pass full schema names instead of short strings, like Em
     </saml:Attribute>
 ```
 
-In this event, the SecZetta SSO configuration can be changed to map the Email Attribute to http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress. This can be done for any of the attributes passed.
+In this event, the SecZetta SSO configuration can be changed to map the Email Attribute to `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`. This can be done for any of the attributes passed.
 
-2. Fingerprint Algorithm
+### Fingerprint Algorithm
 
 Always check to make sure the fingerprint algorithm matches from SecZetta to the IDP. For example: if the Identity Provider is using RSA-SHA256, make sure that is selected in the Fingerprint Algorithm drop down field.
