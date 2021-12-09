@@ -158,7 +158,14 @@ Notice the message `Invalid SAML response: [\"Invalid Signature on SAML Response
 In Datadog you may see an error like this:
 
 ```json
-"env":"production","version":null,"trace_id":"4496444404043876020","span_id":"721836662736903337","service":"portal"},"message":"Invalid SAML response: [\"Invalid Audience. The audience https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=contractors, did not match the expected audience SecZetta\"]"}
+{
+  "env":"production",
+  "version":"null",
+  "trace_id":"4496444404043876020",
+  "span_id":"721836662736903337",
+  "service":"portal",
+  "message":"Invalid SAML response: [\"Invalid Audience. The audience https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=contractors, did not match the expected audience SecZetta\"]"
+}
 ```
 
 This means that your `SP Entity ID` is likely wrong. Change that to match and you should be good to go. Also keep in mind this error was occuring whenever SSO Configuraiton was being setup on the Portal (Collaboration) side.
@@ -167,8 +174,22 @@ This means that your `SP Entity ID` is likely wrong. Change that to match and yo
 
 Datadog could give you this error as well:
 
-```json 
-{"env":"production","version":null,"customer_name":"partnermultitenant","service":"portal","ddsource":["ruby"],"tenant":"mytenant","dd":{"env":"production","version":null,"trace_id":"2656124413474208142","span_id":"2656607485041634154","service":"portal"},"message":"Invalid SAML response: [\"The response was received at https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=contractors instead of https://mytenant.mynonemployee.com/saml/consume?portal_url=contractors\"]"}
+```json
+{
+  "env":"production",
+  "version":"null",
+  "customer_name":"partnermultitenant",
+  "service":"portal",
+  "ddsource":["ruby"],
+  "tenant":"mytenant",
+  "dd":{
+    "env":"production",
+    "version":"null",
+    "trace_id":"2656124413474208142",
+    "span_id":"2656607485041634154",
+    "service":"portal"
+  },
+  "message":"Invalid SAML response: [\"The response was received at https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=contractors instead of https://mytenant.mynonemployee.com/saml/consume?portal_url=contractors\"]"}
 ```
 
 This likely means that your domain is configured incorrectly in the SSO side. In the case above the Domain was pointing to the Lifecycle URL instead of the Collaboration URL
