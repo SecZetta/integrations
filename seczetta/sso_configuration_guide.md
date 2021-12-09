@@ -134,7 +134,21 @@ Whenever SSO isn't working you will likely run into an generic error that is sho
 When you get access to Datadog you could see something like this:
 
 ```json
-{"env":"production","version":null,"customer_name":"partnermultitenant","service":"portal","ddsource":["ruby"],"tenant":"your-tennant-here","dd":{"env":"production","version":null,"trace_id":"4117631862614940134","span_id":"2292962658149505757","service":"portal"},"message":"Invalid SAML response: [\"Invalid Signature on SAML Response\"]"}
+{
+  "env":"production",
+  "version":"null",
+  "customer_name":"partnermultitenant",
+  "service":"portal",
+  "ddsource":["ruby"],
+  "tenant":"your-tennant-here",
+  "dd":{
+    "env":"production",
+    "version":"null",
+    "trace_id":"4117631862614940134",
+    "span_id":"2292962658149505757",
+    "service":"portal"
+  },
+  "message":"Invalid SAML response: [\"Invalid Signature on SAML Response\"]"}
 ```
 
 Notice the message `Invalid SAML response: [\"Invalid Signature on SAML Response\"]"`. This means you need to switch your `Fingerprint Algorithm` in your SSO settings in `system->authentication` or `collaboration->portals->your-portal->sso`. Most of the time this will be set to `RSA-SHA1`
