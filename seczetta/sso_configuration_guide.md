@@ -41,6 +41,19 @@ If a user role has not already been created for Administrators, make one and ass
 
 ## Troubleshooting
 
+### Portal SSO Configuration
+
+Follow the standard steps above to start the SAML configuration. Once you've uploaded the SP's `metadata.xml` file you need to start configuring a few things that are different on the portal side. The table belows shows a working SAML Configuration
+
+| Attribute | Value |
+|-|-|
+|Domain| `https://mytenant.mynonemployeeportal.com`
+|SP Entity ID| `https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=<portal_name>`
+
+Also make sure you update the ACS Url on the SP side to `https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=<portal_name>`
+
+
+
 ### Portal Assertion Consumer Service (ACS) URL
 
 When configuring a portal for SSO, you will need the ACS URL. For portals that should be in the format of `https://mytenant.mynonemployeeportal.com/saml/consume?portal_url=<portal-name>` (Thanks Jon)
