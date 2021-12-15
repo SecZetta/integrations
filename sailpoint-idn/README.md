@@ -39,8 +39,8 @@ The SecZetta / IdentityNow (IDN) integration can be configured in a few differen
 ## Prerequisites
 - Data Aggregation:
   - Administrative access in SecZetta and IDN
-  - A SecZetta API token ( Admin  system  api)
-  - The Profile Type ID for the profiles that are be- g aggregated
+  - A SecZetta API token ( Admin -> system -> api)
+  - The Profile Type ID for the profiles that are be aggregated
 - API Integration
   - Administrative Access in SecZetta and IDN
   - IDN OAuth 2.0 Client with client_id and client_secret
@@ -49,11 +49,11 @@ The SecZetta / IdentityNow (IDN) integration can be configured in a few differen
 
 ### Data Aggregation
 
-![SZ Initiated](img/sailpoint-idn-sz-initiated-arch.png)
+![IDN Initiated](img/sailpoint-idn-iam-initiated-arch.png)
 
 ### API Integration
 
-![IDN Initiated](img/sailpoint-idn-iam-initiated-arch.png)
+![SZ Initiated](img/sailpoint-idn-sz-initiated-arch.png)
 
 ## Configuration Parameters
 
