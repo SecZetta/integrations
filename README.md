@@ -1,6 +1,6 @@
 # SecZetta Integrations 
 
-## Purpose1
+## Purpose
 
 The purpose of this repository is to fully document what it takes to integrate with SecZetta's partner network.
 
