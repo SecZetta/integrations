@@ -4,6 +4,8 @@
 
 SecZetta allows you to upload a custom.css file that gets added to every page that will load within the tool. This document talks about some useful tips and tricks to utilize this custom css to its fullest
 
+## Color changes 
+
 ## Change a workflow button color
 
 The buttons that execute a workflow look like this in HTML form

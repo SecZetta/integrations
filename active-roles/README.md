@@ -4,9 +4,9 @@
 
 ## Overview
 
-Oftentimes customers have the need to do some very basic automated account creation for their non-employees. SecZetta has partnered with Quest's Active Roles to do just that. This is by no means a direct replacement for a more robust IAM system as there is a very specific set of use cases this integration looks to solve. This integration essentially allows customers to 'sync' profiles to Active Directory (thereby automatically creating accounts for new profiles and removing accounts for terminated profiles). Active Roles is laser focused on the Microsoft directory stack. So on-prem Active Directory and Azure Active Directory are going to be the systems that this integration is designed to work with.
+Oftentimes customers have the need to do some very basic automated account creation for their non-employees. SecZetta has partnered with OneIdentity's Active Roles product to do just that. This is by no means a direct replacement for a more robust IAM system as there is a very specific set of use cases this integration looks to solve. This integration essentially allows customers to 'sync' profiles to Active Directory (thereby automatically creating accounts for new profiles and removing accounts for terminated profiles). Active Roles is laser focused on the Microsoft directory stack. So on-prem Active Directory and Azure Active Directory are going to be the systems that this integration is designed to work with.
 
-According to the Quest Active Roles website, Active Roles allows customers to 'extend and enhance native capabilities of Active Directory and Azure Active Directory with One Identity Active Roles. Accelerate account, group and directory management and eliminate manual processes to increase efficiency and security. Focus on other IT tasks knowing your critical data, user permissions and privileged access are under control.'
+Active Roles allows customers to 'extend and enhance native capabilities of Active Directory and Azure Active Directory with One Identity Active Roles. Accelerate account, group and directory management and eliminate manual processes to increase efficiency and security. Focus on other IT tasks knowing your critical data, user permissions and privileged access are under control.'
 
 ### Architecture Overview
 
