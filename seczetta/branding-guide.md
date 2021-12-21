@@ -1,10 +1,68 @@
-# Branding Tips
+# Branding Best Practices
 
 ## Introduction
 
 SecZetta allows you to upload a custom.css file that gets added to every page that will load within the tool. This document talks about some useful tips and tricks to utilize this custom css to its fullest
 
-## Color changes 
+## Large Scale Dashboard Changes
+
+There is an attached sample CSS file ([Linked Here](custom-dashboard.css)) that shows the specific selectors to be able to brand the product in its entirety. This includes Dashboard background colors, button colors, icon colors, table colors etc. The documentation below describes what classes tie to what HTML elements and how to best brand the product to meet your customer's needs
+
+> As the product gets updated some of these selectors may become invalid. The SecZetta services team try to update and maintain this documentation to the best of its abilities
+
+### Dashboard
+
+Below is an image that describes the different [CSS Selector's](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors) that can be used to change the dashboard color(s). This is really just focused on the major elements like backgroud colors. The next section will talk about the buttons and tabs.
+
+![background color](img/branding/dashboard_background_colors.png)
+
+The `body` tag will let you adjust the font on pretty much all page. See the below example to change the `font-family`, `font-size`, and `font-weight`
+
+```css
+#dashboard-header {
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    color: #333d47;
+}
+
+/* Lifecycle Left Navigation Bar 
+    #dashboard-nav
+    #dashboard-nav #dashboard-nav-footer
+
+*/
+#dashboard-nav {
+    background: black;
+}
+#dashboard-nav #dashboard-nav-footer {
+    background: black;
+}
+
+#left-nav {
+    background: black;
+}
+
+#left-nav .nav-item.open { 
+    background: black;
+    /*border-bottom: 1px solid white;*/
+}
+
+#dashboard-nav #user-container {
+    background: none
+}
+
+#neaccess-header {
+    background: black
+}
+
+#neaccess-header #company-logo-container {
+    background: black
+}
+```
 
 ## Change a workflow button color
 

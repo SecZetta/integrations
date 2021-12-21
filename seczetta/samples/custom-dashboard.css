@@ -1,0 +1,139 @@
+
+/* Hide non_associate_above_property tab on Non Associates profile*/
+a[href*="f099a530-5a59-458a-aa18-6ea9a091241c"] {
+    display: none !important;
+}
+
+#dashboard-header {
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 100;
+    color: #333d47;
+}
+
+/* Lifecycle Left Navigation Bar 
+    #dashboard-nav
+    #dashboard-nav #dashboard-nav-footer
+
+*/
+#dashboard-nav {
+    background: black;
+}
+#dashboard-nav #dashboard-nav-footer {
+    background: black;
+}
+
+#left-nav {
+    background: black;
+}
+
+#left-nav .nav-item.open { 
+    background: black;
+    /*border-bottom: 1px solid white;*/
+}
+
+#dashboard-nav #user-container {
+    background: none
+}
+
+#neaccess-header {
+    background: black
+}
+
+#neaccess-header #company-logo-container {
+    background: black
+}
+
+/* Blues */
+.btn-request, .requests-tab {
+    background: #0067B9;
+}
+
+.btn-request:hover {
+    background: #80B3DC
+}
+
+.icon-requests {
+    color: #0067B9
+}
+
+ul.filters li.requests-tab {
+    background: #80B3DC;
+}
+
+ul.filters li.requests-tab:hover {
+    background: #0067B9;
+}
+
+
+ul.filters li.requests-tab:active {
+    background: #0067B9;
+}
+
+/* Oranges */
+
+.icon-actions {
+    color: #8031A7
+}
+
+ul.filters li.actions-tab {
+    background: #C098D3
+}
+
+ul.filters li.active {
+    background: #8031A7
+}
+
+ul.filters li.hover {
+    background: #8031A7
+}
+
+.icon-dashboard {
+    color: #8031A7;
+}
+
+/* Greens */
+#search-bar .fa-search {
+    color: #279F00
+}
+
+.search-actions #adv-search-btn {
+    background: #279F00
+}
+
+.icon-profiles {
+    color: #279F00
+}
+
+ul.filters li.active {
+    background: #279F00
+}
+
+ul.filters li.hover {
+    background: #279F00
+}
+
+
+ul.filters li {
+    background: #AEDB9F
+}
+
+.attribute-wrapper .attribute-container .label-wrapper label{
+    color: #279F00;
+}
+
+ul.filters li:hover{
+    background: #279F00
+}
+
+.profile_table.table-with-links tbody tr a{
+    color: #279F00;
+}
+
+.profile_table.table-with-links tbody tr:hover{
+    color: #279F00
+}
