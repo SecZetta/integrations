@@ -2,7 +2,7 @@
 
 ## Contents
 
-- [SecZetta / Slack Integration]
+- [SecZetta / Slack Integration](#seczetta-slack-integration)
   - [Overview](#overview)
     - [Architecture Overview](#architecture-overview)
   - [Supported Features](#supported-features)
