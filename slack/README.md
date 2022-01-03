@@ -67,29 +67,29 @@ To obtain an authorization token that is used in a SecZetta workflow to send a s
 - Click on the `Create New App` button:
 - You can chose to either create the App from scratch or create it from an existing app manifest. The easier option is to use the manifest file that is stored in the Github respository for this integration. An example manifest file (YAML) is shown below and located in the github repository /img folder: 
 
-```json
-_metadata:<br>
-  major_version: 1 <br>
-  minor_version: 1 <br>
-display_information: <br>
-  name: `SecZetta Integration` <br>
-features: <br>
-  bot_user: <br>
-    display_name: `SecZetta Bot` <br>
-    always_online: false <br>
-oauth_config: <br>
-  scopes: <br>
-    bot: <br>
-      - chat:write <br>
-      - chat:write.customize <br>
-      - chat:write.public <br>
-      - users:read <br>
-      - users:read.email <br>
-      - users.profile:read <br>
-settings: <br>
-  org_deploy_enabled: false <br>
-  socket_mode_enabled: false <br>
-  token_rotation_enabled: false <br>
+```code
+_metadata:
+  major_version: 1
+  minor_version: 1
+display_information:
+  name: `SecZetta Integration`
+features:
+  bot_user:
+    display_name: `SecZetta Bot`
+    always_online: false
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - chat:write.customize
+      - chat:write.public
+      - users:read
+      - users:read.email
+      - users.profile:read
+settings:
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false
 ```
 
 The `name` field indicates the name of the application and the `display_name` is what shows up in the slack interface as the bot name, see below:
