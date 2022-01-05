@@ -309,3 +309,31 @@ This Profile was not Identity Proofed. Onsite Proofing Required.
 | Info | color:#0c5460;background-color:#d1ecf1;border-color:#bee5eb;      |
 | Light | color:#818182;background-color:#fefefe;border-color:#fdfdfe;     |
 | Dark | color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca;      |
+
+### Create UID friendly names
+
+Sometimes you want to have the ability to create a role via the API or something that requires a UID without any spaces or special characters. Here is an example of how that can be accomplished
+
+Place the following code in the REST API action JSON body
+
+```code
+{% assign my_uid = attribute.display_name | downcase %}
+{% assign my_uid = my_uid | replace: " ", "_" %}
+{% assign my_uid = my_uid | replace: "&", "and" %}
+{% assign my_uid = my_uid | replace: "/", "_" %}
+{% assign my_uid = my_uid | replace: ".", "" %}
+{
+    "roles": [
+        {
+            "uid": "{{ my_uid }}_collaborators",
+            "name": "{{ profile.name }} Collaborators",
+            "groups": [
+                "{{ profile.name }} Collaborators"
+            ],
+            "type": "NeaccessRole"
+        }
+    ]
+}
+```
+> Please note: At this time, the liquid variable `profile` cannot be used in the REST API Action. It will not allow you to save the REST API Action
+
