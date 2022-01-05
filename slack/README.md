@@ -12,6 +12,8 @@
   - [Configuration Parameters](#Configuration-Parameters)
     - [Slack Configuration](#Slack-Configuration)
       - [Create a Slack Application and Obtain Authorization Token](#Create-a-Slack-Application-and-Obtain-Authorization-Token)
+      - [Create an Unique Slack Email Address for a Slack Channel](Create-an-Unique-Slack-Email-Address-for-a-Slack-Channel)
+      - [Remarks](Remarks)
     - [SecZetta Configuration](#SecZetta-Configuration)
       - [SecZetta Update Workflow Configuration to retrieve Slack ID](#SecZetta-Update-Workflow-Configuration-to-retrieve-Slack-ID)
         - [Workflow Permissions Retrieve Slack ID](#Workflow-Permissions-Retrieve-Slack-ID)
@@ -19,6 +21,7 @@
         - [Workflow Permissions Update Profile Records](#Workflow-Permissions-Update-Profile-Records)
       - [SecZetta Workflow Configuration to send a Slack Message](#SecZetta-Workflow-Configuration-to-send-a-Slack-Message)
         - [Workflow Permissions Send Slack Message](#Workflow-Permissions-Send-Slack-Message)
+        - [Remarks](Remarks)
 
 ## Overview
 
@@ -30,6 +33,8 @@ The main purpose of the SecZetta / Slack integration is:
 ## Supported Features
 
 The SecZetta / Slack integration is configured as an REST API integration in a workflow versus an email notification.
+
+Alternatively Slack supports email notification to a channel and/or DM by using the mail integration and an unique email address is created for each channel or DM.
 
 ## Prerequisites
 
@@ -44,7 +49,8 @@ The SecZetta / Slack integration is configured as an REST API integration in a w
   - Create an attribute to store the Slack ID or Slack User name of the user (people profile)
   - Create a `batches` workflow to obtain the slack id or user name from all relevant slack users and store it in the associated people profile
   - Create an `update` workflow that will act as a sub routine to be called from the batches workflow to get the Slack ID of the user and pass it back to the batches workflow
-  - Create a workflow to use the API call to send the message to a slack channel or slack user  
+  - Create a workflow to use the API call to send the message to a slack channel or slack user
+  - For email integration with a specific channel or DM, create an unique email address to be used in a SZ Email notification     
 
 ## High Level Architecture
 
@@ -108,7 +114,22 @@ The `name` field indicates the name of the application and the `display_name` is
 
 Note: Any changes to the OAuth permissions requires the application to be reinstalled in the workspace.
 
+#### Create an Unique Slack Email Address for a Slack Channel
+
+To create an email address for a Slack Channel (or DM) take the following steps:
+
+- Open the channel (or DM) on your desktop
+- Click the channel or member name(s) in the conversation header 
+- Click the `Integrations` tab. 
+- Select `Send emails to this channel or conversation`. 
+- Click `Get Email Address`. 
+
+You can now use the email address in a SZ Email Notification to send the message to this Slack Channel (or DM).
+
+#### Remarks
+
 This concludes the Slack configuration.
+
 
 ### SecZetta Configuration
 
@@ -235,5 +256,7 @@ This example send the profile name that is created during the execution of the w
     "channel" : "general"
 } 
 ```
+
+#### Remarks
 
 This concludes the SecZetta configurations.
