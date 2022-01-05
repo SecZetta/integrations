@@ -314,7 +314,7 @@ This Profile was not Identity Proofed. Onsite Proofing Required.
 
 Sometimes you want to have the ability to create a role via the API or something that requires a UID without any spaces or special characters. Here is an example of how that can be accomplished
 
-Place the following code in the REST API action JSON body
+Place the following code in the REST API action JSON body. This assume that you have an attribute called `display_name` that has the value that you will derive the UID from. If that is not the case, change the first line in the code below to meet your requirements
 
 ```code
 {% assign my_uid = attribute.display_name | downcase %}
