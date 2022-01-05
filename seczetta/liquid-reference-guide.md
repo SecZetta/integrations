@@ -299,8 +299,6 @@ This Profile was not Identity Proofed. Onsite Proofing Required.
 
 *Taken from the bootsrap: [website](https://getbootstrap.com/docs/4.0/components/alerts/)*
 
-  
-
 | Type | HTML |
 |-----------|--------------------------------------------------------------|
 | Primary | color:#004085;background-color:#cce5ff;border-color:#b8daff; |
@@ -311,51 +309,6 @@ This Profile was not Identity Proofed. Onsite Proofing Required.
 | Info | color:#0c5460;background-color:#d1ecf1;border-color:#bee5eb; |
 | Light | color:#818182;background-color:#fefefe;border-color:#fdfdfe; |
 | Dark | color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca; |
-
-<table>
-   <thead>
-      <tr>
-         <th>Type</th>
-         <th>HTML</th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td style="color:#004085;background-color:#cce5ff;border-color:#b8daff;">Primary</td>
-         <td>color:#004085;background-color:#cce5ff;border-color:#b8daff;</td>
-      </tr>
-      <tr>
-         <td style="color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca;">Secondary</td>
-         <td>color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca;</td>
-      </tr>
-      <tr>
-         <td style="color:#155724;background-color:#d4edda;border-color:#c3e6cb;">Success</td>
-         <td>color:#155724;background-color:#d4edda;border-color:#c3e6cb;</td>
-      </tr>
-      <tr>
-         <td style="color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;">Danger</td>
-         <td>color:#721c24;background-color:#f8d7da;border-color:#f5c6cb;</td>
-      </tr>
-      <tr>
-         <td style="color:#856404;background-color:#fff3cd;border-color:#ffeeba;">Warning</td>
-         <td>color:#856404;background-color:#fff3cd;border-color:#ffeeba;</td>
-      </tr>
-      <tr>
-         <td style="color:#0c5460;background-color:#d1ecf1;border-color:#bee5eb;">Info</td>
-         <td>color:#0c5460;background-color:#d1ecf1;border-color:#bee5eb;</td>
-      </tr>
-      <tr>
-         <td style="color:#818182;background-color:#fefefe;border-color:#fdfdfe;">Light</td>
-         <td>color:#818182;background-color:#fefefe;border-color:#fdfdfe;</td>
-      </tr>
-      <tr>
-         <td style="color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca;">Dark</td>
-         <td>color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca;</td>
-      </tr>
-      
-   </tbody>
-</table>
-
 
 ### Create UID friendly names
 
