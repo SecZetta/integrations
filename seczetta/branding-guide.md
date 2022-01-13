@@ -148,3 +148,23 @@ a[href="/neprofile_dashboard/filter?filter=profiles&p_type=743f55e6-3bfc-4127-88
 
 ![Remove Profile Tab - before](img/branding-tips-removeprofiletab-before.png)
 ![Remove Profile Tab - after](img/branding-tips-removeprofiletab-after.png)
+
+## 'Digital Signagure'
+
+Sometimes, customers want to have people sign off on acceptable use policies or remote access agreements. Oftentimes, they talk about products like DocuSign or some other digital signature tool. While, SecZetta can technically integrate with a DocuSign via their REST API layer, its much easier and cost effective for everyone to just do digital 'signatures' inside SecZetta with a generic text box.
+
+Now, in order to enhance this experience you can add custom CSS to the signature input field to make it look like its a signature. Use this css in your custom.css file:
+
+```css
+input#bcede845-31d2-4599-8c66-819ed7027e30{
+    font-family: 'Brush Script MT', cursive;
+    font-size: xx-large;
+    height: 60px;
+}
+```
+
+The selector there (`input#bcede845-31d2-4599-8c66-819ed7027e30`) expects the attribute ID of the attribute you are wanting to store the digital signature. For example, lets say we created a text field attribute called `digital_signature` with a label of `Signature`. Once created that would have an ID. In the case above this id is `bcede845-31d2-4599-8c66-819ed7027e30`.
+
+Now whenever you've added the above code to your custom.css file, you should see something like this in a request form within a workflow. In the case below, there is an acceptable use policy with some basic policy content for the person to sign off on.
+
+![Signature](img/branding-guide-signature.png)
