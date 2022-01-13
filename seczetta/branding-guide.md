@@ -149,7 +149,7 @@ a[href="/neprofile_dashboard/filter?filter=profiles&p_type=743f55e6-3bfc-4127-88
 ![Remove Profile Tab - before](img/branding-tips-removeprofiletab-before.png)
 ![Remove Profile Tab - after](img/branding-tips-removeprofiletab-after.png)
 
-## 'Digital Signagure'
+## 'Digital' Signature
 
 Sometimes, customers want to have people sign off on acceptable use policies or remote access agreements. Oftentimes, they talk about products like DocuSign or some other digital signature tool. While, SecZetta can technically integrate with a DocuSign via their REST API layer, its much easier and cost effective for everyone to just do digital 'signatures' inside SecZetta with a generic text box.
 
