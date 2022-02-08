@@ -125,7 +125,7 @@ In the global settings, under security settings is ‘API Mangement’. On this 
  
 Whenever you create your Client. Make sure to take not of the client_id and more importantly the client_secret. Those will be used to configure the REST API Action in SecZetta
 
-Create a non-employee source (in IDN)
+## Create a non-employee source (in IDN)
 
 To utilize the API integration, IdentityNow needs to be setup with a non-employee source. You can do this by adding a new source connector. The Source Type for this connector will be ‘Non-employee’.
 
