@@ -32,11 +32,12 @@ The SecZetta / IdentityNow (IDN) integration can be configured in a few differen
   - Data aggregation (SailPoint IDN Initiated)
     - Utilizing the SailPoint WebServices connector
     - Read in SecZetta Profiles
-    - API Integration (SecZetta Initiated)
-      - Utliizing SecZetta’s REST API Workflow action
-      - Create, Update, Delete Identity cubes
+  - API Integration (SecZetta Initiated)
+    - Utliizing SecZetta’s REST API Workflow action
+    - Create, Update, Delete Identity cubes
 
 ## Prerequisites
+
 - Data Aggregation:
   - Administrative access in SecZetta and IDN
   - A SecZetta API token ( Admin -> system -> api)
@@ -55,14 +56,12 @@ The SecZetta / IdentityNow (IDN) integration can be configured in a few differen
 
 ![SZ Initiated](img/sailpoint-idn-sz-initiated-arch.png)
 
-## Configuration Parameters
+## Data Aggregation (IDN Initiated)
 
-This section provides the required configuration for the features described above:
-
-### Data Aggregation (IDN Initiated)
 The Data aggregation integration requires an IDN Web Services connector. This connector will utilize the /profiles endpoint of the SecZetta API
 
-#### SailPoint Connector Configuration
+### SailPoint Connector Configuration
+
 Create a new source connector and then refer to the following table for the parameters required to setup the connector:
 
 Parameter | Description
@@ -85,11 +84,11 @@ Response Mapping | Here is where you map the response of the SecZetta API to Ide
 Paging -> Initial Page Offset | 0
 Paging -> Paging Steps | $sz_limit$ = 100 </br>TERMINATE_IF $RECORDS_COUNT$ < $sz_limit$</br>$sz_offset$ = $sz_offset$ + $sz_limit$</br>$endpoint.fullUrl$ = $application.baseUrl$ + "/profiles?profile_type_id=<profile_type_id> &query[limit]=" + $sz_limit$ + "&query[offset]=" + $sz_offset$</br></br>*More details below*
 
-#### API Authorization Token
+### API Authorization Token
 
 To utilize the /profiles endpoint within the SecZetta API, you will require an authorization token. To create a new token, navigate to the Admin side of SecZetta -> System -> API. From there, create a new API token and use that in the connector configuration above
 
-#### Profile Type ID
+### Profile Type ID
 
 This `profile_type_id` is a value that will be specific to your profiles in your SecZetta environment. Find the id easily by following these steps:
 
@@ -99,7 +98,7 @@ This `profile_type_id` is a value that will be specific to your profiles in your
     a. i.e. <your-seczetta-tenant>/neprofile_admin/profile_types/`687df53e-cdd8-4420-8431-ca6e62e81451`/basic_settings
 1. Use that ID in place of <profile_type_id> above
 
-#### Paging Details
+### Paging Details
 
 The Paging steps listed above is a good working example to get started. If additional detail is needed refer to the Web Services Connector guide in the SailPoint documentation.
 
@@ -114,13 +113,15 @@ $endpoint.fullUrl$ = $application.baseUrl$ + "/profiles?profile_type_id=<profile
 
 Initially the limit of 100 would typically work. Sometimes however, the profiles in your SecZetta instances may be full of a large amount of attributes and additional data. In this case, you may want to lower that limit to ensure the API has enough time to download all the profile data without timing out. Play around with the limit variable above to meet your needs
 
-### API Integration (SecZetta Initiated)
+## API Integration (SecZetta Initiated)
 
 For this integration SecZetta will initiate the creation of identities using the /beta/non-employee-records API endpoint.
 
-#### OAuth Client Creation
+### OAuth Client Creation
 
 In the global settings, under security settings is ‘API Mangement’. On this page you are able to create a new OAuth Client by hitting the “+ New” button. Ensure that the client is for ‘Client Credentials’, ‘Refresh Token’, and ‘Authorization Code’. The screenshot below was taken in Q1 of 2021
+
+![SZ Initiated](img/idn-screenshot-api-key.png)
  
 Whenever you create your Client. Make sure to take not of the client_id and more importantly the client_secret. Those will be used to configure the REST API Action in SecZetta
 
@@ -130,14 +131,15 @@ To utilize the API integration, IdentityNow needs to be setup with a non-employe
 
 From here, the /beta/non-employee end point can be used to manage these identities
 
-
+![SZ Initiated](img/idn-create-new-nelm-source.png)
  
-Get SourceID for non-employee Source
+### Get SourceID for non-employee Source
 
-In order to create an Identity for the source that was created above. The /beta/non-employee endpoint requires a sourceId for the API call. The way to grab this sourceId is by using the same OAuth client above and calling the {{IDN_API_URL}}/beta/non-employee-sources endpoint.
+In order to create an Identity for the source that was created above. The /beta/non-employee endpoint requires a sourceId for the API call. The way to grab this sourceId is by using the same OAuth client above and calling the `{{IDN_API_URL}}/beta/non-employee-sources` endpoint.
 
 If done successfully, the response should look very similar to this:
 
+```json
 [
     {
         "id": "ac110006-76f4-1acc-8176-f85c7f9e000a",
@@ -161,29 +163,28 @@ If done successfully, the response should look very similar to this:
         "nonEmployeeCount": null
     }
 ]
+```
 
 
-
-Configuring the REST API Action
+## Configuring the REST API Action
 
 Within SecZetta, Create and Update workflows will make changes to the SecZetta profiles. These changes will likely result in an create/update required on the IdN side as well. This is where the REST API Action will come into play. Open whichever SecZetta workflow that needs to create an Identity cube and add a REST API Action. The following table shows the parameters required to make the API Action work correctly
 
-Parameter | Description
---------- | --------------
-Basic Settings &#8594; Description| 	Create or Update IDN Account
-AuthN &#8594; Auth type	| OAuth2
-AuthN &#8594; Access token URL | https://`<your-idn-tenant>`.api.identitynow.com/oauth/token
+Parameter                            |  Description
+-------------------------------------|---------------
+Basic Settings &#8594; Description   | Create or Update IDN Account
+AuthN &#8594; Auth type              | OAuth2
+AuthN &#8594; Access token URL       | https://`<your-idn-tenant>`.api.identitynow.com/oauth/token </br></br>*Notice the api in the URL. That is required*
+AuthN &#8594; Client Id              | Client_id for the OAuth Client created above
+AuthN &#8594; Client secret          | Client_secret for the Oauth Client created above
+Request &#8594; Http verb            | POST
+Request &#8594; Endpoint             | https://<your-idn-tenant>.api.identitynow.com/beta/non-employee-records
+Request &#8594; Headers              | Add 2 Headers</br></br>1.	Content-Type = application/json</br>2.	Accept = */*
+Request &#8594; Json body            | This body will vary depending on the IDN configuration and schema. An example is below
+Response &#8594; Status Code Mapping | Map this status code to a SecZetta attribute. This will allow error handling within the workflow via conditionals
+Response &#8594; Data Mapping(s)     | The API response will contain the IdentityNow ID if the user was created successfully. Make sure to map that ID to a SecZetta attribute. This way during an update/delete, SecZetta will be able to update the identity correctly
 
-*Notice the api in the URL. That is required
-AuthN  Client Id	Client_id for the OAuth Client created above
-AuthN  Client secret	Client_secret for the Oauth Client created above
-Request  Http verb	POST
-Request  Endpoint	https://<your-idn-tenant>.api.identitynow.com/beta/non-employee-records
-Request  Headers	Add 2 Headers:
-1.	Content-Type = application/json
-2.	Accept = */*
-Request  Json body	This body will vary depending on the IDN configuration and schema. Here is an example
-
+```json
 {
 "accountName": "{{attribute.profile_uid_ne_attribute}}",
   "firstName": "{{attribute.personal_first_name}}",
@@ -198,14 +199,10 @@ Request  Json body	This body will vary depending on the IDN configuration and
   "startDate": 1610524800,
   "endDate": 1620892800
 }
+```
+> Notice the sourceId field that is required.
 
-Notice the sourceId field that is required.
 
-Response  Status Code Mapping	Map this status code to a SecZetta attribute. This will allow error handling within the workflow via conditionals
-
- 
-
-Response  Data Mapping(s)	The API response will contain the IdentityNow ID if the user was created successfully. Make sure to map that ID to a SecZetta attribute. This way during an update/delete, SecZetta will be able to update the identity correctly
 
  
 
