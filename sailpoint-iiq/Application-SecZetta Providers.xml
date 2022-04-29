@@ -1,0 +1,464 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application authoritative="true" connector="sailpoint.connector.webservices.WebServicesConnector" featuresString="SEARCH" name="SecZetta Providers" profileClass="" type="Web Services">
+  <Attributes>
+    <Map>
+      <entry key="SECZETTA_assignment_profile_type_id" value="be130e38-73a5-45f3-91f4-a5180c5cb7aa"/>
+      <entry key="SECZETTA_assignment_type_attribute_id" value="115ab8d2-deb4-47aa-af04-7bac3e39f586"/>
+      <entry key="SECZETTA_authorization" value=""/>
+      <entry key="SECZETTA_population_profile_id" value="1f9c83c5-d115-4fd1-940e-a6bae732cf9d"/>
+      <entry key="afterProvisioningRule"/>
+      <entry key="authenticationMethod" value="No Auth"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="clientCertAuthEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="compositeDefinition"/>
+      <entry key="connectionParameters">
+        <value>
+          <List>
+            <Map>
+              <entry key="afterRule"/>
+              <entry key="beforeRule"/>
+              <entry key="body">
+                <value>
+                  <Map>
+                    <entry key="bodyFormData"/>
+                    <entry key="bodyFormat" value="raw"/>
+                    <entry key="jsonBody"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="contextUrl" value="/profile_types"/>
+              <entry key="customAuthUrl"/>
+              <entry key="header">
+                <value>
+                  <Map>
+                    <entry key="Accept" value="application/json"/>
+                    <entry key="Authorization" value="$application.SECZETTA_authorization$"/>
+                    <entry key="Content-Type" value="application/json"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="httpMethodType" value="GET"/>
+              <entry key="operationType" value="Test Connection"/>
+              <entry key="paginationSteps"/>
+              <entry key="pagingInitialOffset">
+                <value>
+                  <Integer>0</Integer>
+                </value>
+              </entry>
+              <entry key="pagingSize">
+                <value>
+                  <Integer>50</Integer>
+                </value>
+              </entry>
+              <entry key="parentEndpointName"/>
+              <entry key="resMappingObj"/>
+              <entry key="rootPath"/>
+              <entry key="sequenceNumberForEndpoint" value="1"/>
+              <entry key="uniqueNameForEndPoint" value="Test Connection"/>
+              <entry key="xpathNamespaces"/>
+            </Map>
+            <Map>
+              <entry key="afterRule"/>
+              <entry key="beforeRule"/>
+              <entry key="body">
+                <value>
+                  <Map>
+                    <entry key="bodyFormData"/>
+                    <entry key="bodyFormat" value="raw"/>
+                    <entry key="jsonBody" value="{&#xD;&#xA;    &quot;advanced_search&quot;: {&#xD;&#xA;        &quot;condition_rules_attributes&quot;: [&#xD;&#xA;            {&#xD;&#xA;                &quot;type&quot;: &quot;ProfileAttributeRule&quot;,&#xD;&#xA;                &quot;object_type&quot;: &quot;NeAttribute&quot;,&#xD;&#xA;                &quot;condition_object_id&quot;: &quot;$application.SECZETTA_assignment_type_attribute_id$&quot;,&#xD;&#xA;                &quot;comparison_operator&quot;: &quot;include?&quot;,&#xD;&#xA;                &quot;value&quot;: &quot;$application.SECZETTA_population_profile_id$&quot;&#xD;&#xA;            },&#xD;&#xA;            {&#xD;&#xA;                &quot;type&quot;: &quot;ProfileTypeRule&quot;,&#xD;&#xA;                &quot;comparison_operator&quot;: &quot;==&quot;,&#xD;&#xA;                &quot;value&quot;:&quot;$application.SECZETTA_assignment_profile_id$&quot;&#xD;&#xA;            }&#xD;&#xA;        ]&#xD;&#xA;    }&#xD;&#xA;}"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="contextUrl" value="/advanced_search/run"/>
+              <entry key="customAuthUrl"/>
+              <entry key="header">
+                <value>
+                  <Map>
+                    <entry key="Accept" value="application/json"/>
+                    <entry key="Authorization" value="$application.SECZETTA_authorization$"/>
+                    <entry key="Content-Type" value="application/json"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="httpMethodType" value="POST"/>
+              <entry key="operationType" value="Account Aggregation"/>
+              <entry key="paginationSteps" value="$sz_limit$ = 100&#xD;&#xA;TERMINATE_IF $RECORDS_COUNT$ &lt; $sz_limit$&#xD;&#xA;$sz_offset$ = $sz_offset$ + $sz_limit$&#xD;&#xA;$endpoint.fullUrl$ = $application.baseUrl$ + &quot;/advanced_search_run?query[limit]=&quot; + $sz_limit$ + &quot;&amp;query[offset]=&quot; + $sz_offset$"/>
+              <entry key="pagingInitialOffset">
+                <value>
+                  <Integer>0</Integer>
+                </value>
+              </entry>
+              <entry key="pagingSize">
+                <value>
+                  <Integer>100</Integer>
+                </value>
+              </entry>
+              <entry key="parentEndpointName"/>
+              <entry key="resMappingObj">
+                <value>
+                  <Map>
+                    <entry key="assignment_assignment_id" value="attributes.assignment_id"/>
+                    <entry key="assignment_assignment_organization" value="attributes.assignment_organization"/>
+                    <entry key="assignment_assignment_type" value="attributes.assignment_type"/>
+                    <entry key="assignment_date_created" value="attributes.date_created"/>
+                    <entry key="assignment_department" value="attributes.department_ne_attribute"/>
+                    <entry key="assignment_end_date" value="attributes.end_date"/>
+                    <entry key="assignment_id" value="id"/>
+                    <entry key="assignment_job_title" value="attributes.job_title_ne_attribute"/>
+                    <entry key="assignment_name" value="name"/>
+                    <entry key="assignment_person" value="attributes.assignment_person"/>
+                    <entry key="assignment_person_profile_id" value="attributes.assignment_person_profile_id"/>
+                    <entry key="assignment_profile_type_id" value="profile_type_id"/>
+                    <entry key="assignment_source" value="attributes.source"/>
+                    <entry key="assignment_sponsor_user_id" value="attributes.assignment_sponsor_user_id"/>
+                    <entry key="assignment_start_date" value="attributes.start_date"/>
+                    <entry key="assignment_status" value="status"/>
+                    <entry key="assignment_sub_type" value="attributes.assignment_sub_type"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="responseCode">
+                <value>
+                  <List>
+                    <String>200</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="rootPath" value="profiles.*"/>
+              <entry key="sequenceNumberForEndpoint" value="2"/>
+              <entry key="uniqueNameForEndPoint" value="Acount Aggregation - Assignments"/>
+              <entry key="xpathNamespaces"/>
+            </Map>
+            <Map>
+              <entry key="afterRule"/>
+              <entry key="beforeRule"/>
+              <entry key="body">
+                <value>
+                  <Map>
+                    <entry key="bodyFormData"/>
+                    <entry key="bodyFormat" value="raw"/>
+                    <entry key="jsonBody"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="contextUrl" value="/profiles/$response.assignment_person_profile_id$"/>
+              <entry key="customAuthUrl"/>
+              <entry key="header">
+                <value>
+                  <Map>
+                    <entry key="Accept" value="application/json"/>
+                    <entry key="Authorization" value="$application.SECZETTA_authorization$"/>
+                    <entry key="Content-Type" value="application/json"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="httpMethodType" value="GET"/>
+              <entry key="operationType" value="Account Aggregation"/>
+              <entry key="paginationSteps"/>
+              <entry key="pagingInitialOffset">
+                <value>
+                  <Integer>0</Integer>
+                </value>
+              </entry>
+              <entry key="pagingSize">
+                <value>
+                  <Integer>50</Integer>
+                </value>
+              </entry>
+              <entry key="parentEndpointName" value="Acount Aggregation - Assignments"/>
+              <entry key="resMappingObj">
+                <value>
+                  <Map>
+                    <entry key="person_assignment_organization" value="attributes.assignment_organization"/>
+                    <entry key="person_collaborator" value="attributes.collaborator"/>
+                    <entry key="person_date_created" value="attributes.date_created"/>
+                    <entry key="person_eligible_for_rehire" value="attributes.eligible_for_rehire"/>
+                    <entry key="person_email" value="attributes.email"/>
+                    <entry key="person_first_name" value="attributes.first_name"/>
+                    <entry key="person_id" value="attributes.person_id"/>
+                    <entry key="person_id_proofing_status" value="id_proofing_status"/>
+                    <entry key="person_last_name" value="attributes.last_name"/>
+                    <entry key="person_middle_name" value="attributes.middle_name"/>
+                    <entry key="person_name" value="name"/>
+                    <entry key="person_personal_phone_number" value="attributes.personal_phone_number"/>
+                    <entry key="person_professional_phone_number" value="attributes.professional_phone_number"/>
+                    <entry key="person_profile_type_id" value="profile_type_id"/>
+                    <entry key="person_source" value="attributes.source"/>
+                    <entry key="person_ssn_last_4" value="attributes.ssn_last_4"/>
+                    <entry key="person_status" value="status"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="responseCode">
+                <value>
+                  <List>
+                    <String>200</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="rootPath" value="profile"/>
+              <entry key="sequenceNumberForEndpoint" value="3"/>
+              <entry key="uniqueNameForEndPoint" value="Account Aggregation - Person Details"/>
+              <entry key="xpathNamespaces"/>
+            </Map>
+            <Map>
+              <entry key="afterRule"/>
+              <entry key="beforeRule"/>
+              <entry key="body">
+                <value>
+                  <Map>
+                    <entry key="bodyFormData"/>
+                    <entry key="bodyFormat" value="raw"/>
+                    <entry key="jsonBody"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="contextUrl" value="/profile/$getObject.nativeIdentity$"/>
+              <entry key="customAuthUrl"/>
+              <entry key="header">
+                <value>
+                  <Map>
+                    <entry key="Accept" value="application/json"/>
+                    <entry key="Authorization" value="$application.SECZETTA_authorization$"/>
+                    <entry key="Content-Type" value="application/json"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="httpMethodType" value="GET"/>
+              <entry key="operationType" value="Get Object"/>
+              <entry key="paginationSteps"/>
+              <entry key="pagingInitialOffset">
+                <value>
+                  <Integer>0</Integer>
+                </value>
+              </entry>
+              <entry key="pagingSize">
+                <value>
+                  <Integer>50</Integer>
+                </value>
+              </entry>
+              <entry key="parentEndpointName"/>
+              <entry key="resMappingObj">
+                <value>
+                  <Map>
+                    <entry key="assignment_assignment_id" value="attributes.assignment_id"/>
+                    <entry key="assignment_assignment_organization" value="attributes.assignment_organization"/>
+                    <entry key="assignment_assignment_type" value="attributes.assignment_type"/>
+                    <entry key="assignment_date_created" value="attributes.date_created"/>
+                    <entry key="assignment_department" value="attributes.department_ne_attribute"/>
+                    <entry key="assignment_end_date" value="attributes.end_date"/>
+                    <entry key="assignment_id" value="id"/>
+                    <entry key="assignment_job_title" value="attributes.job_title_ne_attribute"/>
+                    <entry key="assignment_name" value="name"/>
+                    <entry key="assignment_person" value="attributes.assignment_person"/>
+                    <entry key="assignment_person_profile_id" value="attributes.assignment_person_profile_id"/>
+                    <entry key="assignment_profile_type_id" value="profile_type_id"/>
+                    <entry key="assignment_source" value="attributes.source"/>
+                    <entry key="assignment_sponsor_user_id" value="attributes.assignment_sponsor_user_id"/>
+                    <entry key="assignment_start_date" value="attributes.start_date"/>
+                    <entry key="assignment_status" value="status"/>
+                    <entry key="assignment_sub_type" value="attributes.assignment_sub_type"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="responseCode">
+                <value>
+                  <List>
+                    <String>200</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="rootPath" value="profile"/>
+              <entry key="sequenceNumberForEndpoint" value="4"/>
+              <entry key="uniqueNameForEndPoint" value="Get Object - Assignment"/>
+              <entry key="xpathNamespaces"/>
+            </Map>
+            <Map>
+              <entry key="afterRule"/>
+              <entry key="beforeRule"/>
+              <entry key="body">
+                <value>
+                  <Map>
+                    <entry key="bodyFormData"/>
+                    <entry key="bodyFormat" value="raw"/>
+                    <entry key="jsonBody"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="contextUrl" value="/profile/$response.assignment_person_profile_id$"/>
+              <entry key="customAuthUrl"/>
+              <entry key="header">
+                <value>
+                  <Map>
+                    <entry key="Accept" value="application/json"/>
+                    <entry key="Authorization" value="$application.SECZETTA_authorization$"/>
+                    <entry key="Content-Type" value="application/json"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="httpMethodType" value="GET"/>
+              <entry key="operationType" value="Get Object"/>
+              <entry key="paginationSteps"/>
+              <entry key="pagingInitialOffset">
+                <value>
+                  <Integer>0</Integer>
+                </value>
+              </entry>
+              <entry key="pagingSize">
+                <value>
+                  <Integer>50</Integer>
+                </value>
+              </entry>
+              <entry key="parentEndpointName" value="Get Object - Assignment"/>
+              <entry key="resMappingObj">
+                <value>
+                  <Map>
+                    <entry key="person_assignment_organization" value="attributes.assignment_organization"/>
+                    <entry key="person_collaborator" value="attributes.collaborator"/>
+                    <entry key="person_date_created" value="attributes.date_created"/>
+                    <entry key="person_eligible_for_rehire" value="attributes.eligible_for_rehire"/>
+                    <entry key="person_email" value="attributes.email"/>
+                    <entry key="person_first_name" value="attributes.first_name"/>
+                    <entry key="person_id" value="attributes.person_id"/>
+                    <entry key="person_id_proofing_status" value="id_proofing_status"/>
+                    <entry key="person_last_name" value="attributes.last_name"/>
+                    <entry key="person_middle_name" value="attributes.middle_name"/>
+                    <entry key="person_name" value="name"/>
+                    <entry key="person_personal_phone_number" value="attributes.personal_phone_number"/>
+                    <entry key="person_professional_phone_number" value="attributes.professional_phone_number"/>
+                    <entry key="person_profile_type_id" value="profile_type_id"/>
+                    <entry key="person_source" value="attributes.source"/>
+                    <entry key="person_ssn_last_4" value="attributes.ssn_last_4"/>
+                    <entry key="person_status" value="status"/>
+                  </Map>
+                </value>
+              </entry>
+              <entry key="responseCode">
+                <value>
+                  <List>
+                    <String>200</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="rootPath" value="profile"/>
+              <entry key="sequenceNumberForEndpoint" value="5"/>
+              <entry key="uniqueNameForEndPoint" value="Get Object - Person Details"/>
+              <entry key="xpathNamespaces"/>
+            </Map>
+          </List>
+        </value>
+      </entry>
+      <entry key="createAccountWithEntReq">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="enableHasMore" value="true"/>
+      <entry key="enableStatus" value="status=Active"/>
+      <entry key="encrypted" value="SECZETTA_authorization,accesstoken,refresh_token,oauth_token_info,client_secret,private_key,private_key_password,clientCertificate,clientKeySpec,resourceOwnerPassword,custom_auth_token_info"/>
+      <entry key="fixedPlanMultivaluedAttribute" value="true"/>
+      <entry key="genericWebServiceBaseUrl" value="https://derekmvp.mynonemployee.com/api"/>
+      <entry key="httpCookieSpecsStandard" value="true"/>
+      <entry key="isGetObjectRequiredForPTA">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="oAuthJwtHeader">
+        <value>
+          <Map>
+            <entry key="alg" value="RS256"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="oAuthJwtPayload">
+        <value>
+          <Map>
+            <entry key="aud"/>
+            <entry key="exp" value="15f"/>
+            <entry key="iss"/>
+            <entry key="sub"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="private_key_to_update"/>
+      <entry key="saml_assertion_url"/>
+      <entry key="saml_request_body"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US" value="This connector will read all assignment profiles, and pull in subsequent people information too."/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="templateApplication" value="Web Services"/>
+      <entry key="throwProvAfterRuleException">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="throwProvBeforeRuleException">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="timeoutInSeconds" value="60"/>
+      <entry key="version" value="v2"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema displayAttribute="assignment_name" groupAttribute="" identityAttribute="assignment_id" instanceAttribute="" nativeObjectType="user" objectType="account">
+      <AttributeDefinition name="person_assignment_organization" type="string"/>
+      <AttributeDefinition name="person_profile_type_id" type="string"/>
+      <AttributeDefinition name="person_id_proofing_status" type="string"/>
+      <AttributeDefinition name="person_collaborator" type="string"/>
+      <AttributeDefinition name="person_date_created" type="string"/>
+      <AttributeDefinition name="person_eligible_for_rehire" type="string"/>
+      <AttributeDefinition name="person_email" type="string"/>
+      <AttributeDefinition name="person_first_name" type="string"/>
+      <AttributeDefinition name="person_id" type="string"/>
+      <AttributeDefinition name="person_last_name" type="string"/>
+      <AttributeDefinition name="person_middle_name" type="string"/>
+      <AttributeDefinition name="person_name" type="string"/>
+      <AttributeDefinition name="person_personal_phone_number" type="string"/>
+      <AttributeDefinition name="person_professional_phone_number" type="string"/>
+      <AttributeDefinition name="person_source" type="string"/>
+      <AttributeDefinition name="person_ssn_last_4" type="string"/>
+      <AttributeDefinition name="person_status" type="string"/>
+      <AttributeDefinition name="assignment_id" type="string"/>
+      <AttributeDefinition name="assignment_profile_type_id" type="string"/>
+      <AttributeDefinition name="assignment_assignment_id" type="string"/>
+      <AttributeDefinition name="assignment_assignment_organization" type="string"/>
+      <AttributeDefinition name="assignment_person" type="string"/>
+      <AttributeDefinition name="assignment_status" type="string"/>
+      <AttributeDefinition name="assignment_sub_type" type="string"/>
+      <AttributeDefinition name="assignment_assignment_type" type="string"/>
+      <AttributeDefinition name="assignment_date_created" type="string"/>
+      <AttributeDefinition name="assignment_department" type="string"/>
+      <AttributeDefinition name="assignment_end_date" type="string"/>
+      <AttributeDefinition name="assignment_job_title" type="string"/>
+      <AttributeDefinition name="assignment_name" type="string"/>
+      <AttributeDefinition name="assignment_source" type="string"/>
+      <AttributeDefinition name="assignment_start_date" type="string"/>
+      <AttributeDefinition name="assignment_person_profile_id" type="string"/>
+      <AttributeDefinition name="assignment_sponsor_user_id" type="string"/>
+    </Schema>
+  </Schemas>
+</Application>
+
