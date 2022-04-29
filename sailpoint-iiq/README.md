@@ -339,40 +339,40 @@ The connector returns all the available attributes for the assignment and people
 
 IIQ Schema Name | Description
 ---------   |   ---------
-person_assignment_organization | 
-person_profile_type_id | 
-person_id_proofing_status |
-person_collaborator | 
-person_date_created | 
-person_eligible_for_rehire | 
-person_email |
-person_first_name |
-person_id | 
-person_last_name |
-person_middle_name |
-person_name | 
-person_personal_phone_number |
-person_professional_phone_number |
-person_source |
-person_ssn_last_4 |
-person_status |
-assignment_id |
-assignment_profile_type_id |
-assignment_assignment_id | 
-assignment_assignment_organization |
-assignment_person |
-assignment_status |
-assignment_sub_type |
-assignment_assignment_type |
-assignment_date_created |
-assignment_department |
-assignment_end_date |
-assignment_job_title |
-assignment_name |
-assignment_source |
-assignment_start_date |
-assignment_person_profile_id |
-assignment_sponsor_user_id |
+person_assignment_organization | Name of the organization assigned
+person_profile_type_id | id of the person profile_type
+person_id_proofing_status | status of identity proofing
+person_collaborator | list of collaborators for the person
+person_date_created | date the person profile was created
+person_eligible_for_rehire | is the person eligible for rehire
+person_email | email address for the person
+person_first_name | first name for the person
+person_id | id of the persons profile record
+person_last_name | last name for the person
+person_middle_name | middle name for the person
+person_name | display name for the person
+person_personal_phone_number | personal phone number for the person
+person_professional_phone_number | work phone number for the person
+person_source | method that the person profile was created (Portal=Collaborator onboarded)
+person_ssn_last_4 | last 4 digits of the person's social security number
+person_status | status of the person
+assignment_id | id value for the assignment profile
+assignment_profile_type_id | id of the assignment_profile_type
+assignment_assignment_id |  A# id for the assignment
+assignment_assignment_organization | name of the assignment organization
+assignment_person | display name for the person associated with the assignment
+assignment_status | status of the assignment
+assignment_sub_type | sub-population assigned to this assignment
+assignment_assignment_type | the population for this assignment (Provider | Student)
+assignment_date_created | date the assignment was created
+assignment_department | department name for the assignment
+assignment_end_date | end date provided for the assignment
+assignment_job_title | job title for this person's assignment
+assignment_name | display name for the assignment profile
+assignment_source | method that the assignment profile was created
+assignment_start_date | start date for the assignment
+assignment_person_profile_id | id for the associated person profile 
+assignment_sponsor_user_id | id for the associated sponsor user account
 
 
 ## SecZetta Workflow Changes
