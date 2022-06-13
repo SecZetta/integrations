@@ -1,29 +1,5 @@
 # SecZetta / SailPoint IdentityIQ Integration
 
-## Contents
-- [SecZetta / SailPoint IdentityIQ Integration](#seczetta--sailpoint-identityiq-integration)
-  - [Contents](#contents)
-  - [Overview](#overview)
-  - [Support Features](#support-features)
-  - [High Level Connector Architecture](#high-level-connector-architecture)
-  - [Identity <-> Profile Management Approaches](#identity---profile-management-approaches)
-  - [Pre-Reqs](#pre-reqs)
-    - [API Token](#api-token)
-    - [SecZetta's Assignment Profile ID](#seczettas-assignment-profile-id)
-    - [SecZetta's Assignment Type Attribute ID](#seczettas-assignment-type-attribute-id)
-    - [SecZetta's Population ID](#seczettas-population-id)
-  - [Connector Configuration](#connector-configuration)
-    - [Connector Settings](#connector-settings)
-    - [Connector Operations](#connector-operations)
-      - [Test Connection](#test-connection)
-      - [Account Aggregation](#account-aggregation)
-        - [Account Aggregation - Assignments](#account-aggregation---assignments)
-        - [Account Aggregation - Person Details](#account-aggregation---person-details)
-      - [Get Object](#get-object)
-    - [Account Schema Attributes](#account-schema-attributes)
-  - [SecZetta Workflow Changes](#seczetta-workflow-changes)
-  - [Alternative Design](#alternative-design)
-
 ## Overview
 
 The integration between SecZetta and SailPoint IdentityIQ (IIQ) allows IIQ to pull profile information from SecZetta through a web-services read-only connector in IIQ.
@@ -57,6 +33,17 @@ The SecZetta/IIQ integration can be configured in a number of different ways dep
   * This configuration has each assignment profile in SecZetta represented as a separate identity in IIQ.  If a person has multiple assignments, each assignment would be it's own identity cube.
   * Allows for complete separation of access for each assignment, including separate managers and accounts.
 
+## Artifacts
+
+There are four SailPoint IdentityIQ artifacts for this integration.
+1. Application-SecZetta Proviers.xml
+2. Application-SecZetta Students.xml
+3. CorrelationConfig-SecZettaPersonIDCorrelation.xml
+4. Rule-SecZettaCreateRule.xml
+
+There is one SecZetta configuration that needs to be imported and then calls added to workflows.
+1. seczetta-sync_attr_assignments-import.json
+
 ## Pre-Reqs
 
 ### API Token
@@ -67,7 +54,7 @@ To generate a new token in SecZetta, navigate to the Admin pages, select 'System
 
 ### SecZetta's Assignment Profile ID
 
-The assignment profile id will be needed to configuration the IdentityIQ connector.  The assignment profile id can be retrieved by calling the SecZetta api GET:/profile_types?name=Assignments. The 'id' attribute is what should be used in the connector's application configuration attribute *SECZZETTA_assignment_profile_type_id*.
+The assignment profile id will be needed to configure the IdentityIQ connector.  The assignment profile id can be retrieved by calling the SecZetta api GET:/profile_types?name=Assignments. The 'id' attribute is what should be used in the connector's application configuration attribute *SECZZETTA_assignment_profile_type_id*.
 
 ```json
 {
@@ -188,7 +175,6 @@ The id for this attribute can be determined by finding the specific profile for 
 }
 ```
 
-
 ## Connector Configuration
 
 The demo connector is configured to function with the default SecZetta baseline configuration. Attribute & mappings can be added and removed as needed by the implementation.
@@ -267,7 +253,7 @@ The query will return a response like this:
             "created_at": "2022-04-29T09:31:18.182-04:00",
             "attributes": {
                 "assignment_type": "Provider",
-                "assignment_organization": "ACME",
+                "assignment_organization": "1234 ACME",
                 "separator_ne_attribute": "-",
                 "end_date": "04/30/2022",
                 "department_ne_attribute": "Department 1",
@@ -279,59 +265,30 @@ The query will return a response like this:
                 "assignment_person": "Jason Smith",
                 "assignment_person_profile_id": "cce541cf-c024-4595-9ee7-1a31582a598b",
                 "job_title_ne_attribute": "CEO",
-                "start_date": "04/29/2022"
-            }
-        }
-    ]
-}
-```
-
-
-....
-
-##### Account Aggregation - Person Details
-
-The person aggregation is a child to the assignment aggregation to retrieve additional details about the person profile.  This call is made to the /profiles/$response.assignment_person_profile_id$ endpoint, using the assignment_person_profile_id from the retrieved assignment record.
-
-Response:
-
-```json
-{
-    "profiles": [
-        {
-            "id": "cce541cf-c024-4595-9ee7-1a31582a598b",
-            "uid": "eb3de3ce6cda40468ab1189070b579ee",
-            "name": "Jason Smith",
-            "profile_type_id": "8ed995d7-0d06-4c3a-9a1f-774fc7b2db1d",
-            "status": "Active",
-            "id_proofing_status": "pending",
-            "updated_at": "2022-04-29T09:29:43.072-04:00",
-            "created_at": "2022-04-29T09:29:43.072-04:00",
-            "attributes": {
-                "person_id": "P000001",
-                "ssn_last_4": "",
-                "email": "jason_smith@acme.com",
-                "source": "",
-                "date_created": "04/29/2022",
-                "collaborator": "No",
-                "middle_name": "",
-                "person_assignments": "Jason Smith - Provider",
+                "start_date": "04/29/2022",
                 "first_name": "Jason",
-                "professional_phone_number": "",
-                "eligible_for_rehire": "Yes",
+                "middle_name": "Martin",
                 "last_name": "Smith",
-                "personal_phone_number": ""
+                "birth_day": "11",
+                "birth_month": "02",
+                "eligible_for_rehire": "Yes",
+                "ssn_last_4": "1234",
+                "personal_phone_number": "1-555-555-1212",
+                "professional_phone_number": "1-111-111-2222",
+                "policy_accepted": "Yes",
+                "organization_name": "ACME",
+                "person_id": "P00001",
+                "email": "jason.smith@acme.org"
             }
         }
     ]
 }
 ```
-
-....
 
 #### Get Object
 
 The get object is nearly identical to the aggregation calls, except the parent call will just retrieve the specific assignment profile, based on it's id.
+
 
 ### Account Schema Attributes
 
@@ -340,22 +297,14 @@ The connector returns all the available attributes for the assignment and people
 IIQ Schema Name | Description
 ---------   |   ---------
 person_assignment_organization | Name of the organization assigned
-person_profile_type_id | id of the person profile_type
-person_id_proofing_status | status of identity proofing
-person_collaborator | list of collaborators for the person
-person_date_created | date the person profile was created
 person_eligible_for_rehire | is the person eligible for rehire
 person_email | email address for the person
 person_first_name | first name for the person
-person_id | id of the persons profile record
 person_last_name | last name for the person
 person_middle_name | middle name for the person
-person_name | display name for the person
 person_personal_phone_number | personal phone number for the person
 person_professional_phone_number | work phone number for the person
-person_source | method that the person profile was created (Portal=Collaborator onboarded)
 person_ssn_last_4 | last 4 digits of the person's social security number
-person_status | status of the person
 assignment_id | id value for the assignment profile
 assignment_profile_type_id | id of the assignment_profile_type
 assignment_assignment_id |  A# id for the assignment
@@ -372,35 +321,24 @@ assignment_name | display name for the assignment profile
 assignment_source | method that the assignment profile was created
 assignment_start_date | start date for the assignment
 assignment_person_profile_id | id for the associated person profile 
-assignment_sponsor_user_id | id for the associated sponsor user account
+assignment_sponsor_login | login for the associated sponsor user account
 
 
 ## SecZetta Workflow Changes
 
-In order to support the above connector, the workflows in SecZetta need to include the approriate steps to populate the id values for the assignment_person_profile_id and assignment_sponsor_user_id attributes.
+In order to support the above configuration, the workflows in SecZetta need to include the approriate steps to populate the id values for the assignment_person_profile_id and assignment_sponsor_user_id attributes along with the needed organization and person attributes.
 
-The baseline workflows that need to be updated are:
-- Add Student Assignment
-- Add Provider Assignment
+The baseline workflows that need to be updated are (with the needed attributes to send) for all related assignments:
+- Add Assignment
+  - assignment_organization, assignment_person
 - Update Assignment Details
+  - assignment_organization, assignment_person
+- Update Person Details
+  - person_assignments
+- New Non-Employee
+  - assignment_organization, assignment_person
+- Update Organization
+  - organization_assignments
 
-In each of the workflows, before the final Create or Update step, an additional REST API Action step needs to be added to perform a lookup and mapping of the attriute.
+Each of these workflows need a final action to call the 'Synchronize Assignment Attributes' workflow.
 
-To set the assignment_person_profile_id, the GET:/profiles/{{ attribute.assignment_person.first.id }} REST API call needs to be made and then map the response profile->id to assignment_person_profile_id
-
-To set the assignment_sponsor_user_id, the GET:/users?id=/{{ attribute.assignment_sponsor.first.id }} REST API call needs to be made and then map the response users->0->id to assignment_sponsor_user_id
-
-In addition, any non-workflow based imports of profiles via the /profiles API need to ensure the assignment_person_profile_id and assignment_sponsor_user_id attributes are set.
-
-## Alternative Design
-
-The design above allows for the flexibility of adding/changing attributes on the person profile in SecZetta with the only impact being changes to the schema/operations in IdentityIQ.   While that approach offers the most flexibility, it does require multiple api calls to gather data.
-
-The alternative design is to have the SecZetta workflows that impact Person profiles, to update attributes onto the assignment profile as well.  So the first_name of the person would get added to the assignment profile, as an example, in order to just have the IdentityIQ aggregation read only the assignemnt profiles.   
-
-The impact of this design is that any changes to person attributes will require updating any workflow in SecZetta with the needed set attribute actions to update the assignment profiles as well.
-
-These workflows in the baseline would need to be updated to support this design:
-- Add Student Assignment
-- Add Provider Assignment
-- Update Personal Information
